@@ -186,4 +186,57 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Aplicar {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Selecione pelo menos um campo para aplicar, ou clique em Cancelar.</sys:String>
 
+
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Remover jogos órfãos…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Nenhum jogo órfão encontrado. Todas as entradas da biblioteca correspondem a apps presentes nos anfitriões acessíveis.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Remover {0} jogo(s) órfão(s) da biblioteca? O tempo de jogo, as substituições de transmissão por jogo e as capas serão eliminados permanentemente. Os anfitriões atualmente inacessíveis são ignorados — os seus jogos nunca são removidos automaticamente.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Removido(s) {0} jogo(s) órfão(s).</sys:String>
+
+    <!-- Settings: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Remover automaticamente jogos órfãos na sincronização</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Quando ativado, os jogos que já não existem em nenhum anfitrião acessível são eliminados do Playnite na próxima sincronização. Desativado por predefinição — os órfãos são marcados como desinstalados, preservando o tempo de jogo e as substituições. Os anfitriões com recurso à cache (inacessíveis) nunca são limpos, independentemente desta definição.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Predefinições de Transmissão</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Anfitrião</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Predefinições de transmissão</sys:String>
+
+    <!-- Add/Edit Host dialog: streaming defaults section -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Predefinições de transmissão para &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">este anfitrião</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Estes valores aplicam-se a todos os jogos transmitidos a partir deste anfitrião. As substituições por jogo (clique com o botão direito num jogo) têm precedência. Os campos definidos como Herdar recorrem às predefinições globais de transmissão e, em seguida, aos valores configurados no próprio Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Teste cancelado.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
+
+    <!-- Add/Edit Host dialog: per-host orphan field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Remover automaticamente jogos órfãos</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Substituição por anfitrião para a eliminação de órfãos na sincronização. &quot;Herdar&quot; delega na definição global do separador Geral.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Herdar da definição global</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Eliminar jogos órfãos</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Manter jogos órfãos (marcar como desinstalados)</sys:String>
+
+    <!-- Add/Edit Host dialog: enabled field help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Desative para manter este anfitrião nas definições mas ignorá-lo durante as sincronizações da biblioteca. Útil para anfitriões que estão frequentemente inacessíveis.</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Detetar automaticamente</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">O Moonlight não foi encontrado no PATH, Scoop, Winget nem em nenhuma localização de instalação padrão. Instale o Moonlight ou indique o caminho para o executável.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight encontrado em:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Foram encontradas várias instalações do Moonlight. Selecione uma:</sys:String>
+
+    <!-- Settings: Streaming Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Opções predefinidas do Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Estes valores aplicam-se a todos os jogos transmitidos. As predefinições por anfitrião (no separador Anfitriões) e as substituições por jogo (clique com o botão direito num jogo) têm precedência sobre estes. Os campos definidos como Herdar recorrem às predefinições configuradas no próprio Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Repor predefinições incorporadas</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Repor todas as predefinições globais de transmissão? Resolução, FPS e HDR serão revertidos para Automático (igual ao cliente); todos os outros campos serão revertidos para Herdar.</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Mostrar estatísticas da transmissão</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calculado automaticamente a partir da resolução × fps (ex.: 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 duplica este valor)</sys:String>
+
 </ResourceDictionary>

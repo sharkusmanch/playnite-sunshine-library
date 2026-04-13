@@ -186,4 +186,59 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">{0} 적용</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">적용할 필드를 하나 이상 선택하거나 취소를 클릭하십시오.</sys:String>
 
+
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">고아 게임 제거…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">고아 게임이 없습니다. 라이브러리의 모든 항목이 현재 연결 가능한 호스트의 앱과 일치합니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">라이브러리에서 고아 게임 {0}개를 제거하시겠습니까? 플레이 시간, 게임별 스트리밍 재정의, 커버 이미지가 영구적으로 삭제됩니다. 현재 오프라인 상태인 호스트는 건너뜁니다 — 해당 호스트의 게임은 자동으로 정리되지 않습니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">고아 게임 {0}개를 제거했습니다.</sys:String>
+
+    <!-- Settings: General tab — orphan auto-removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">동기화 시 고아 게임 자동 제거</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">활성화하면 연결 가능한 호스트에 더 이상 존재하지 않는 게임이 다음 동기화 시 Playnite에서 삭제됩니다. 기본적으로 꺼져 있으며, 고아 게임은 삭제 대신 미설치 상태로 표시되어 플레이 시간과 재정의가 보존됩니다. 캐시 대체 호스트(오프라인)는 이 설정과 관계없이 정리되지 않습니다.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">스트리밍 기본값</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">호스트</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">스트리밍 기본값</sys:String>
+
+    <!-- Add/Edit Host dialog: streaming defaults section -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">&quot;{0}&quot;의 스트리밍 기본값</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">이 호스트</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">이 값은 이 호스트에서 스트리밍되는 모든 게임에 적용됩니다. 게임별 재정의(게임 우클릭)가 우선합니다. 상속으로 설정된 필드는 전역 스트리밍 기본값을 거쳐 Moonlight에 구성된 값으로 이어집니다.</sys:String>
+
+    <!-- Add/Edit Host dialog: connection test -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">테스트가 취소되었습니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
+
+    <!-- Add/Edit Host dialog: per-host orphan field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">고아 게임 자동 제거</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">동기화 시 고아 게임 삭제에 대한 호스트별 재정의입니다. &quot;상속&quot;을 선택하면 일반 탭의 전역 설정을 따릅니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">전역 설정 상속</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">고아 게임 삭제</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">고아 게임 유지 (미설치로 표시)</sys:String>
+
+    <!-- Add/Edit Host dialog: enabled field help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">비활성화하면 이 호스트를 설정에 유지하면서 라이브러리 동기화 중에는 건너뜁니다. 자주 오프라인 상태인 호스트에 유용합니다.</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">자동 감지</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">PATH, Scoop, Winget 또는 표준 설치 위치에서 Moonlight을 찾을 수 없습니다. Moonlight을 설치하거나 실행 파일을 직접 찾아보십시오.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">다음 위치에서 Moonlight을 찾았습니다:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Moonlight 설치 항목이 여러 개 발견되었습니다. 하나를 선택하십시오:</sys:String>
+
+    <!-- Settings: Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Moonlight 기본 옵션</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">이 값은 스트리밍되는 모든 게임에 적용됩니다. 호스트별 기본값(호스트 탭)과 게임별 재정의(게임 우클릭)가 이 설정보다 우선합니다. 상속으로 설정된 필드는 Moonlight에 구성된 기본값으로 이어집니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">기본 제공 설정으로 초기화</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">모든 전역 스트리밍 기본값을 초기화하시겠습니까? 해상도, FPS, HDR은 자동(클라이언트에 맞춤)으로 되돌아가고, 나머지 필드는 모두 상속으로 돌아갑니다.</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">스트리밍 통계 표시</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">해상도 × fps에서 자동 계산 (예: 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 사용 시 두 배)</sys:String>
+
 </ResourceDictionary>

@@ -186,4 +186,59 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">{0} alanını uygula</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Uygulamak için en az bir alan işaretleyin veya İptal'e tıklayın.</sys:String>
 
+
+    <!-- Remove orphaned games -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Sahipsiz oyunları kaldır…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Sahipsiz oyun bulunamadı. Kütüphanenizdeki tüm girdiler, erişilebilir sunuculardaki uygulamalarla eşleşiyor.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Kütüphaneden {0} sahipsiz oyun kaldırılsın mı? Oynanma süresi, oyun başına yayın geçersiz kılmaları ve kapak görselleri kalıcı olarak silinecek. Şu anda çevrimdışı olan sunucular atlanır — bu sunuculara ait oyunlar hiçbir zaman otomatik olarak temizlenmez.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} sahipsiz oyun kaldırıldı.</sys:String>
+
+    <!-- Settings: auto-remove orphans -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Eşitlemede sahipsiz oyunları otomatik kaldır</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Etkinleştirildiğinde, erişilebilir hiçbir sunucuda artık bulunmayan oyunlar bir sonraki eşitlemede Playnite'tan silinir. Varsayılan olarak kapalıdır — sahipsiz oyunlar silinmek yerine kaldırılmış olarak işaretlenir; böylece oynanma süresi ve geçersiz kılmalar korunur. Önbelleğe alınmış (çevrimdışı) sunucular bu ayardan bağımsız olarak hiçbir zaman temizlenmez.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Yayın Varsayılanları</sys:String>
+
+    <!-- Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Sunucu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Yayın varsayılanları</sys:String>
+
+    <!-- Host dialog: streaming defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">&quot;{0}&quot; için yayın varsayılanları</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">bu sunucu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Bu değerler, bu sunucudan yayınlanan her oyuna uygulanır. Oyun başına geçersiz kılmalar (bir oyuna sağ tıklayın) öncelik taşır. Devral olarak ayarlanan alanlar, sırasıyla genel yayın varsayılanlarına ve ardından Moonlight&apos;ın kendi yapılandırılmış değerlerine geri döner.</sys:String>
+
+    <!-- Host dialog: test -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test iptal edildi.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
+
+    <!-- Host fields: auto-remove orphans -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Sahipsiz oyunları otomatik kaldır</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Eşitlemede sahipsiz oyunların silinmesi için sunucu bazında geçersiz kılma. &quot;Devral&quot; seçeneği, Genel sekmesindeki genel ayara bırakır.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Genel ayardan devral</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Sahipsiz oyunları sil</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Sahipsiz oyunları tut (kaldırılmış olarak işaretle)</sys:String>
+
+    <!-- Host fields: enabled -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Bu sunucuyu ayarlarda tutmak ancak kütüphane eşitlemelerinde atlamak için devre dışı bırakın. Sık sık çevrimdışı olan sunucular için kullanışlıdır.</sys:String>
+
+    <!-- Client: auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Otomatik algıla</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight, PATH, Scoop, Winget veya standart kurulum konumlarının hiçbirinde bulunamadı. Moonlight'ı kurun ya da yürütülebilir dosyasına göz atın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight şu konumda bulundu:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Birden fazla Moonlight kurulumu bulundu. Birini seçin:</sys:String>
+
+    <!-- Defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Varsayılan Moonlight seçenekleri</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Bu değerler, yayınlanan her oyuna uygulanır. Sunucu bazı varsayılanlar (Sunucular sekmesinde) ve oyun başına geçersiz kılmalar (bir oyuna sağ tıklayın) bu değerlere göre öncelik taşır. Devral olarak ayarlanan alanlar, Moonlight&apos;ın kendi yapılandırılmış varsayılanlarına geri döner.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Yerleşik varsayılanlara sıfırla</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Tüm genel yayın varsayılanları sıfırlansın mı? Çözünürlük, FPS ve HDR, Otomatik (istemciyle eşleştir) değerine döner; diğer tüm alanlar Devral değerine döner.</sys:String>
+
+    <!-- Override fields -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Yayın istatistiklerini göster</sys:String>
+
+    <!-- Fallback hints -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Çözünürlük × fps'den otomatik hesaplanır (ör. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 bunu iki katına çıkarır)</sys:String>
+
 </ResourceDictionary>

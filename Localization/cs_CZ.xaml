@@ -186,4 +186,59 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Použít {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Zaškrtněte alespoň jedno pole pro použití, nebo klikněte na Zrušit.</sys:String>
 
+
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Odebrat osiřelé hry…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Žádné osiřelé hry nebyly nalezeny. Všechny záznamy ve vaší knihovně odpovídají aplikacím na dostupných hostitelích.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Odebrat {0} osiřelých her z knihovny? Herní čas, přepsání streamování pro jednotlivé hry a obaly budou trvale smazány. Hostitelé, kteří jsou aktuálně offline, jsou přeskočeni — jejich hry nejsou nikdy automaticky odstraňovány.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Odebráno {0} osiřelých her.</sys:String>
+
+    <!-- Settings: General tab — orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Automaticky odebírat osiřelé hry při synchronizaci</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Pokud je povoleno, hry, které již neexistují na žádném dostupném hostiteli, budou při příští synchronizaci odstraněny z Playnite. Ve výchozím nastavení vypnuto — osiřelé hry jsou místo toho označeny jako neinstalované, čímž se zachovají herní čas a přepsání. Hostitelé z mezipaměti (offline) nejsou nikdy odstraňováni bez ohledu na toto nastavení.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Výchozí nastavení streamování</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Hostitel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Výchozí nastavení streamování</sys:String>
+
+    <!-- Add/Edit Host dialog: streaming defaults section -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Výchozí nastavení streamování pro &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">tohoto hostitele</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Tyto hodnoty platí pro každou hru streamovanou z tohoto hostitele. Přepsání pro jednotlivé hry (kliknutí pravým tlačítkem na hru) mají přednost. Pole nastavená na Zdědit přecházejí na globální výchozí nastavení streamování a poté na vlastní nakonfigurované hodnoty Moonlight.</sys:String>
+
+    <!-- Add/Edit Host dialog: test connection -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test zrušen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
+
+    <!-- Host fields: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Automaticky odebírat osiřelé hry</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Přepsání pro konkrétního hostitele pro mazání osiřelých her při synchronizaci. &quot;Zdědit&quot; odkazuje na globální nastavení na záložce Obecné.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Zdědit z globálního nastavení</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Smazat osiřelé hry</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Ponechat osiřelé hry (označit jako neinstalované)</sys:String>
+
+    <!-- Host fields: enabled -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Zakázáním ponecháte tohoto hostitele v nastavení, ale při synchronizaci knihovny bude přeskočen. Užitečné pro hostitele, kteří jsou často offline.</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Automaticky zjistit</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight nebyl nalezen v PATH, Scoop, Winget ani v žádném standardním umístění instalace. Nainstalujte Moonlight nebo přejděte k jeho spustitelnému souboru.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight nalezen na:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Nalezeno více instalací Moonlight. Vyberte jednu:</sys:String>
+
+    <!-- Settings: Streaming Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Výchozí možnosti Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Tyto hodnoty platí pro každou streamovanou hru. Výchozí hodnoty pro konkrétního hostitele (na záložce Hostitelé) a přepsání pro jednotlivé hry (kliknutí pravým tlačítkem na hru) mají před těmito nastaveními přednost. Pole nastavená na Zdědit přecházejí na vlastní nakonfigurované výchozí hodnoty Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Obnovit vestavěné výchozí hodnoty</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Obnovit všechna globální výchozí nastavení streamování? Rozlišení, FPS a HDR se vrátí na Automaticky (podle klienta); všechna ostatní pole se vrátí na Zdědit.</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Zobrazit statistiky streamu</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Automaticky vypočítáno z rozlišení × fps (např. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 tuto hodnotu zdvojnásobí)</sys:String>
+
 </ResourceDictionary>

@@ -186,4 +186,53 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Aplică {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Bifează cel puțin un câmp pentru a aplica, sau apasă Anulează.</sys:String>
 
+
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Elimină jocurile orfane…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Nu s-au găsit jocuri orfane. Toate intrările din bibliotecă corespund aplicațiilor existente pe gazdele accesibile.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Elimini {0} joc(uri) orfane din bibliotecă? Timpul de joc, suprascrierile de streaming per joc și copertele vor fi șterse definitiv. Gazdele momentan offline sunt omise — jocurile lor nu sunt niciodată eliminate automat.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">S-au eliminat {0} joc(uri) orfane.</sys:String>
+
+    <!-- Settings: General tab — orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Elimină automat jocurile orfane la sincronizare</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Când este activat, jocurile care nu mai există pe nicio gazdă accesibilă sunt șterse din Playnite la următoarea sincronizare. Dezactivat implicit — jocurile orfane sunt marcate ca dezinstalate, păstrând timpul de joc și suprascrierile. Gazdele cu rezervă din cache (offline) nu sunt niciodată eliminate, indiferent de această setare.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Valori implicite de streaming</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs and defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Gazdă</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Valori implicite de streaming</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Valori implicite de streaming pentru &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">această gazdă</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Aceste valori se aplică fiecărui joc transmis de pe această gazdă. Suprascrierile per joc (click dreapta pe un joc) au prioritate. Câmpurile setate pe Moștenește trec la valorile implicite globale de streaming, apoi la valorile configurate ale Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test anulat.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
+
+    <!-- Add/Edit Host dialog: per-host orphan field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Elimină automat jocurile orfane</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Suprascriere per gazdă pentru ștergerea jocurilor orfane la sincronizare. &quot;Moștenește&quot; preia setarea globală din fila General.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Moștenește din setarea globală</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Șterge jocurile orfane</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Păstrează jocurile orfane (marchează ca dezinstalate)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Dezactivează pentru a păstra această gazdă în setări, dar a o omite în timpul sincronizărilor bibliotecii. Util pentru gazdele care sunt adesea offline.</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Detectare automată</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight nu a fost găsit în PATH, Scoop, Winget sau în nicio locație standard de instalare. Instalează Moonlight sau răsfoiește până la executabilul său.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight găsit la:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">S-au găsit mai multe instalări Moonlight. Selectează una:</sys:String>
+
+    <!-- Settings: Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Opțiuni implicite Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Aceste valori se aplică fiecărui joc transmis. Valorile implicite per gazdă (fila Gazde) și suprascrierile per joc (click dreapta pe un joc) au prioritate față de acestea. Câmpurile setate pe Moștenește trec la valorile configurate proprii ale Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Resetează la valorile implicite predefinite</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Resetezi toate valorile implicite globale de streaming? Rezoluția, FPS și HDR vor reveni la Automat (la fel ca clientul); toate celelalte câmpuri vor reveni la Moștenește.</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Afișează statistici stream</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calculat automat din rezoluție × fps (ex. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 dublează această valoare)</sys:String>
+
 </ResourceDictionary>

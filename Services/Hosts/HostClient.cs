@@ -93,14 +93,14 @@ namespace SunshineLibrary.Services.Hosts
             catch { /* non-fatal */ }
         }
 
-        public void Dispose() => Http?.Dispose();
+        public virtual void Dispose() => Http?.Dispose();
 
         public string LastObservedCertFingerprintSpkiSha256 => handler?.LastObservedSpkiSha256;
 
         // --- abstract surface -----------------------------------------------------
 
         /// <summary>Low-level access to /api/config for flavor detection. Returns the raw JSON object.</summary>
-        public Task<HostResult<Newtonsoft.Json.Linq.JObject>> ProbeConfigAsync(CancellationToken ct)
+        public virtual Task<HostResult<Newtonsoft.Json.Linq.JObject>> ProbeConfigAsync(CancellationToken ct)
             => GetJsonAsync<Newtonsoft.Json.Linq.JObject>("api/config", ct);
 
         public abstract Task<HostResult<IReadOnlyList<RemoteApp>>> ListAppsAsync(CancellationToken ct);

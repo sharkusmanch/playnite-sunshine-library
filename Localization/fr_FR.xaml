@@ -186,4 +186,57 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Appliquer {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Cochez au moins un champ à appliquer, ou cliquez sur Annuler.</sys:String>
 
+
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Supprimer les jeux orphelins…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Aucun jeu orphelin trouvé. Toutes les entrées de votre bibliothèque correspondent à des applications actuellement présentes sur des hôtes accessibles.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Supprimer {0} jeu(x) orphelin(s) de la bibliothèque ? Le temps de jeu, les remplacements de streaming par jeu et les jaquettes seront définitivement supprimés. Les hôtes actuellement hors ligne sont ignorés — leurs jeux ne sont jamais supprimés automatiquement.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} jeu(x) orphelin(s) supprimé(s).</sys:String>
+
+    <!-- Settings: General tab — orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Supprimer automatiquement les jeux orphelins à la synchronisation</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Si activé, les jeux qui n'existent plus sur aucun hôte accessible sont supprimés de Playnite lors de la prochaine synchronisation. Désactivé par défaut — les orphelins sont marqués comme désinstallés, ce qui préserve le temps de jeu et les remplacements. Les hôtes en repli sur cache (hors ligne) ne sont jamais purgés, quel que soit ce paramètre.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Paramètres de streaming par défaut</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Hôte</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Paramètres de streaming par défaut</sys:String>
+
+    <!-- Add/Edit Host dialog: streaming defaults section -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Paramètres de streaming par défaut pour &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">cet hôte</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Ces valeurs s&apos;appliquent à tous les jeux diffusés depuis cet hôte. Les remplacements par jeu (clic droit sur un jeu) ont la priorité. Les champs définis sur Hériter remontent aux paramètres de streaming globaux, puis aux valeurs configurées dans Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test annulé.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0} : {1}</sys:String>
+
+    <!-- Add/Edit Host dialog: per-host orphan field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Suppression automatique des jeux orphelins</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Remplacement par hôte pour la suppression des orphelins à la synchronisation. &quot;Hériter&quot; se réfère au paramètre global de l&apos;onglet Général.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Hériter du paramètre global</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Supprimer les jeux orphelins</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Conserver les jeux orphelins (marquer comme désinstallés)</sys:String>
+
+    <!-- Add/Edit Host dialog: enabled field help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Désactivez pour conserver cet hôte dans les paramètres tout en l&apos;ignorant lors des synchronisations. Utile pour les hôtes souvent hors ligne.</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Détection automatique</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight est introuvable dans PATH, Scoop, Winget ou tout emplacement d&apos;installation standard. Installez Moonlight ou naviguez jusqu&apos;à son exécutable.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight trouvé à :&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Plusieurs installations de Moonlight détectées. Sélectionnez-en une :</sys:String>
+
+    <!-- Settings: Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Options Moonlight par défaut</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Ces valeurs s&apos;appliquent à tous les jeux diffusés. Les paramètres par défaut par hôte (onglet Hôtes) et les remplacements par jeu (clic droit sur un jeu) ont la priorité. Les champs définis sur Hériter remontent aux valeurs par défaut configurées dans Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Rétablir les valeurs par défaut intégrées</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Réinitialiser tous les paramètres de streaming globaux ? La résolution, les FPS et le HDR reviendront à Auto (suivre le client) ; tous les autres champs reviendront à Hériter.</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Afficher les statistiques du flux</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calculé automatiquement d&apos;après la résolution × fps (ex. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps ; YUV 4:4:4 double cette valeur)</sys:String>
+
 </ResourceDictionary>

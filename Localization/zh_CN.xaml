@@ -186,4 +186,57 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">应用 {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">至少勾选一个要应用的字段,或单击取消。</sys:String>
 
+
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">移除孤立游戏…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">未发现孤立游戏。您的所有库条目均与当前可连接主机上的应用匹配。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">是否从库中移除 {0} 个孤立游戏?游戏时长、单游戏串流覆盖设置及封面将被永久删除。当前离线的主机将被跳过 — 其游戏不会被自动清理。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">已移除 {0} 个孤立游戏。</sys:String>
+
+    <!-- Settings: General tab — orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">同步时自动移除孤立游戏</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">启用后,在下次同步时将从 Playnite 中删除所有可连接主机上已不存在的游戏。默认关闭 — 孤立游戏将被标记为未安装,以保留游戏时长和覆盖设置。无论此设置如何,缓存回退主机(离线)的游戏永远不会被清理。</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">串流默认值</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">主机</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">串流默认值</sys:String>
+
+    <!-- Add/Edit Host dialog: per-host streaming defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">&quot;{0}&quot; 的串流默认值</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">此主机</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">这些值适用于从此主机串流的所有游戏。单游戏覆盖设置(右键单击游戏)优先级更高。设置为"继承"的字段将回退至全局串流默认值,再回退至 Moonlight 自身的配置值。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">测试已取消。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}:{1}</sys:String>
+
+    <!-- Add/Edit Host dialog: orphan removal field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">自动移除孤立游戏</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">同步时孤立游戏删除的主机级覆盖设置。&quot;继承&quot;表示沿用"常规"选项卡中的全局设置。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">继承全局设置</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">删除孤立游戏</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">保留孤立游戏(标记为未安装)</sys:String>
+
+    <!-- Add/Edit Host dialog: enabled field help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">禁用后,此主机将保留在设置中,但在库同步时会被跳过。适用于经常离线的主机。</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">自动探测</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">未在 PATH、Scoop、Winget 或任何标准安装位置找到 Moonlight。请安装 Moonlight 或手动浏览至其可执行文件。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">在以下位置找到 Moonlight:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">找到多个 Moonlight 安装。请选择其中一个:</sys:String>
+
+    <!-- Settings: Streaming Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Moonlight 默认选项</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">这些值适用于所有串流游戏。主机级默认值(在"主机"选项卡上)和单游戏覆盖设置(右键单击游戏)优先级高于此处设置。设置为"继承"的字段将回退至 Moonlight 自身的配置默认值。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">重置为内置默认值</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">是否重置所有全局串流默认值?分辨率、FPS 和 HDR 将恢复为自动(匹配客户端);所有其他字段将恢复为继承。</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">显示串流统计信息</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">根据分辨率 × 帧率自动计算(例如 1080p/60 → 20 Mbps,4K/60 → 80 Mbps;YUV 4:4:4 将使此值翻倍)</sys:String>
+
 </ResourceDictionary>

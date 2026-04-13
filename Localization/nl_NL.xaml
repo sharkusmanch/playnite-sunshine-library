@@ -186,4 +186,55 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">{0} toepassen</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Vink minstens één veld aan om toe te passen, of klik op Annuleren.</sys:String>
 
+
+    <!-- Menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Verweesde games verwijderen…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Geen verweesde games gevonden. Alle bibliotheekitems komen overeen met apps op bereikbare hosts.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">{0} verweesd(e) game(s) uit de bibliotheek verwijderen? Speeltijd, per-game streaming-overrides en omslagen worden definitief gewist. Hosts die momenteel offline zijn worden overgeslagen — hun games worden nooit automatisch verwijderd.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} verweesd(e) game(s) verwijderd.</sys:String>
+
+    <!-- Settings: orphan auto-removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Verweesde games automatisch verwijderen bij sync</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Indien ingeschakeld worden games die niet meer bestaan op een bereikbare host bij de volgende sync uit Playnite verwijderd. Standaard uitgeschakeld — verweesde games worden als niet-geïnstalleerd gemarkeerd, zodat speeltijd en overrides bewaard blijven. Cache-fallback-hosts (offline) worden nooit verwijderd, ongeacht deze instelling.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Streaming-standaarden</sys:String>
+
+    <!-- Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Streaming-standaarden</sys:String>
+
+    <!-- Host dialog: streaming defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Streaming-standaarden voor &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">deze host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Deze waarden gelden voor elke game die via deze host gestreamd wordt. Per-game overrides (rechtsklik op een game) hebben voorrang. Velden ingesteld op Overerven vallen terug op de globale streaming-standaarden en daarna op de eigen geconfigureerde waarden van Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test geannuleerd.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
+
+    <!-- Host field: orphan auto-removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Verweesde games automatisch verwijderen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Override per host voor het verwijderen van verweesde games bij sync. &quot;Overerven&quot; gebruikt de globale instelling op het tabblad Algemeen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Overnemen van globale instelling</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Verweesde games verwijderen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Verweesde games bewaren (als niet-geïnstalleerd markeren)</sys:String>
+
+    <!-- Host field: enabled help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Uitschakelen om deze host in de instellingen te bewaren maar over te slaan tijdens bibliotheeksyncs. Handig voor hosts die vaak offline zijn.</sys:String>
+
+    <!-- Client: auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Automatisch detecteren</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight is niet gevonden in PATH, Scoop, Winget of een standaard installatielocatie. Installeer Moonlight of blader naar het uitvoerbare bestand.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight gevonden op:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Meerdere Moonlight-installaties gevonden. Selecteer er één:</sys:String>
+
+    <!-- Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Standaard Moonlight-opties</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Deze waarden gelden voor elke gestreamde game. Per-host standaarden (op het tabblad Hosts) en per-game overrides (rechtsklik op een game) hebben voorrang. Velden ingesteld op Overerven vallen terug op de eigen geconfigureerde standaarden van Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Terugzetten naar ingebouwde standaarden</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Alle globale streaming-standaarden terugzetten? Resolutie, FPS en HDR keren terug naar Automatisch (volg client); alle overige velden keren terug naar Overerven.</sys:String>
+
+    <!-- Override fields -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Streamstatistieken tonen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Automatisch berekend op basis van resolutie × fps (bijv. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 verdubbelt dit)</sys:String>
+
 </ResourceDictionary>

@@ -39,6 +39,27 @@ namespace SunshineLibrary.Services.Hosts
         public static async Task<ServerType> ProbeServerTypeAsync(HostClient client, CancellationToken ct)
         {
             var result = await client.ProbeConfigAsync(ct).ConfigureAwait(false);
+            var serverType = ClassifyConfig(result);
+            if (serverType != ServerType.Unknown) return serverType;
+
+            // Apollo protects /api/config with session-cookie auth. If a non-Apollo client
+            // (e.g. the SunshineHostClient default used for unknown types) got a 401, retry
+            // with an ApolloHostClient so it can log in first.
+            if (result.Kind == HostResultKind.AuthFailed && !(client is ApolloHostClient))
+            {
+                using (var apolloClient = new ApolloHostClient(client.Config))
+                {
+                    var apolloResult = await apolloClient.ProbeConfigAsync(ct).ConfigureAwait(false);
+                    serverType = ClassifyConfig(apolloResult);
+                    if (serverType != ServerType.Unknown) return serverType;
+                }
+            }
+
+            return ServerType.Unknown;
+        }
+
+        private static ServerType ClassifyConfig(HostResult<JObject> result)
+        {
             if (!result.IsOk || result.Value == null) return ServerType.Unknown;
             var raw = result.Value;
 
