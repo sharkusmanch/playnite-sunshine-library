@@ -1,11 +1,18 @@
 AddonId: SunshineLibrary_496637e1-1607-4016-aa4b-d6f732c21210
 Packages:
-  - Version: 0.1.0
+  - Version: 0.0.1
     RequiredApiVersion: 6.12.0
-    ReleaseDate: 2026-04-12
-    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.1.0/SunshineLibrary_v0.1.0.pext
+    ReleaseDate: 2026-04-13
+    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.1/SunshineLibrary_v0.0.1.pext
     Changelog:
-      - Initial vertical slice: import apps from Sunshine/Apollo host, launch via moonlight-qt
+      - Initial release — import apps from Sunshine/Apollo hosts, launch via Moonlight
       - Auto-detect client resolution, refresh rate, and HDR at launch
-      - Per-host SPKI cert pinning
-      - Flavor-aware host clients (Sunshine/Apollo)
+      - Per-host SPKI certificate pinning with TOFU confirmation
+      - Sunshine vs Apollo auto-detection
+      - Per-host and global streaming overrides (resolution, FPS, HDR, bitrate, codec, and more)
+      - Per-game streaming overrides via right-click menu with bulk multi-select support
+      - Cache fallback — offline hosts serve last-good app list tagged offline
+      - Orphan reconciliation preserves playtime when app IDs change
+      - Per-host auto-remove orphaned games setting (overrides global)
+      - Fix stale orphan deletion when auto-remove is enabled after prior syncs
+      - Apollo sync companion and Apollo Profile Manager documented
