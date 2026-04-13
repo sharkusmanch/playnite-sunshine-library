@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">通过 Moonlight 从 Sunshine 或 Apollo 主机串流游戏。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">通过 Moonlight 从 Sunshine 主机串流游戏。</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">重新同步所有主机</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">测试串流客户端</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">主机状态…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">如果怀疑设置文件被复制或想要重新开始,请使用此选项。它不会从列表中移除主机 — 仅移除存储的密码。</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">添加 Sunshine / Apollo 主机</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">编辑 Sunshine / Apollo 主机</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">添加 Sunshine 主机</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">编辑 Sunshine 主机</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">标签</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">地址(主机名或 IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">端口</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">确认证书</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">信任 "{0}" 的证书?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine 和 Apollo 使用自签名证书。固定下方指纹,以便将来的连接基于此进行验证。如果不是您设置的此主机,请选择"否"。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine 使用自签名证书。固定下方指纹,以便将来的连接基于此进行验证。如果不是您设置的此主机,请选择"否"。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">此主机的证书指纹已更改。这可能是由于 Sunshine 被重新安装 — 也可能意味着有人正在拦截连接。仅当您最近重新安装过主机时才确认新指纹。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 指纹</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">之前信任的指纹</sys:String>

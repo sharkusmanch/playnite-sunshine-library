@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Strömma spel från Sunshine- eller Apollo-värdar via Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Strömma spel från Sunshine-värdar via Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Synkronisera alla värdar igen</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Testa strömningsklient</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Värdstatus…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Använd detta om du misstänker att en inställningsfil har kopierats eller om du vill börja om. Värdar tas inte bort från listan — endast de sparade lösenorden.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Lägg till Sunshine- / Apollo-värd</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Redigera Sunshine- / Apollo-värd</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Lägg till Sunshine-värd</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Redigera Sunshine-värd</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Etikett</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adress (värdnamn eller IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Bekräfta certifikat</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Lita på certifikat för "{0}"?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine och Apollo använder självsignerade certifikat. Pinna fingeravtrycket nedan så att framtida anslutningar verifieras mot det. Om du inte har satt upp den här värden, välj Nej.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine använder självsignerade certifikat. Pinna fingeravtrycket nedan så att framtida anslutningar verifieras mot det. Om du inte har satt upp den här värden, välj Nej.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Certifikatfingeravtrycket för den här värden har ändrats. Det kan hända om Sunshine har installerats om — eller så kan det betyda att någon avlyssnar anslutningen. Bekräfta det nya fingeravtrycket endast om du nyligen har installerat om värden.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256-fingeravtryck</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Tidigare betrott fingeravtryck</sys:String>

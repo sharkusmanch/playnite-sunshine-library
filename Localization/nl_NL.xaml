@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Stream games van Sunshine- of Apollo-hosts via Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Stream games van Sunshine-hosts via Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Alle hosts opnieuw synchroniseren</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Streamingclient testen</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Hoststatus…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Gebruik dit als je vermoedt dat een instellingenbestand is gekopieerd of als je opnieuw wilt beginnen. Hosts worden niet uit de lijst verwijderd — alleen de opgeslagen wachtwoorden.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine- / Apollo-host toevoegen</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine- / Apollo-host bewerken</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine-host toevoegen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine-host bewerken</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Label</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adres (hostnaam of IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Poort</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Certificaat bevestigen</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Certificaat voor "{0}" vertrouwen?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine en Apollo gebruiken zelfondertekende certificaten. Pin de onderstaande vingerafdruk vast zodat toekomstige verbindingen daartegen worden geverifieerd. Als jij deze host niet hebt ingesteld, kies Nee.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine gebruikt zelfondertekende certificaten. Pin de onderstaande vingerafdruk vast zodat toekomstige verbindingen daartegen worden geverifieerd. Als jij deze host niet hebt ingesteld, kies Nee.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">De certificaatvingerafdruk voor deze host is veranderd. Dit kan gebeuren als Sunshine opnieuw is geïnstalleerd — of het kan betekenen dat iemand de verbinding onderschept. Bevestig de nieuwe vingerafdruk alleen als je de host recent opnieuw hebt geïnstalleerd.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256-vingerafdruk</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Eerder vertrouwde vingerafdruk</sys:String>

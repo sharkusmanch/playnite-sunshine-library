@@ -22,6 +22,7 @@ namespace SunshineLibrary
 
         public override Guid Id { get; } = Guid.Parse("496637e1-1607-4016-aa4b-d6f732c21210");
         public override string Name => ResourceProvider.GetString("LOC_SunshineLibrary_Name");
+        public override string LibraryIcon => System.IO.Path.Combine(System.IO.Path.GetDirectoryName(GetType().Assembly.Location), "icon.png");
         public override LibraryClient Client => libraryClient;
 
         private readonly StreamClientRegistry clientRegistry = new StreamClientRegistry();

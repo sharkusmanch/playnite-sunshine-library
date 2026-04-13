@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Transmite jocuri din gazde Sunshine sau Apollo prin Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Transmite jocuri din gazde Sunshine prin Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Resincronizează toate gazdele</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Testează clientul de streaming</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Stare gazdă…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Folosește această opțiune dacă suspectezi că un fișier de setări a fost copiat sau dacă vrei să începi de la zero. Nu elimină gazdele din listă — doar parolele stocate.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Adaugă gazdă Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Editează gazda Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Adaugă gazdă Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Editează gazda Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Etichetă</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adresă (nume de gazdă sau IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Confirmă certificatul</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Ai încredere în certificatul pentru "{0}"?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine și Apollo folosesc certificate autosemnate. Fixează amprenta de mai jos astfel încât conexiunile viitoare să fie verificate față de ea. Dacă nu tu ai configurat această gazdă, răspunde Nu.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine folosește certificate autosemnate. Fixează amprenta de mai jos astfel încât conexiunile viitoare să fie verificate față de ea. Dacă nu tu ai configurat această gazdă, răspunde Nu.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Amprenta certificatului pentru această gazdă s-a schimbat. Acest lucru se poate întâmpla dacă Sunshine a fost reinstalat — sau poate însemna că cineva interceptează conexiunea. Confirmă noua amprentă doar dacă ai reinstalat recent gazda.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">Amprentă SHA-256</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Amprentă anterior de încredere</sys:String>

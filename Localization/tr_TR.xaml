@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight aracılığıyla Sunshine veya Apollo sunucularından oyun yayını yapın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight aracılığıyla Sunshine sunucularından oyun yayını yapın.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Tüm sunucuları yeniden eşitle</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Yayın istemcisini test et</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Sunucu durumu…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Ayar dosyasının kopyalandığından şüpheleniyorsanız ya da baştan başlamak istiyorsanız bunu kullanın. Bu, sunucuları listeden kaldırmaz — yalnızca kayıtlı parolaları siler.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine / Apollo sunucusu ekle</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine / Apollo sunucusunu düzenle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine sunucusu ekle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine sunucusunu düzenle</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Etiket</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adres (sunucu adı veya IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Sertifikayı onayla</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">"{0}" için sertifikaya güvenilsin mi?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine ve Apollo kendinden imzalı sertifikalar kullanır. Gelecekteki bağlantıların buna göre doğrulanması için aşağıdaki parmak izini sabitleyin. Bu sunucuyu siz kurmadıysanız Hayır'ı seçin.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine kendinden imzalı sertifikalar kullanır. Gelecekteki bağlantıların buna göre doğrulanması için aşağıdaki parmak izini sabitleyin. Bu sunucuyu siz kurmadıysanız Hayır'ı seçin.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Bu sunucunun sertifika parmak izi değişti. Bu, Sunshine yeniden kurulduysa olabilir — ya da birisinin bağlantıyı dinlediği anlamına gelebilir. Yeni parmak izini yalnızca sunucuyu yakın zamanda yeniden kurduysanız onaylayın.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 parmak izi</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Önceden güvenilen parmak izi</sys:String>

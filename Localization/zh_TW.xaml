@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">透過 Moonlight 從 Sunshine 或 Apollo 主機串流遊戲。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">透過 Moonlight 從 Sunshine 主機串流遊戲。</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">重新同步所有主機</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">測試串流用戶端</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">主機狀態…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">如果懷疑設定檔被複製或想要重新開始,請使用此選項。這不會從清單中移除主機 — 僅移除已儲存的密碼。</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">新增 Sunshine / Apollo 主機</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">編輯 Sunshine / Apollo 主機</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">新增 Sunshine 主機</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">編輯 Sunshine 主機</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">標籤</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">位址(主機名稱或 IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">連接埠</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">確認憑證</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">信任 "{0}" 的憑證?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine 和 Apollo 使用自行簽署的憑證。釘選下方指紋,讓未來的連線依此進行驗證。如果此主機不是您設定的,請選擇「否」。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine 使用自行簽署的憑證。釘選下方指紋,讓未來的連線依此進行驗證。如果此主機不是您設定的,請選擇「否」。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">此主機的憑證指紋已變更。這可能是因為 Sunshine 被重新安裝 — 也可能意味著有人正在攔截連線。僅當您最近重新安裝過主機時才確認新指紋。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 指紋</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">先前信任的指紋</sys:String>

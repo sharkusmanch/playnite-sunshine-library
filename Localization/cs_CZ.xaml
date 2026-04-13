@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Streamujte hry z hostitelů Sunshine nebo Apollo pomocí Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Streamujte hry z hostitelů Sunshine pomocí Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Znovu synchronizovat všechny hostitele</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Otestovat streamovacího klienta</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Stav hostitele…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Použijte tuto možnost, pokud máte podezření, že byl soubor s nastavením zkopírován, nebo chcete začít znovu. Tato akce neodstraní hostitele ze seznamu — pouze uložená hesla.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Přidat hostitele Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Upravit hostitele Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Přidat hostitele Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Upravit hostitele Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Popisek</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adresa (název hostitele nebo IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Potvrdit certifikát</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Důvěřovat certifikátu pro „{0}“?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine a Apollo používají certifikáty podepsané sebou samými. Připněte níže uvedený otisk, aby budoucí spojení byla proti němu ověřována. Pokud jste tohoto hostitele nenastavovali vy, zvolte Ne.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine používá certifikáty podepsané sebou samými. Připněte níže uvedený otisk, aby budoucí spojení byla proti němu ověřována. Pokud jste tohoto hostitele nenastavovali vy, zvolte Ne.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Otisk certifikátu tohoto hostitele se změnil. Může to být způsobeno přeinstalací Sunshine — nebo to může znamenat, že někdo odposlouchává spojení. Nový otisk potvrďte pouze tehdy, pokud jste hostitele nedávno přeinstalovali.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">Otisk SHA-256</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Dříve důvěryhodný otisk</sys:String>

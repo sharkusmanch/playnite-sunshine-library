@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Трансляція ігор із хостів Sunshine або Apollo через Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Трансляція ігор із хостів Sunshine через Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Пересинхронізувати всі хости</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Перевірити клієнт трансляції</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Стан хостів…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Скористайтеся цим, якщо підозрюєте, що файл параметрів було скопійовано, або хочете почати з чистого аркуша. Хости зі списку не видаляються — лише збережені паролі.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Додати хост Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Редагувати хост Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Додати хост Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Редагувати хост Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Мітка</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Адреса (ім’я хоста або IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Порт</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Підтвердження сертифіката</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Довіряти сертифікату для «{0}»?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine і Apollo використовують самопідписані сертифікати. Закріпіть відбиток нижче, щоб майбутні підключення звірялися з ним. Якщо ви не налаштовували цей хост, виберіть «Ні».</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine використовує самопідписані сертифікати. Закріпіть відбиток нижче, щоб майбутні підключення звірялися з ним. Якщо ви не налаштовували цей хост, виберіть «Ні».</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Відбиток сертифіката для цього хоста змінився. Таке буває після перевстановлення Sunshine — але також може означати, що з’єднання перехоплюється. Підтверджуйте новий відбиток, лише якщо нещодавно перевстановлювали хост.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">Відбиток SHA-256</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Раніше довірений відбиток</sys:String>

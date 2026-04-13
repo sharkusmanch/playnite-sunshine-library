@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Trasmetti giochi in streaming da host Sunshine o Apollo tramite Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Trasmetti giochi in streaming da host Sunshine tramite Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Risincronizza tutti gli host</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Prova client di streaming</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Stato degli host…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Usa questa opzione se sospetti che un file di impostazioni sia stato copiato o vuoi ricominciare da capo. Non rimuove gli host dall'elenco, solo le password memorizzate.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Aggiungi host Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Modifica host Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Aggiungi host Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Modifica host Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Etichetta</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Indirizzo (nome host o IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Porta</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Conferma certificato</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Considerare attendibile il certificato di "{0}"?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine e Apollo usano certificati autofirmati. Fissa il pin dell'impronta qui sotto in modo che le connessioni future vengano verificate. Se non hai configurato tu questo host, rispondi No.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine usa certificati autofirmati. Fissa il pin dell'impronta qui sotto in modo che le connessioni future vengano verificate. Se non hai configurato tu questo host, rispondi No.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">L'impronta del certificato di questo host è cambiata. Può accadere se Sunshine è stato reinstallato, oppure può indicare che qualcuno sta intercettando la connessione. Conferma la nuova impronta solo se hai reinstallato di recente l'host.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">Impronta SHA-256</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Impronta precedentemente attendibile</sys:String>
