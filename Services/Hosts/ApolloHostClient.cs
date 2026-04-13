@@ -169,14 +169,14 @@ namespace SunshineLibrary.Services.Hosts
         {
             switch (r.Kind)
             {
-                case HostResultKind.Ok:           throw new InvalidOperationException("ToGeneric called on a successful result");
-                case HostResultKind.AuthFailed:   return HostResult<T>.AuthFailed();
+                case HostResultKind.Ok: throw new InvalidOperationException("ToGeneric called on a successful result");
+                case HostResultKind.AuthFailed: return HostResult<T>.AuthFailed();
                 case HostResultKind.CertMismatch: return HostResult<T>.CertMismatch(r.NewCertFingerprintSpkiSha256);
-                case HostResultKind.CertMissing:  return HostResult<T>.CertMissing();
-                case HostResultKind.Timeout:      return HostResult<T>.Timeout();
-                case HostResultKind.ServerError:  return HostResult<T>.ServerError(r.StatusCode ?? 0, r.Message);
-                case HostResultKind.Cancelled:    return HostResult<T>.Cancelled();
-                default:                          return HostResult<T>.Unreachable(r.Message);
+                case HostResultKind.CertMissing: return HostResult<T>.CertMissing();
+                case HostResultKind.Timeout: return HostResult<T>.Timeout();
+                case HostResultKind.ServerError: return HostResult<T>.ServerError(r.StatusCode ?? 0, r.Message);
+                case HostResultKind.Cancelled: return HostResult<T>.Cancelled();
+                default: return HostResult<T>.Unreachable(r.Message);
             }
         }
 
