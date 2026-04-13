@@ -187,37 +187,52 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Bifează cel puțin un câmp pentru a aplica, sau apasă Anulează.</sys:String>
 
 
-    <!-- BEGIN: untranslated — English fallback until translations are provided -->
-    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Remove orphaned games…</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">No orphaned games found. All your library entries match apps currently on reachable hosts.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Remove {0} orphaned game(s) from the library? Playtime, per-game streaming overrides, and covers will be permanently deleted. Hosts that are currently offline are skipped — their games are never pruned automatically.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Removed {0} orphaned game(s).</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Auto-remove orphaned games on sync</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">When enabled, games that no longer exist on any reachable host are deleted from Playnite on the next sync. Off by default — orphans are marked uninstalled instead, preserving playtime and overrides. Cache-fallback hosts (offline) are never pruned regardless of this setting.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Streaming Defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Host</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Streaming defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Streaming defaults for &quot;{0}&quot;</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">this host</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">These values apply to every game streamed from this host. Per-game overrides (right-click a game) take precedence. Fields set to Inherit fall through to the global streaming defaults, then to Moonlight&apos;s own configured values.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test cancelled.</sys:String>
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Elimină jocurile orfane…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Nu s-au găsit jocuri orfane. Toate intrările din bibliotecă corespund aplicațiilor existente pe gazdele accesibile.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Elimini {0} joc(uri) orfane din bibliotecă? Timpul de joc, suprascrierile de streaming per joc și copertele vor fi șterse definitiv. Gazdele momentan offline sunt omise — jocurile lor nu sunt niciodată eliminate automat.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">S-au eliminat {0} joc(uri) orfane.</sys:String>
+
+    <!-- Settings: General tab — orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Elimină automat jocurile orfane la sincronizare</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">Când este activat, jocurile care nu mai există pe nicio gazdă accesibilă sunt șterse din Playnite la următoarea sincronizare. Dezactivat implicit — jocurile orfane sunt marcate ca dezinstalate, păstrând timpul de joc și suprascrierile. Gazdele cu rezervă din cache (offline) nu sunt niciodată eliminate, indiferent de această setare.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Valori implicite de streaming</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs and defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Gazdă</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Valori implicite de streaming</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Valori implicite de streaming pentru &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">această gazdă</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Aceste valori se aplică fiecărui joc transmis de pe această gazdă. Suprascrierile per joc (click dreapta pe un joc) au prioritate. Câmpurile setate pe Moștenește trec la valorile implicite globale de streaming, apoi la valorile configurate ale Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test anulat.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Auto-remove orphaned games</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Per-host override for orphan deletion on sync. &quot;Inherit&quot; defers to the global setting on the General tab.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Inherit from global setting</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Delete orphaned games</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Keep orphaned games (mark uninstalled)</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Disable to keep this host in settings but skip it during library syncs. Useful for hosts that are often offline.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Auto-detect</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight was not found in PATH, Scoop, Winget, or any standard install location. Install Moonlight or browse to its executable.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Found Moonlight at:&#x0a;{0}</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Multiple Moonlight installs found. Select one:</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Default Moonlight options</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">These values apply to every streamed game. Per-host defaults (on the Hosts tab) and per-game overrides (right-click a game) take precedence over these. Fields set to Inherit fall through to Moonlight&apos;s own configured defaults.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Reset to built-in defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Reset all global streaming defaults? Resolution, FPS, and HDR will revert to Auto (match client); all other fields will revert to Inherit.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Show stream stats</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Auto-calculated from resolution × fps (e.g. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 doubles this)</sys:String>
-    <!-- END: untranslated -->
+
+    <!-- Add/Edit Host dialog: per-host orphan field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Elimină automat jocurile orfane</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Suprascriere per gazdă pentru ștergerea jocurilor orfane la sincronizare. &quot;Moștenește&quot; preia setarea globală din fila General.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Moștenește din setarea globală</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Șterge jocurile orfane</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Păstrează jocurile orfane (marchează ca dezinstalate)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Dezactivează pentru a păstra această gazdă în setări, dar a o omite în timpul sincronizărilor bibliotecii. Util pentru gazdele care sunt adesea offline.</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Detectare automată</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight nu a fost găsit în PATH, Scoop, Winget sau în nicio locație standard de instalare. Instalează Moonlight sau răsfoiește până la executabilul său.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight găsit la:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">S-au găsit mai multe instalări Moonlight. Selectează una:</sys:String>
+
+    <!-- Settings: Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Opțiuni implicite Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Aceste valori se aplică fiecărui joc transmis. Valorile implicite per gazdă (fila Gazde) și suprascrierile per joc (click dreapta pe un joc) au prioritate față de acestea. Câmpurile setate pe Moștenește trec la valorile configurate proprii ale Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Resetează la valorile implicite predefinite</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Resetezi toate valorile implicite globale de streaming? Rezoluția, FPS și HDR vor reveni la Automat (la fel ca clientul); toate celelalte câmpuri vor reveni la Moștenește.</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Afișează statistici stream</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calculat automat din rezoluție × fps (ex. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 dublează această valoare)</sys:String>
 
 </ResourceDictionary>

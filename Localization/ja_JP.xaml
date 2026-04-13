@@ -187,37 +187,56 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">少なくとも 1 つの項目にチェックを入れるか、キャンセルをクリックしてください。</sys:String>
 
 
-    <!-- BEGIN: untranslated — English fallback until translations are provided -->
-    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Remove orphaned games…</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">No orphaned games found. All your library entries match apps currently on reachable hosts.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Remove {0} orphaned game(s) from the library? Playtime, per-game streaming overrides, and covers will be permanently deleted. Hosts that are currently offline are skipped — their games are never pruned automatically.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Removed {0} orphaned game(s).</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Auto-remove orphaned games on sync</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">When enabled, games that no longer exist on any reachable host are deleted from Playnite on the next sync. Off by default — orphans are marked uninstalled instead, preserving playtime and overrides. Cache-fallback hosts (offline) are never pruned regardless of this setting.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Streaming Defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Host</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Streaming defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Streaming defaults for &quot;{0}&quot;</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">this host</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">These values apply to every game streamed from this host. Per-game overrides (right-click a game) take precedence. Fields set to Inherit fall through to the global streaming defaults, then to Moonlight&apos;s own configured values.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test cancelled.</sys:String>
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">孤立したゲームを削除…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">孤立したゲームは見つかりませんでした。ライブラリのすべてのエントリは、現在到達可能なホスト上のアプリと一致しています。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">孤立したゲームを {0} 本ライブラリから削除しますか？ プレイ時間、ゲームごとのストリーミングオーバーライド、およびカバー画像は完全に削除されます。現在オフラインのホストはスキップされます — それらのゲームは自動的に整理されることはありません。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">孤立したゲームを {0} 本削除しました。</sys:String>
+
+    <!-- Settings: General tab — orphan auto-removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">同期時に孤立したゲームを自動削除</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">有効にすると、到達可能なホストに存在しなくなったゲームが次回の同期時に Playnite から削除されます。既定では無効 — 孤立したゲームはアンインストール済みとしてマークされ、プレイ時間とオーバーライドは保持されます。キャッシュフォールバックホスト (オフライン) はこの設定にかかわらず整理されることはありません。</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">ストリーミングの既定値</sys:String>
+
+    <!-- Add/Edit Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">ホスト</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">ストリーミングの既定値</sys:String>
+
+    <!-- Add/Edit Host dialog: per-host streaming defaults -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">&quot;{0}&quot; のストリーミング既定値</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">このホスト</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">ここで設定した値は、このホストからストリーミングするすべてのゲームに適用されます。ゲームごとのオーバーライド (ゲームを右クリック) が優先されます。「継承」に設定されたフィールドは、グローバルなストリーミング既定値に引き継がれ、さらに Moonlight 自身の設定値へと引き継がれます。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">テストをキャンセルしました。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Auto-remove orphaned games</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Per-host override for orphan deletion on sync. &quot;Inherit&quot; defers to the global setting on the General tab.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Inherit from global setting</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Delete orphaned games</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Keep orphaned games (mark uninstalled)</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Disable to keep this host in settings but skip it during library syncs. Useful for hosts that are often offline.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Auto-detect</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight was not found in PATH, Scoop, Winget, or any standard install location. Install Moonlight or browse to its executable.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Found Moonlight at:&#x0a;{0}</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Multiple Moonlight installs found. Select one:</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Default Moonlight options</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">These values apply to every streamed game. Per-host defaults (on the Hosts tab) and per-game overrides (right-click a game) take precedence over these. Fields set to Inherit fall through to Moonlight&apos;s own configured defaults.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Reset to built-in defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Reset all global streaming defaults? Resolution, FPS, and HDR will revert to Auto (match client); all other fields will revert to Inherit.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Show stream stats</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Auto-calculated from resolution × fps (e.g. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 doubles this)</sys:String>
-    <!-- END: untranslated -->
+
+    <!-- Add/Edit Host dialog: per-host orphan field -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">孤立したゲームを自動削除</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">同期時の孤立ゲーム削除に関するホストごとのオーバーライドです。&quot;継承&quot; を選択すると、「一般」タブのグローバル設定に従います。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">グローバル設定から継承</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">孤立したゲームを削除</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">孤立したゲームを保持 (アンインストール済みとしてマーク)</sys:String>
+
+    <!-- Add/Edit Host dialog: enabled field help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">無効にすると、このホストを設定に残したままライブラリ同期時にスキップします。オフラインになることが多いホストに便利です。</sys:String>
+
+    <!-- Settings: Client tab — auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">自動検出</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">PATH、Scoop、Winget、または標準的なインストール場所のいずれにも Moonlight が見つかりませんでした。Moonlight をインストールするか、実行ファイルを参照して指定してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight が見つかりました:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">複数の Moonlight インストールが見つかりました。選択してください:</sys:String>
+
+    <!-- Settings: Defaults tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Moonlight の既定オプション</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">ここで設定した値は、ストリーミングするすべてのゲームに適用されます。ホストごとの既定値 (「ホスト」タブ) およびゲームごとのオーバーライド (ゲームを右クリック) がこれより優先されます。「継承」に設定されたフィールドは、Moonlight 自身の設定済み既定値へと引き継がれます。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">組み込みの既定値にリセット</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">グローバルなストリーミング既定値をすべてリセットしますか？ 解像度、FPS、HDR は「自動 (クライアントに合わせる)」に戻り、その他のフィールドはすべて「継承」に戻ります。</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">ストリーム統計を表示</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">解像度 × FPS から自動計算 (例: 1080p/60 → 20 Mbps、4K/60 → 80 Mbps; YUV 4:4:4 の場合は 2 倍)</sys:String>
 
 </ResourceDictionary>

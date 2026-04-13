@@ -187,37 +187,56 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Bocka i minst ett fält att tillämpa, eller klicka på Avbryt.</sys:String>
 
 
-    <!-- BEGIN: untranslated — English fallback until translations are provided -->
-    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Remove orphaned games…</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">No orphaned games found. All your library entries match apps currently on reachable hosts.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Remove {0} orphaned game(s) from the library? Playtime, per-game streaming overrides, and covers will be permanently deleted. Hosts that are currently offline are skipped — their games are never pruned automatically.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Removed {0} orphaned game(s).</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Auto-remove orphaned games on sync</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">When enabled, games that no longer exist on any reachable host are deleted from Playnite on the next sync. Off by default — orphans are marked uninstalled instead, preserving playtime and overrides. Cache-fallback hosts (offline) are never pruned regardless of this setting.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Streaming Defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Host</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Streaming defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Streaming defaults for &quot;{0}&quot;</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">this host</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">These values apply to every game streamed from this host. Per-game overrides (right-click a game) take precedence. Fields set to Inherit fall through to the global streaming defaults, then to Moonlight&apos;s own configured values.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Test cancelled.</sys:String>
+    <!-- Main menu: orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Ta bort överblivna spel…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Inga överblivna spel hittades. Alla biblioteksposter matchar appar på nåbara värdar.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Ta bort {0} överblivet/överblivna spel från biblioteket? Speltid, per-spel-strömnings-overrides och omslag tas bort permanent. Värdar som för tillfället är offline hoppas över — deras spel rensas aldrig automatiskt.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Tog bort {0} överblivet/överblivna spel.</sys:String>
+
+    <!-- Settings: General tab — orphan removal -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans">Ta bort överblivna spel automatiskt vid synkronisering</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AutoRemoveOrphans_Help">När aktiverat tas spel som inte längre finns på någon nåbar värd bort från Playnite vid nästa synkronisering. Avstängt som standard — överblivna spel markeras som avinstallerade i stället, vilket bevarar speltid och overrides. Värdar med cache-reserv (offline) rensas aldrig oavsett den här inställningen.</sys:String>
+
+    <!-- Settings: tab label -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Defaults">Strömningsstandarder</sys:String>
+
+    <!-- Host dialog: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Host">Värd</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Tab_Defaults">Strömningsstandarder</sys:String>
+
+    <!-- Host dialog: defaults section -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeading">Strömningsstandarder för &quot;{0}&quot;</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHeadingUnnamed">den här värden</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_DefaultsHelp">Dessa värden gäller för varje spel som strömmas från den här värden. Per-spel-overrides (högerklicka på ett spel) har företräde. Fält inställda på Ärv faller igenom till de globala strömningsstandarderna och sedan till Moonlight&apos;s egna konfigurerade värden.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestCancelled">Testet avbröts.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Auto-remove orphaned games</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Per-host override for orphan deletion on sync. &quot;Inherit&quot; defers to the global setting on the General tab.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Inherit from global setting</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Delete orphaned games</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Keep orphaned games (mark uninstalled)</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Disable to keep this host in settings but skip it during library syncs. Useful for hosts that are often offline.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Auto-detect</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight was not found in PATH, Scoop, Winget, or any standard install location. Install Moonlight or browse to its executable.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Found Moonlight at:&#x0a;{0}</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Multiple Moonlight installs found. Select one:</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Default Moonlight options</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">These values apply to every streamed game. Per-host defaults (on the Hosts tab) and per-game overrides (right-click a game) take precedence over these. Fields set to Inherit fall through to Moonlight&apos;s own configured defaults.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Reset to built-in defaults</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Reset all global streaming defaults? Resolution, FPS, and HDR will revert to Auto (match client); all other fields will revert to Inherit.</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Show stream stats</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Auto-calculated from resolution × fps (e.g. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 doubles this)</sys:String>
-    <!-- END: untranslated -->
+
+    <!-- Host field: per-host orphan setting -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Ta bort överblivna spel automatiskt</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Per-värd-override för borttagning av överblivna spel vid synkronisering. &quot;Ärv&quot; använder den globala inställningen på fliken Allmänt.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Ärv från global inställning</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Ta bort överblivna spel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Behåll överblivna spel (markera avinstallerade)</sys:String>
+
+    <!-- Host field: enabled help -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Inaktivera för att behålla den här värden i inställningarna men hoppa över den vid bibliotekssynkronisering. Användbart för värdar som ofta är offline.</sys:String>
+
+    <!-- Client: auto-detect -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect">Identifiera automatiskt</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_None">Moonlight hittades inte i PATH, Scoop, Winget eller någon standardinstallationsplats. Installera Moonlight eller bläddra till dess programfil.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_FoundOne">Moonlight hittades på:&#x0a;{0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_AutoDetect_Pick">Flera Moonlight-installationer hittades. Välj en:</sys:String>
+
+    <!-- Defaults section -->
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Heading">Moonlight-standardalternativ</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_Help">Dessa värden gäller för varje strömmade spel. Per-värd-standarder (på fliken Värdar) och per-spel-overrides (högerklicka på ett spel) har företräde. Fält inställda på Ärv faller igenom till Moonlight&apos;s egna konfigurerade standarder.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetToBuiltin">Återställ till inbyggda standarder</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Återställa alla globala strömningsstandarder? Upplösning, FPS och HDR återgår till Automatiskt (matcha klient); alla övriga fält återgår till Ärv.</sys:String>
+
+    <!-- Override field -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Visa strömningsstatistik</sys:String>
+
+    <!-- Fallback hint -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Beräknas automatiskt från upplösning × fps (t.ex. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 fördubblar detta)</sys:String>
 
 </ResourceDictionary>
