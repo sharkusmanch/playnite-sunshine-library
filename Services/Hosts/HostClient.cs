@@ -93,7 +93,7 @@ namespace SunshineLibrary.Services.Hosts
             catch { /* non-fatal */ }
         }
 
-        public void Dispose() => Http?.Dispose();
+        public virtual void Dispose() => Http?.Dispose();
 
         public string LastObservedCertFingerprintSpkiSha256 => handler?.LastObservedSpkiSha256;
 

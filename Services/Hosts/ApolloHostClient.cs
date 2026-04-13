@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SunshineLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
@@ -20,6 +21,7 @@ namespace SunshineLibrary.Services.Hosts
 
         private readonly SemaphoreSlim _loginGate = new SemaphoreSlim(1, 1);
         private volatile bool _sessionEstablished;
+        private volatile bool _loginFailed;
 
         public ApolloHostClient(HostConfig config) : base(config)
         {
@@ -44,11 +46,13 @@ namespace SunshineLibrary.Services.Hosts
         private async Task<HostResult> EnsureSessionAsync(CancellationToken ct)
         {
             if (_sessionEstablished) return HostResult.Ok();
+            if (_loginFailed) return HostResult.AuthFailed(); // credentials rejected — don't hammer server
 
             await _loginGate.WaitAsync(ct).ConfigureAwait(false);
             try
             {
                 if (_sessionEstablished) return HostResult.Ok(); // double-checked
+                if (_loginFailed) return HostResult.AuthFailed();
 
                 if (string.IsNullOrEmpty(Config.AdminUser))
                 {
@@ -63,7 +67,11 @@ namespace SunshineLibrary.Services.Hosts
                     Password = Config.AdminPassword ?? string.Empty
                 };
                 var r = await PostJsonAsync("api/login", body, null, ct).ConfigureAwait(false);
-                if (!r.IsOk) return r;
+                if (!r.IsOk)
+                {
+                    if (r.Kind == HostResultKind.AuthFailed) _loginFailed = true;
+                    return r;
+                }
 
                 _sessionEstablished = true;
                 return HostResult.Ok();
@@ -74,6 +82,8 @@ namespace SunshineLibrary.Services.Hosts
             }
         }
 
+        // Resets the session so the next call re-authenticates (e.g. after cookie expiry).
+        // Does NOT reset _loginFailed — a credential failure stays failed for this instance's lifetime.
         private void InvalidateSession() => _sessionEstablished = false;
 
         // ── HostClient overrides ──────────────────────────────────────────────
@@ -139,6 +149,12 @@ namespace SunshineLibrary.Services.Hosts
             return r;
         }
 
+        public override void Dispose()
+        {
+            _loginGate.Dispose();
+            base.Dispose();
+        }
+
         // ── helpers ───────────────────────────────────────────────────────────
 
         private static string FallbackId(string name, string cmd, int idx)
@@ -153,6 +169,7 @@ namespace SunshineLibrary.Services.Hosts
         {
             switch (r.Kind)
             {
+                case HostResultKind.Ok:           throw new InvalidOperationException("ToGeneric called on a successful result");
                 case HostResultKind.AuthFailed:   return HostResult<T>.AuthFailed();
                 case HostResultKind.CertMismatch: return HostResult<T>.CertMismatch(r.NewCertFingerprintSpkiSha256);
                 case HostResultKind.CertMissing:  return HostResult<T>.CertMissing();
