@@ -6,12 +6,9 @@ Packages:
     PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.2/SunshineLibrary_v0.0.2.pext
     Changelog:
       - 'Fix Apollo 401: replace Basic auth with session-cookie login'
-      - '"Update Claude PR Assistant workflow"'
-      - '"Update Claude Code Review workflow"'
       - 'Address Claude review: disposal, login-failure short-circuit, ToGeneric guard'
       - 'Fix server-type probe for Apollo: retry with session auth on 401'
       - 'Style: normalize switch case alignment in ToGeneric'
-      - Add English fallbacks for 30 missing keys in all 18 locales
   - Version: 0.0.1
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-04-13
