@@ -4,7 +4,9 @@ Packages:
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-04-13
     PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.3/SunshineLibrary_v0.0.3.pext
-    Changelog: []
+    Changelog:
+      - Simplify addon name to Sunshine across all 19 locales
+      - Fix missing plugin icon in Library → Update Game Library
   - Version: 0.0.2
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-04-13
