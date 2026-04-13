@@ -1,0 +1,111 @@
+---
+name: "Release"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Validate version consistency
+        run: |
+          ext_version=$(yq '.Version' extension.yaml)
+          manifest_version=$(yq '.Packages[0].Version' manifest.yaml)
+          addon_id=$(yq '.AddonId' manifest.yaml)
+          repo_url="https://github.com/${{ github.repository }}"
+
+          echo "extension.yaml version: $ext_version"
+          echo "manifest.yaml version:  $manifest_version"
+
+          errors=0
+
+          if [ "$ext_version" != "$manifest_version" ]; then
+            echo "::error::Version mismatch: extension.yaml ($ext_version) != manifest.yaml ($manifest_version)"
+            errors=$((errors + 1))
+          fi
+
+          expected_url="${repo_url}/releases/download/v${ext_version}/${addon_id%%_*}_v${ext_version}.pext"
+          actual_url=$(yq '.Packages[0].PackageUrl' manifest.yaml)
+
+          echo "Expected PackageUrl: $expected_url"
+          echo "Actual PackageUrl:   $actual_url"
+
+          if [ "$expected_url" != "$actual_url" ]; then
+            echo "::error::PackageUrl mismatch in manifest.yaml. Expected: $expected_url"
+            errors=$((errors + 1))
+          fi
+
+          if [ $errors -gt 0 ]; then
+            exit 1
+          fi
+
+          echo "All validations passed."
+
+  build:
+    needs: validate
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: robinraju/release-downloader@v1.8
+        id: download_playnite
+        with:
+          repository: "JosefNemec/Playnite"
+          latest: true
+          tarBall: false
+          zipBall: false
+          fileName: "*.7z"
+          out-file-path: ${{ runner.temp }}/playnite
+
+      - name: Extract Playnite
+        run: 7z x ${{ runner.temp }}/playnite/*.7z -o${{ runner.temp }}/playnite
+
+      - run: |
+          dotnet build SunshineLibrary.csproj -c Release
+          ${{ runner.temp }}/playnite/Toolbox.exe pack bin/Release/net462/ dist
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: artifacts
+          path: |
+            dist/*.pext
+
+  release:
+    name: "Release"
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Get Version
+        id: version
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq '.Version' extension.yaml
+
+      - name: Pull artifacts
+        uses: actions/download-artifact@v7
+        with:
+          name: artifacts
+
+      - name: Build release notes from manifest
+        run: |
+          yq -r '.Packages[0].Changelog[] | "- " + .' manifest.yaml > notes.md
+
+      - run: |
+          mv SunshineLibrary_*.pext SunshineLibrary_v${{ steps.version.outputs.result }}.pext
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.version.outputs.result }}" \
+            --title "v${{ steps.version.outputs.result }}" \
+            --notes-file notes.md \
+            SunshineLibrary_v${{ steps.version.outputs.result }}.pext

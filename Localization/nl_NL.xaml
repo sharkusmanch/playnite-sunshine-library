@@ -1,0 +1,189 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Plugin identity -->
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Stream games van Sunshine- of Apollo-hosts via Moonlight.</sys:String>
+
+    <!-- Main menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Alle hosts opnieuw synchroniseren</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Streamingclient testen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Hoststatus…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_CleanOrphans">Verweesde overrides opruimen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_NoHosts">Geen hosts geconfigureerd. Voeg een host toe in de plugin-instellingen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Ok">online ({0}, {1} apps)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Fail">onbereikbaar (mislukt bij {0})</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CleanOrphans_Done">{0} verweesde override(s) opgeruimd van {1} items totaal.</sys:String>
+
+    <!-- Game menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_StreamingSettings">Streaminginstellingen…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverrides">Streaming-overrides wissen</sys:String>
+
+    <!-- Play action -->
+    <sys:String x:Key="LOC_SunshineLibrary_PlayAction_Stream">Streamen met Moonlight</sys:String>
+
+    <!-- Source label -->
+    <sys:String x:Key="LOC_SunshineLibrary_SourcePrefix">Sunshine: {0}</sys:String>
+
+    <!-- Feature tag -->
+    <sys:String x:Key="LOC_SunshineLibrary_Feature_GameStreaming">Game Streaming</sys:String>
+
+    <!-- Notifications: sync -->
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} games beschikbaar</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: geen wijzigingen</sys:String>
+
+    <!-- Notifications: host errors -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Unreachable">{0}: host onbereikbaar. Cached games worden getoond.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Timeout">{0}: aanvraag verlopen. Cached games worden getoond.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_AuthFailed">{0}: authenticatie mislukt. Werk de inloggegevens bij in de instellingen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Title">{0}: certificaat gewijzigd</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Body">Het certificaat voor {0} is veranderd. Dit kan gebeuren als Sunshine opnieuw is geïnstalleerd, of het kan betekenen dat iemand de verbinding onderschept. Open de instellingen om het te controleren en opnieuw vast te pinnen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_MissingPin">{0}: certificaat niet vastgepind. Configureer deze host in de instellingen om synchronisatie voort te zetten.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ServerError">{0}: server gaf een fout terug ({1}).</sys:String>
+
+    <!-- Notifications: client -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientNotInstalled">Moonlight is niet geïnstalleerd of het geconfigureerde pad is ongeldig. Installeer Moonlight en probeer opnieuw.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientLaunchFailed">Moonlight kon niet gestart worden: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Info_ClientInstalled">Moonlight gevonden op {0}</sys:String>
+
+    <!-- Pre-launch warnings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_HdrWithH264">HDR vereist HEVC of AV1, maar de gekozen codec is H.264. HDR wordt voor deze sessie uitgeschakeld.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_BitrateOutOfRange">Bitrate {0} Kbps valt buiten het geldige bereik (500–500000).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_FpsOutOfRange">FPS {0} valt buiten het geldige bereik (10–480).</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Hosts">Hosts</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Client">Streamingclient</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_General">Algemeen</sys:String>
+
+    <!-- Settings: Hosts tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Add">Host toevoegen…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Edit">Geselecteerde bewerken…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Remove">Geselecteerde verwijderen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_RemoveConfirm">Host "{0}" uit SunshineLibrary verwijderen? De bijbehorende inloggegevens en cache worden ook verwijderd. Playnite-bibliotheekitems van deze host worden bij de volgende sync als niet-geïnstalleerd gemarkeerd.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Label">Label</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Address">Adres</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Port">Poort</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Flavor">Variant</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Enabled">Ingeschakeld</sys:String>
+
+    <!-- Settings: Client tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Heading">Pad naar Moonlight-executable</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse">Bladeren…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse_Title">moonlight-qt.exe selecteren</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_PathHelp">Laat leeg om standaard installatielocaties automatisch te detecteren (Program Files, LocalAppData).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Test">Streamingclient testen</sys:String>
+
+    <!-- Settings: General tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_NotificationMode">Meldingen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Always">Altijd — toon syncstatus en fouten</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_OnUpdateOnly">Alleen bij wijzigingen — stil als er niets veranderde</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Never">Nooit — toon alleen beveiligingskritieke meldingen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Help">Beveiligings- en lanceerkritieke gebeurtenissen (mislukte authenticatie, certificaatafwijking, ontbrekende pin, client niet beschikbaar) worden altijd getoond, ongeacht deze instelling.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_DangerZone">Gevarenzone</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAll">Alle opgeslagen inloggegevens intrekken</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllConfirm">Elk opgeslagen wachtwoord en certificaat-pin verwijderen? Je moet bij de volgende sync opnieuw inloggegevens invoeren en de certificaatvingerafdruk van elke host opnieuw bevestigen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllDone">Alle opgeslagen inloggegevens zijn ingetrokken.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Gebruik dit als je vermoedt dat een instellingenbestand is gekopieerd of als je opnieuw wilt beginnen. Hosts worden niet uit de lijst verwijderd — alleen de opgeslagen wachtwoorden.</sys:String>
+
+    <!-- Add/Edit Host dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine- / Apollo-host toevoegen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine- / Apollo-host bewerken</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Label</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adres (hostnaam of IP)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Poort</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Admin-gebruikersnaam</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Admin-wachtwoord</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Ingeschakeld</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Uitgesloten app-namen (één per regel)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Apps die met deze namen overeenkomen (hoofdletterongevoelig) verschijnen niet in Playnite. Vooraf gevuld met Sunshine-standaarden (Desktop, Steam Big Picture, Terminate) — verwijder wat je wilt behouden.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestConnection">Verbinding testen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Testing">Testen…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestOk">Test geslaagd. Variant: {0}. Gevonden apps: {1}.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestFailedAt">Test mislukt bij stap {0}: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_RunTestFirst">Voer eerst "Verbinding testen" uit, zodat de plugin de certificaatvingerafdruk van de host kan waarnemen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_PinDeclined">Certificaat is niet bevestigd. Host niet opgeslagen.</sys:String>
+
+    <!-- Cert pin dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Certificaat bevestigen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Certificaat voor "{0}" vertrouwen?</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine en Apollo gebruiken zelfondertekende certificaten. Pin de onderstaande vingerafdruk vast zodat toekomstige verbindingen daartegen worden geverifieerd. Als jij deze host niet hebt ingesteld, kies Nee.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">De certificaatvingerafdruk voor deze host is veranderd. Dit kan gebeuren als Sunshine opnieuw is geïnstalleerd — of het kan betekenen dat iemand de verbinding onderschept. Bevestig de nieuwe vingerafdruk alleen als je de host recent opnieuw hebt geïnstalleerd.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256-vingerafdruk</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Eerder vertrouwde vingerafdruk</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NewFingerprint">Nieuwe waargenomen vingerafdruk</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Subject">Onderwerp:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NotAfter">Geldig tot:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Guidance">Controleer dat dit overeenkomt met de vingerafdruk die getoond wordt op</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Trust">Dit certificaat vertrouwen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Repin">Opnieuw pinnen op nieuw certificaat</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Cancel">Annuleren</sys:String>
+
+    <!-- Validation -->
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_LabelRequired">Label is verplicht.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressRequired">Adres is verplicht.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressChars">Adres mag geen schema's, paden, spaties of shell-tekens bevatten. Gebruik een kale hostnaam of IP.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_PortRange">Poort moet tussen 1 en 65535 liggen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_MoonlightPathInvalid">De Moonlight-executable is niet gevonden op het geconfigureerde pad.</sys:String>
+
+    <!-- Common -->
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Ok">OK</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Cancel">Annuleren</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_BulkEdit">Streaminginstellingen bewerken voor {0} geselecteerde games…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesSelection">Streaming-overrides wissen voor {0} geselecteerde games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesConfirm">Streaming-overrides wissen voor {0} geselecteerde games? Dit kan niet ongedaan gemaakt worden.</sys:String>
+
+    <!-- Per-game override dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Title">Streaminginstellingen — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Display">Beeld</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Codering</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Prestaties</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Uitvoer</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Geavanceerd</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Alle overrides wissen</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Resolution">Resolutie</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Fps">Beelden per seconde</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Bitrate</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Videocodec</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 chroma</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Frame pacing</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Game-optimalisatie</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Weergavemodus</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Audioconfiguratie</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Extra Moonlight-argumenten</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Geavanceerd. Wordt letterlijk aan de moonlight-qt-opdrachtregel toegevoegd. Gesplitst op spaties — geen shell-quoting.</sys:String>
+
+    <!-- Override mode labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Inherit">Overerven</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Auto">Automatisch (volg client)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Static">Vaste waarde</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_On">Forceer aan</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_Off">Forceer uit</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_OverrideField">Override</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Auto">Erft: automatisch gedetecteerd van client-beeldscherm</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Static">Erft: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bitrate">Erft: {0} Kbps</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Codec">Erft: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_DisplayMode">Erft: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_AudioConfig">Erft: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bool">Erft: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_MoonlightDefault">Erft: wat Moonlight ook is ingesteld te gebruiken</sys:String>
+
+    <!-- Bulk dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">Streaminginstellingen in bulk bewerken</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Heading">Streaminginstellingen toepassen op {0} geselecteerde games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Help">Vink de velden aan die je wilt toepassen. Niet-aangevinkte velden blijven per game ongemoeid. Gebruik "Streaming-overrides wissen" in het rechtsklikmenu om overrides volledig te verwijderen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Apply">Toepassen op {0} games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">{0} toepassen</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Vink minstens één veld aan om toe te passen, of klik op Annuleren.</sys:String>
+
+</ResourceDictionary>

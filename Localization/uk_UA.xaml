@@ -1,0 +1,189 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Plugin identity -->
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Трансляція ігор із хостів Sunshine або Apollo через Moonlight.</sys:String>
+
+    <!-- Main menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Пересинхронізувати всі хости</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Перевірити клієнт трансляції</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Стан хостів…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_CleanOrphans">Очистити осиротілі перевизначення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_NoHosts">Хости не налаштовано. Додайте хост у параметрах плагіна.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Ok">у мережі ({0}, застосунків: {1})</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Fail">недоступний (збій на етапі {0})</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CleanOrphans_Done">Очищено осиротілих перевизначень: {0} із {1}.</sys:String>
+
+    <!-- Game menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_StreamingSettings">Параметри трансляції…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverrides">Скинути перевизначення трансляції</sys:String>
+
+    <!-- Play action -->
+    <sys:String x:Key="LOC_SunshineLibrary_PlayAction_Stream">Запустити через Moonlight</sys:String>
+
+    <!-- Source label -->
+    <sys:String x:Key="LOC_SunshineLibrary_SourcePrefix">Sunshine: {0}</sys:String>
+
+    <!-- Feature tag -->
+    <sys:String x:Key="LOC_SunshineLibrary_Feature_GameStreaming">Трансляція ігор</sys:String>
+
+    <!-- Notifications: sync -->
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: доступно ігор: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: без змін</sys:String>
+
+    <!-- Notifications: host errors -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Unreachable">{0}: хост недоступний. Показано ігри з кешу.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Timeout">{0}: перевищено час очікування. Показано ігри з кешу.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_AuthFailed">{0}: помилка автентифікації. Оновіть облікові дані в параметрах.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Title">{0}: сертифікат змінився</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Body">Сертифікат для {0} змінився. Таке буває після перевстановлення Sunshine, але також може означати, що з’єднання перехоплюється. Відкрийте параметри, щоб перевірити та повторно закріпити сертифікат.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_MissingPin">{0}: сертифікат не закріплено. Налаштуйте цей хост у параметрах, щоб продовжити синхронізацію.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ServerError">{0}: сервер повернув помилку ({1}).</sys:String>
+
+    <!-- Notifications: client -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientNotInstalled">Moonlight не встановлено або вказаний шлях неправильний. Встановіть Moonlight і спробуйте знову.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientLaunchFailed">Не вдалося запустити Moonlight: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Info_ClientInstalled">Moonlight знайдено за шляхом {0}</sys:String>
+
+    <!-- Pre-launch warnings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_HdrWithH264">HDR потребує HEVC або AV1, але обрано кодек H.264. HDR буде вимкнено для цього сеансу.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_BitrateOutOfRange">Бітрейт {0} Kbps поза припустимим діапазоном (500–500000).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_FpsOutOfRange">FPS {0} поза припустимим діапазоном (10–480).</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Hosts">Хости</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Client">Клієнт трансляції</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_General">Загальні</sys:String>
+
+    <!-- Settings: Hosts tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Add">Додати хост…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Edit">Редагувати вибраний…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Remove">Видалити вибраний</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_RemoveConfirm">Видалити хост «{0}» із SunshineLibrary? Облікові дані та кеш для цього хоста також буде видалено. Записи в бібліотеці Playnite для цього хоста позначаться як невстановлені під час наступної синхронізації.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Label">Мітка</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Address">Адреса</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Port">Порт</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Flavor">Різновид</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Enabled">Увімкнено</sys:String>
+
+    <!-- Settings: Client tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Heading">Шлях до виконуваного файлу Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse">Огляд…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse_Title">Виберіть moonlight-qt.exe</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_PathHelp">Залиште порожнім для автоматичного пошуку у стандартних розташуваннях (Program Files, LocalAppData).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Test">Перевірити клієнт трансляції</sys:String>
+
+    <!-- Settings: General tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_NotificationMode">Сповіщення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Always">Завжди — показувати стан синхронізації та помилки</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_OnUpdateOnly">Лише за змін — мовчати, коли нічого не змінилося</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Never">Ніколи — показувати лише критично важливі для безпеки сповіщення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Help">Події, критичні для безпеки та запуску (помилка автентифікації, невідповідність сертифіката, відсутнє закріплення, недоступний клієнт), завжди показуються незалежно від цього параметра.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_DangerZone">Зона ризику</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAll">Відкликати всі збережені облікові дані</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllConfirm">Видалити всі збережені паролі та закріплення сертифікатів? Вам доведеться повторно ввести облікові дані та підтвердити відбиток сертифіката кожного хоста під час наступної синхронізації.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllDone">Усі збережені облікові дані відкликано.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Скористайтеся цим, якщо підозрюєте, що файл параметрів було скопійовано, або хочете почати з чистого аркуша. Хости зі списку не видаляються — лише збережені паролі.</sys:String>
+
+    <!-- Add/Edit Host dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Додати хост Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Редагувати хост Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Мітка</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Адреса (ім’я хоста або IP)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Порт</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Ім’я користувача адміністратора</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Пароль адміністратора</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Увімкнено</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Виключені назви застосунків (по одній у рядку)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Застосунки з цими назвами (без урахування регістру) не з’являтимуться в Playnite. Попередньо заповнено вбудованими записами Sunshine (Desktop, Steam Big Picture, Terminate) — вилучіть ті, які хочете залишити.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestConnection">Перевірити з’єднання</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Testing">Перевіряння…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestOk">Перевірку успішно завершено. Різновид: {0}. Знайдено застосунків: {1}.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestFailedAt">Збій на етапі {0}: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_RunTestFirst">Спершу натисніть «Перевірити з’єднання», щоб плагін отримав відбиток сертифіката хоста.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_PinDeclined">Сертифікат не підтверджено. Хост не збережено.</sys:String>
+
+    <!-- Cert pin dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Підтвердження сертифіката</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Довіряти сертифікату для «{0}»?</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine і Apollo використовують самопідписані сертифікати. Закріпіть відбиток нижче, щоб майбутні підключення звірялися з ним. Якщо ви не налаштовували цей хост, виберіть «Ні».</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Відбиток сертифіката для цього хоста змінився. Таке буває після перевстановлення Sunshine — але також може означати, що з’єднання перехоплюється. Підтверджуйте новий відбиток, лише якщо нещодавно перевстановлювали хост.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">Відбиток SHA-256</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Раніше довірений відбиток</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NewFingerprint">Новий виявлений відбиток</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Subject">Суб’єкт:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NotAfter">Дійсний до:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Guidance">Переконайтеся, що він збігається з відбитком, показаним у</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Trust">Довіряти цьому сертифікату</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Repin">Перезакріпити на новий сертифікат</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Cancel">Скасувати</sys:String>
+
+    <!-- Validation -->
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_LabelRequired">Потрібна мітка.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressRequired">Потрібна адреса.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressChars">Адреса не може містити схеми, шляхи, пробіли чи символи оболонки. Укажіть лише ім’я хоста або IP.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_PortRange">Порт має бути в діапазоні від 1 до 65535.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_MoonlightPathInvalid">Виконуваний файл Moonlight не знайдено за вказаним шляхом.</sys:String>
+
+    <!-- Common -->
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Ok">OK</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Cancel">Скасувати</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_BulkEdit">Редагувати параметри трансляції для {0} вибраних ігор…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesSelection">Скинути перевизначення трансляції для {0} вибраних ігор</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesConfirm">Скинути перевизначення трансляції для {0} вибраних ігор? Цю дію неможливо скасувати.</sys:String>
+
+    <!-- Per-game override dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Title">Параметри трансляції — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Display">Зображення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Кодування</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Продуктивність</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Вивід</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Додатково</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Скинути всі перевизначення</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Resolution">Роздільність</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Fps">Кадрів на секунду</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Бітрейт</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Відеокодек</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">Колірність YUV 4:4:4</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Ритм кадрів</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Оптимізація гри</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Режим відображення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Налаштування звуку</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Додаткові аргументи Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Для досвідчених користувачів. Додаються до командного рядка moonlight-qt як є. Розділяються пробілами — без екранування оболонки.</sys:String>
+
+    <!-- Override mode labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Inherit">Успадковувати</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Auto">Авто (за клієнтом)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Static">Фіксоване значення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_On">Примусово увімкнути</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_Off">Примусово вимкнути</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_OverrideField">Перевизначити</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Auto">Успадковано: автовизначення за дисплеєм клієнта</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Static">Успадковано: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bitrate">Успадковано: {0} Kbps</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Codec">Успадковано: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_DisplayMode">Успадковано: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_AudioConfig">Успадковано: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bool">Успадковано: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_MoonlightDefault">Успадковано: те, що налаштовано в Moonlight</sys:String>
+
+    <!-- Bulk dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">Масове редагування параметрів трансляції</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Heading">Застосувати параметри трансляції до {0} вибраних ігор</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Help">Позначте поля, які хочете застосувати. Непозначені поля в кожній грі залишаться без змін. Щоб повністю скинути перевизначення, скористайтеся пунктом «Скинути перевизначення трансляції» в контекстному меню.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Apply">Застосувати до {0} ігор</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Застосувати {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Позначте принаймні одне поле для застосування або натисніть «Скасувати».</sys:String>
+
+</ResourceDictionary>

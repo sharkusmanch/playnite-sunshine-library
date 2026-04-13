@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1267
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunshineLibrary", "SunshineLibrary.csproj", "{8A3D1E24-6F5B-4C12-9A7E-2D3F4C5B6A7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunshineLibrary.Tests", "Tests\SunshineLibrary.Tests.csproj", "{C4E2B6F8-3A9D-4E17-8B52-7F1D9C6A4E38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A3D1E24-6F5B-4C12-9A7E-2D3F4C5B6A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A3D1E24-6F5B-4C12-9A7E-2D3F4C5B6A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A3D1E24-6F5B-4C12-9A7E-2D3F4C5B6A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A3D1E24-6F5B-4C12-9A7E-2D3F4C5B6A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E2B6F8-3A9D-4E17-8B52-7F1D9C6A4E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E2B6F8-3A9D-4E17-8B52-7F1D9C6A4E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E2B6F8-3A9D-4E17-8B52-7F1D9C6A4E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E2B6F8-3A9D-4E17-8B52-7F1D9C6A4E38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F0E5A12-1D4B-4F3E-A5C8-8B7D6E5F4C3B}
+	EndGlobalSection
+EndGlobal

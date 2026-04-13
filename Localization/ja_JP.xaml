@@ -1,0 +1,189 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Plugin identity -->
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight を使って Sunshine または Apollo ホストからゲームをストリーミングします。</sys:String>
+
+    <!-- Main menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">すべてのホストを再同期</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">ストリーミングクライアントをテスト</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">ホストの状態…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_CleanOrphans">孤立したオーバーライドを整理</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_NoHosts">ホストが設定されていません。プラグイン設定でホストを追加してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Ok">オンライン ({0}、アプリ数 {1})</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Fail">到達不能 (ステップ {0} で失敗)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CleanOrphans_Done">全 {1} 件中 {0} 件の孤立オーバーライドを整理しました。</sys:String>
+
+    <!-- Game menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_StreamingSettings">ストリーミング設定…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverrides">ストリーミングのオーバーライドをクリア</sys:String>
+
+    <!-- Play action -->
+    <sys:String x:Key="LOC_SunshineLibrary_PlayAction_Stream">Moonlight でストリーミング</sys:String>
+
+    <!-- Source label -->
+    <sys:String x:Key="LOC_SunshineLibrary_SourcePrefix">Sunshine: {0}</sys:String>
+
+    <!-- Feature tag -->
+    <sys:String x:Key="LOC_SunshineLibrary_Feature_GameStreaming">ゲームストリーミング</sys:String>
+
+    <!-- Notifications: sync -->
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: 利用可能なゲーム {1} 本</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: 変更なし</sys:String>
+
+    <!-- Notifications: host errors -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Unreachable">{0}: ホストに接続できません。キャッシュされたゲームを表示しています。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Timeout">{0}: リクエストがタイムアウトしました。キャッシュされたゲームを表示しています。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_AuthFailed">{0}: 認証に失敗しました。設定で認証情報を更新してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Title">{0}: 証明書が変更されました</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Body">{0} の証明書が変更されました。Sunshine を再インストールした場合に発生しますが、通信が傍受されている可能性もあります。設定を開いて内容を確認し、再度ピン留めしてください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_MissingPin">{0}: 証明書がピン留めされていません。同期を続けるには、設定でこのホストを構成してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ServerError">{0}: サーバーがエラーを返しました ({1})。</sys:String>
+
+    <!-- Notifications: client -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientNotInstalled">Moonlight がインストールされていないか、設定されたパスが無効です。Moonlight をインストールしてからもう一度お試しください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientLaunchFailed">Moonlight の起動に失敗しました: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Info_ClientInstalled">Moonlight が {0} に見つかりました</sys:String>
+
+    <!-- Pre-launch warnings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_HdrWithH264">HDR には HEVC または AV1 が必要ですが、選択されているコーデックは H.264 です。このセッションでは HDR が無効になります。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_BitrateOutOfRange">ビットレート {0} Kbps は有効な範囲 (500〜500000) を外れています。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_FpsOutOfRange">FPS {0} は有効な範囲 (10〜480) を外れています。</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Hosts">ホスト</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Client">ストリーミングクライアント</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_General">一般</sys:String>
+
+    <!-- Settings: Hosts tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Add">ホストを追加…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Edit">選択項目を編集…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Remove">選択項目を削除</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_RemoveConfirm">ホスト「{0}」を SunshineLibrary から削除しますか？ このホストの認証情報とキャッシュも削除されます。このホストの Playnite ライブラリ項目は、次回の同期時にアンインストール済みとなります。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Label">ラベル</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Address">アドレス</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Port">ポート</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Flavor">種類</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Enabled">有効</sys:String>
+
+    <!-- Settings: Client tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Heading">Moonlight 実行ファイルのパス</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse">参照…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse_Title">moonlight-qt.exe を選択</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_PathHelp">空欄のままにすると、標準的なインストール場所 (Program Files、LocalAppData) を自動で検索します。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Test">ストリーミングクライアントをテスト</sys:String>
+
+    <!-- Settings: General tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_NotificationMode">通知</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Always">常に — 同期状況とエラーを表示</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_OnUpdateOnly">変更があったときのみ — 変化がなければ非表示</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Never">表示しない — セキュリティ上重要な通知のみ表示</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Help">セキュリティおよび起動に重要なイベント (認証失敗、証明書の不一致、ピン留めの欠落、クライアントが利用不可) は、この設定にかかわらず常に表示されます。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_DangerZone">危険な操作</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAll">保存されたすべての認証情報を失効させる</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllConfirm">保存されているすべてのパスワードと証明書のピン留めを削除しますか？ 次回の同期時に、認証情報の再入力と各ホストの証明書フィンガープリントの再確認が必要になります。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllDone">保存されたすべての認証情報を失効させました。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">設定ファイルがコピーされた疑いがある場合や、最初からやり直したい場合に使用します。ホストは一覧から削除されません — 保存済みのパスワードのみが削除されます。</sys:String>
+
+    <!-- Add/Edit Host dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine / Apollo ホストを追加</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine / Apollo ホストを編集</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">ラベル</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">アドレス (ホスト名または IP)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">ポート</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">管理者ユーザー名</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">管理者パスワード</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">有効</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">除外するアプリ名 (1 行に 1 つ)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">ここに記載した名前 (大文字小文字を区別しない) に一致するアプリは Playnite に表示されません。Sunshine の標準項目 (Desktop、Steam Big Picture、Terminate) があらかじめ設定されています — 残したいものは削除してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestConnection">接続をテスト</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Testing">テスト中…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestOk">テストに成功しました。種類: {0}。検出されたアプリ数: {1}。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestFailedAt">ステップ {0} で失敗しました: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_RunTestFirst">プラグインがホストの証明書フィンガープリントを取得できるよう、先に「接続をテスト」を実行してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_PinDeclined">証明書が確認されませんでした。ホストは保存されていません。</sys:String>
+
+    <!-- Cert pin dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">証明書の確認</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">「{0}」の証明書を信頼しますか？</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine と Apollo は自己署名証明書を使用します。以下のフィンガープリントをピン留めすると、今後の接続時に照合されます。このホストを自分で設定した覚えがない場合は「いいえ」を選択してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">このホストの証明書フィンガープリントが変更されました。Sunshine を再インストールした場合に発生しますが、通信が傍受されている可能性もあります。最近ホストを再インストールした場合のみ、新しいフィンガープリントを承認してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 フィンガープリント</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">以前に信頼したフィンガープリント</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NewFingerprint">新たに検出されたフィンガープリント</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Subject">サブジェクト:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NotAfter">有効期限:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Guidance">次の場所に表示されるフィンガープリントと一致することを確認してください</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Trust">この証明書を信頼する</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Repin">新しい証明書でピン留めし直す</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Cancel">キャンセル</sys:String>
+
+    <!-- Validation -->
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_LabelRequired">ラベルは必須です。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressRequired">アドレスは必須です。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressChars">アドレスにはスキーム、パス、空白、シェル特殊文字を含められません。ホスト名または IP のみを指定してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_PortRange">ポートは 1 から 65535 の範囲で指定してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_MoonlightPathInvalid">設定されたパスに Moonlight 実行ファイルが見つかりませんでした。</sys:String>
+
+    <!-- Common -->
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Ok">OK</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Cancel">キャンセル</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_BulkEdit">選択した {0} 本のゲームのストリーミング設定を編集…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesSelection">選択した {0} 本のゲームのストリーミングオーバーライドをクリア</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesConfirm">選択した {0} 本のゲームのストリーミングオーバーライドをクリアしますか？ この操作は取り消せません。</sys:String>
+
+    <!-- Per-game override dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Title">ストリーミング設定 — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Display">ディスプレイ</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">エンコード</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">パフォーマンス</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">出力</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">詳細</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">すべてのオーバーライドをクリア</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Resolution">解像度</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Fps">フレームレート (FPS)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">ビットレート</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">映像コーデック</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 クロマ</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">フレームペーシング</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">ゲーム最適化</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">表示モード</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">音声設定</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Moonlight の追加引数</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">上級者向け。moonlight-qt のコマンドラインにそのまま追加されます。空白で区切られ、シェルのクォート処理は行われません。</sys:String>
+
+    <!-- Override mode labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Inherit">継承</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Auto">自動 (クライアントに合わせる)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Static">固定値</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_On">強制的に有効</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_Off">強制的に無効</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_OverrideField">オーバーライド</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Auto">継承: クライアントのディスプレイから自動検出</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Static">継承: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bitrate">継承: {0} Kbps</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Codec">継承: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_DisplayMode">継承: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_AudioConfig">継承: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bool">継承: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_MoonlightDefault">継承: Moonlight で設定されている値</sys:String>
+
+    <!-- Bulk dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">ストリーミング設定の一括編集</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Heading">選択した {0} 本のゲームにストリーミング設定を適用</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Help">適用したい項目にチェックを入れてください。チェックのない項目は各ゲームでそのまま残ります。オーバーライドを完全に消すには、右クリックメニューの「ストリーミングのオーバーライドをクリア」を使用してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Apply">{0} 本のゲームに適用</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">{0} を適用</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">少なくとも 1 つの項目にチェックを入れるか、キャンセルをクリックしてください。</sys:String>
+
+</ResourceDictionary>

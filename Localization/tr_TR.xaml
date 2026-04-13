@@ -1,0 +1,189 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Plugin identity -->
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight aracılığıyla Sunshine veya Apollo sunucularından oyun yayını yapın.</sys:String>
+
+    <!-- Main menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Tüm sunucuları yeniden eşitle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Yayın istemcisini test et</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Sunucu durumu…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_CleanOrphans">Sahipsiz geçersiz kılmaları temizle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_NoHosts">Yapılandırılmış sunucu yok. Eklenti ayarlarından bir sunucu ekleyin.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Ok">çevrimiçi ({0}, {1} uygulama)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Fail">erişilemiyor ({0} adımında başarısız oldu)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CleanOrphans_Done">Toplam {1} girdi içinden {0} sahipsiz geçersiz kılma temizlendi.</sys:String>
+
+    <!-- Game menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_StreamingSettings">Yayın ayarları…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverrides">Yayın geçersiz kılmalarını temizle</sys:String>
+
+    <!-- Play action -->
+    <sys:String x:Key="LOC_SunshineLibrary_PlayAction_Stream">Moonlight ile yayınla</sys:String>
+
+    <!-- Source label -->
+    <sys:String x:Key="LOC_SunshineLibrary_SourcePrefix">Sunshine: {0}</sys:String>
+
+    <!-- Feature tag -->
+    <sys:String x:Key="LOC_SunshineLibrary_Feature_GameStreaming">Oyun Yayını</sys:String>
+
+    <!-- Notifications: sync -->
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} oyun mevcut</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: değişiklik yok</sys:String>
+
+    <!-- Notifications: host errors -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Unreachable">{0}: sunucuya erişilemiyor. Önbelleğe alınmış oyunlar gösteriliyor.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Timeout">{0}: istek zaman aşımına uğradı. Önbelleğe alınmış oyunlar gösteriliyor.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_AuthFailed">{0}: kimlik doğrulama başarısız oldu. Ayarlardan kimlik bilgilerini güncelleyin.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Title">{0}: sertifika değişti</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Body">{0} için sertifika değişti. Bu, Sunshine yeniden kurulduysa olabilir ya da birisinin bağlantıyı dinlediği anlamına gelebilir. İncelemek ve yeniden sabitlemek için ayarları açın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_MissingPin">{0}: sertifika sabitlenmemiş. Eşitlemeye devam etmek için bu sunucuyu ayarlardan yapılandırın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ServerError">{0}: sunucu bir hata döndürdü ({1}).</sys:String>
+
+    <!-- Notifications: client -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientNotInstalled">Moonlight kurulu değil veya yapılandırılan yol geçersiz. Moonlight'ı kurun ve tekrar deneyin.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientLaunchFailed">Moonlight başlatılamadı: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Info_ClientInstalled">Moonlight şu konumda bulundu: {0}</sys:String>
+
+    <!-- Pre-launch warnings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_HdrWithH264">HDR, HEVC veya AV1 gerektirir, ancak seçili kodek H.264. HDR bu oturum için devre dışı bırakılacak.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_BitrateOutOfRange">{0} Kbps bit hızı geçerli aralığın (500–500000) dışında.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_FpsOutOfRange">{0} FPS geçerli aralığın (10–480) dışında.</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Hosts">Sunucular</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Client">Yayın İstemcisi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_General">Genel</sys:String>
+
+    <!-- Settings: Hosts tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Add">Sunucu ekle…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Edit">Seçileni düzenle…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Remove">Seçileni kaldır</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_RemoveConfirm">"{0}" sunucusu SunshineLibrary'den kaldırılsın mı? Bu sunucuya ait kimlik bilgileri ve önbellek de silinecek. Bu sunucuya ait Playnite kütüphane girdileri bir sonraki eşitlemede kaldırılmış olarak işaretlenecek.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Label">Etiket</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Address">Adres</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Port">Port</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Flavor">Tür</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Enabled">Etkin</sys:String>
+
+    <!-- Settings: Client tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Heading">Moonlight yürütülebilir dosya yolu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse">Gözat…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse_Title">moonlight-qt.exe dosyasını seçin</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_PathHelp">Standart kurulum konumlarını (Program Files, LocalAppData) otomatik olarak aramak için boş bırakın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Test">Yayın istemcisini test et</sys:String>
+
+    <!-- Settings: General tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_NotificationMode">Bildirimler</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Always">Her zaman — eşitleme durumunu ve hataları göster</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_OnUpdateOnly">Yalnızca değişiklik olduğunda — değişiklik yoksa sessiz kal</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Never">Asla — yalnızca güvenlik açısından kritik bildirimleri göster</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Help">Güvenlik ve başlatma açısından kritik olaylar (kimlik doğrulama hatası, sertifika uyuşmazlığı, sabitleme eksikliği, istemcinin kullanılamaması) bu ayardan bağımsız olarak her zaman gösterilir.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_DangerZone">Tehlike bölgesi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAll">Kayıtlı tüm kimlik bilgilerini iptal et</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllConfirm">Kayıtlı tüm parolalar ve sertifika sabitlemeleri silinsin mi? Bir sonraki eşitlemede kimlik bilgilerini yeniden girmeniz ve her sunucunun sertifika parmak izini yeniden onaylamanız gerekecek.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllDone">Kayıtlı tüm kimlik bilgileri iptal edildi.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Ayar dosyasının kopyalandığından şüpheleniyorsanız ya da baştan başlamak istiyorsanız bunu kullanın. Bu, sunucuları listeden kaldırmaz — yalnızca kayıtlı parolaları siler.</sys:String>
+
+    <!-- Add/Edit Host dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine / Apollo sunucusu ekle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine / Apollo sunucusunu düzenle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Etiket</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adres (sunucu adı veya IP)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Yönetici kullanıcı adı</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Yönetici parolası</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Etkin</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Hariç tutulan uygulama adları (her satıra bir tane)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Bu adlarla eşleşen uygulamalar (büyük/küçük harf duyarsız) Playnite'ta görünmez. Sunshine yerleşikleri (Desktop, Steam Big Picture, Terminate) ile önceden doldurulmuştur — tutmak istediklerinizi kaldırın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestConnection">Bağlantıyı test et</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Testing">Test ediliyor…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestOk">Test başarılı. Tür: {0}. Bulunan uygulama: {1}.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestFailedAt">Test {0} adımında başarısız oldu: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_RunTestFirst">Eklentinin sunucunun sertifika parmak izini alabilmesi için önce "Bağlantıyı test et" seçeneğini çalıştırın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_PinDeclined">Sertifika onaylanmadı. Sunucu kaydedilmedi.</sys:String>
+
+    <!-- Cert pin dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Sertifikayı onayla</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">"{0}" için sertifikaya güvenilsin mi?</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine ve Apollo kendinden imzalı sertifikalar kullanır. Gelecekteki bağlantıların buna göre doğrulanması için aşağıdaki parmak izini sabitleyin. Bu sunucuyu siz kurmadıysanız Hayır'ı seçin.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Bu sunucunun sertifika parmak izi değişti. Bu, Sunshine yeniden kurulduysa olabilir — ya da birisinin bağlantıyı dinlediği anlamına gelebilir. Yeni parmak izini yalnızca sunucuyu yakın zamanda yeniden kurduysanız onaylayın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 parmak izi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Önceden güvenilen parmak izi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NewFingerprint">Gözlenen yeni parmak izi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Subject">Konu:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NotAfter">Geçerlilik sonu:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Guidance">Şu adreste gösterilen parmak iziyle eşleştiğini doğrulayın:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Trust">Bu sertifikaya güven</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Repin">Yeni sertifikaya yeniden sabitle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Cancel">İptal</sys:String>
+
+    <!-- Validation -->
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_LabelRequired">Etiket gereklidir.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressRequired">Adres gereklidir.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressChars">Adres; şema, yol, boşluk veya kabuk karakteri içeremez. Yalnızca sunucu adı veya IP kullanın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_PortRange">Port 1 ile 65535 arasında olmalıdır.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_MoonlightPathInvalid">Moonlight yürütülebilir dosyası yapılandırılan yolda bulunamadı.</sys:String>
+
+    <!-- Common -->
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Ok">Tamam</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Cancel">İptal</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_BulkEdit">{0} seçili oyun için yayın ayarlarını düzenle…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesSelection">{0} seçili oyun için yayın geçersiz kılmalarını temizle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesConfirm">{0} seçili oyun için yayın geçersiz kılmaları temizlensin mi? Bu işlem geri alınamaz.</sys:String>
+
+    <!-- Per-game override dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Title">Yayın ayarları — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Display">Görüntü</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Kodlama</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Performans</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Çıkış</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Gelişmiş</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Tüm geçersiz kılmaları temizle</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Resolution">Çözünürlük</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Fps">Saniyedeki kare sayısı</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Bit hızı</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Video kodeği</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 kroma</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Kare zamanlaması</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Oyun optimizasyonu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Görüntüleme modu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Ses yapılandırması</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Ek Moonlight argümanları</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Gelişmiş. moonlight-qt komut satırına olduğu gibi eklenir. Boşluklardan bölünür — kabuk tırnaklaması yoktur.</sys:String>
+
+    <!-- Override mode labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Inherit">Devral</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Auto">Otomatik (istemciyle eşleştir)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Static">Sabit değer</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_On">Açmayı zorla</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_Off">Kapatmayı zorla</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_OverrideField">Geçersiz kıl</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Auto">Devralır: istemci ekranından otomatik algıla</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Static">Devralır: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bitrate">Devralır: {0} Kbps</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Codec">Devralır: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_DisplayMode">Devralır: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_AudioConfig">Devralır: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bool">Devralır: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_MoonlightDefault">Devralır: Moonlight'ta yapılandırılmış olan değer</sys:String>
+
+    <!-- Bulk dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">Yayın ayarlarını toplu düzenle</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Heading">Yayın ayarlarını {0} seçili oyuna uygula</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Help">Uygulamak istediğiniz alanları işaretleyin. İşaretlenmemiş alanlar her oyunda olduğu gibi bırakılır. Geçersiz kılmaları tamamen silmek için sağ tık menüsünden "Yayın geçersiz kılmalarını temizle" seçeneğini kullanın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Apply">{0} oyuna uygula</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">{0} alanını uygula</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Uygulamak için en az bir alan işaretleyin veya İptal'e tıklayın.</sys:String>
+
+</ResourceDictionary>

@@ -1,0 +1,11 @@
+AddonId: SunshineLibrary_496637e1-1607-4016-aa4b-d6f732c21210
+Packages:
+  - Version: 0.1.0
+    RequiredApiVersion: 6.12.0
+    ReleaseDate: 2026-04-12
+    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.1.0/SunshineLibrary_v0.1.0.pext
+    Changelog:
+      - Initial vertical slice: import apps from Sunshine/Apollo host, launch via moonlight-qt
+      - Auto-detect client resolution, refresh rate, and HDR at launch
+      - Per-host SPKI cert pinning
+      - Flavor-aware host clients (Sunshine/Apollo)

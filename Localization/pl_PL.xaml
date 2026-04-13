@@ -1,0 +1,189 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Plugin identity -->
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Strumieniuj gry z hostów Sunshine lub Apollo przez Moonlight.</sys:String>
+
+    <!-- Main menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Zsynchronizuj ponownie wszystkie hosty</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Przetestuj klienta strumieniowania</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Status hosta…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_CleanOrphans">Wyczyść osierocone nadpisania</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_NoHosts">Nie skonfigurowano żadnych hostów. Dodaj hosta w ustawieniach wtyczki.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Ok">online ({0}, {1} aplikacji)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostStatus_Fail">nieosiągalny (błąd w kroku {0})</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CleanOrphans_Done">Wyczyszczono {0} osieroconych nadpisań z {1} wpisów.</sys:String>
+
+    <!-- Game menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_StreamingSettings">Ustawienia strumieniowania…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverrides">Wyczyść nadpisania strumieniowania</sys:String>
+
+    <!-- Play action -->
+    <sys:String x:Key="LOC_SunshineLibrary_PlayAction_Stream">Strumieniuj przez Moonlight</sys:String>
+
+    <!-- Source label -->
+    <sys:String x:Key="LOC_SunshineLibrary_SourcePrefix">Sunshine: {0}</sys:String>
+
+    <!-- Feature tag -->
+    <sys:String x:Key="LOC_SunshineLibrary_Feature_GameStreaming">Strumieniowanie gier</sys:String>
+
+    <!-- Notifications: sync -->
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: dostępnych gier: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: brak zmian</sys:String>
+
+    <!-- Notifications: host errors -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Unreachable">{0}: host jest nieosiągalny. Wyświetlam gry z pamięci podręcznej.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_Timeout">{0}: przekroczono limit czasu żądania. Wyświetlam gry z pamięci podręcznej.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_AuthFailed">{0}: uwierzytelnianie nie powiodło się. Zaktualizuj dane logowania w ustawieniach.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Title">{0}: certyfikat został zmieniony</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_CertMismatch_Body">Certyfikat dla {0} uległ zmianie. Może to oznaczać ponowną instalację Sunshine, albo to, że ktoś przechwytuje połączenie. Otwórz ustawienia, aby sprawdzić i przypiąć ponownie.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_MissingPin">{0}: certyfikat nie jest przypięty. Skonfiguruj tego hosta w ustawieniach, aby kontynuować synchronizację.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ServerError">{0}: serwer zwrócił błąd ({1}).</sys:String>
+
+    <!-- Notifications: client -->
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientNotInstalled">Moonlight nie jest zainstalowany lub skonfigurowana ścieżka jest nieprawidłowa. Zainstaluj Moonlight i spróbuj ponownie.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Error_ClientLaunchFailed">Nie udało się uruchomić Moonlight: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Info_ClientInstalled">Znaleziono Moonlight w {0}</sys:String>
+
+    <!-- Pre-launch warnings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_HdrWithH264">HDR wymaga HEVC lub AV1, ale wybranym kodekiem jest H.264. HDR zostanie wyłączony dla tej sesji.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_BitrateOutOfRange">Przepływność {0} Kbps jest poza dopuszczalnym zakresem (500–500000).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Warn_FpsOutOfRange">FPS {0} jest poza dopuszczalnym zakresem (10–480).</sys:String>
+
+    <!-- Settings: tabs -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Hosts">Hosty</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_Client">Klient strumieniowania</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_Tab_General">Ogólne</sys:String>
+
+    <!-- Settings: Hosts tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Add">Dodaj hosta…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Edit">Edytuj wybranego…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_Remove">Usuń wybranego</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Hosts_RemoveConfirm">Usunąć hosta „{0}” z SunshineLibrary? Dane logowania i pamięć podręczna dla tego hosta również zostaną usunięte. Wpisy biblioteki Playnite dla tego hosta staną się odinstalowane przy następnej synchronizacji.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Label">Etykieta</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Address">Adres</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Port">Port</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Flavor">Wariant</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostCol_Enabled">Włączony</sys:String>
+
+    <!-- Settings: Client tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Heading">Ścieżka do pliku wykonywalnego Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse">Przeglądaj…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Browse_Title">Wybierz moonlight-qt.exe</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_PathHelp">Pozostaw puste, aby automatycznie wykryć standardowe lokalizacje instalacji (Program Files, LocalAppData).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Client_Test">Przetestuj klienta strumieniowania</sys:String>
+
+    <!-- Settings: General tab -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_NotificationMode">Powiadomienia</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Always">Zawsze — pokazuj status synchronizacji i błędy</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_OnUpdateOnly">Tylko przy zmianach — cisza, gdy nic się nie zmienia</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Never">Nigdy — pokazuj tylko krytyczne powiadomienia bezpieczeństwa</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Notif_Help">Zdarzenia krytyczne dla bezpieczeństwa i uruchamiania (niepowodzenie uwierzytelniania, niezgodność certyfikatu, brak przypięcia, niedostępność klienta) są zawsze wyświetlane niezależnie od tego ustawienia.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_DangerZone">Strefa zagrożenia</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAll">Unieważnij wszystkie zapisane dane logowania</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllConfirm">Usunąć wszystkie zapisane hasła i przypięcia certyfikatów? Przy następnej synchronizacji będziesz musiał ponownie wprowadzić dane logowania i ponownie potwierdzić odcisk certyfikatu każdego hosta.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllDone">Wszystkie zapisane dane logowania zostały unieważnione.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">Użyj tej opcji, jeśli podejrzewasz, że plik ustawień został skopiowany lub chcesz zacząć od nowa. Nie usuwa to hostów z listy — tylko zapisane hasła.</sys:String>
+
+    <!-- Add/Edit Host dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Dodaj hosta Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Edytuj hosta Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">Etykieta</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">Adres (nazwa hosta lub IP)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Nazwa użytkownika administratora</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Hasło administratora</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Włączony</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Wykluczone nazwy aplikacji (jedna na linię)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Aplikacje pasujące do tych nazw (bez uwzględniania wielkości liter) nie pojawią się w Playnite. Lista zawiera wbudowane pozycje Sunshine (Desktop, Steam Big Picture, Terminate) — usuń te, które chcesz zachować.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestConnection">Przetestuj połączenie</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Testing">Testowanie…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestOk">Test zakończony powodzeniem. Wariant: {0}. Znaleziono aplikacji: {1}.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestFailedAt">Test nie powiódł się w kroku {0}: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_RunTestFirst">Najpierw uruchom „Przetestuj połączenie”, aby wtyczka mogła odczytać odcisk certyfikatu hosta.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_PinDeclined">Certyfikat nie został potwierdzony. Host nie został zapisany.</sys:String>
+
+    <!-- Cert pin dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Potwierdź certyfikat</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Zaufać certyfikatowi dla „{0}”?</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine i Apollo używają certyfikatów podpisanych samodzielnie. Przypnij poniższy odcisk, aby przyszłe połączenia były względem niego weryfikowane. Jeśli to nie Ty konfigurowałeś tego hosta, wybierz Nie.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">Odcisk certyfikatu dla tego hosta uległ zmianie. Może to oznaczać ponowną instalację Sunshine — albo to, że ktoś przechwytuje połączenie. Potwierdź nowy odcisk tylko wtedy, gdy niedawno ponownie zainstalowałeś hosta.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">Odcisk SHA-256</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Wcześniej zaufany odcisk</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NewFingerprint">Zaobserwowany nowy odcisk</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Subject">Podmiot:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_NotAfter">Ważny do:</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Guidance">Sprawdź, czy zgadza się z odciskiem pokazanym w</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Trust">Zaufaj temu certyfikatowi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Repin">Przypnij nowy certyfikat</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Cancel">Anuluj</sys:String>
+
+    <!-- Validation -->
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_LabelRequired">Etykieta jest wymagana.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressRequired">Adres jest wymagany.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_AddressChars">Adres nie może zawierać schematów, ścieżek, spacji ani znaków powłoki. Użyj samej nazwy hosta lub IP.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_PortRange">Port musi mieścić się w zakresie od 1 do 65535.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Validation_MoonlightPathInvalid">Plik wykonywalny Moonlight nie został znaleziony w skonfigurowanej ścieżce.</sys:String>
+
+    <!-- Common -->
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Ok">OK</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Common_Cancel">Anuluj</sys:String>
+
+    <!-- Game context menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_BulkEdit">Edytuj ustawienia strumieniowania dla {0} wybranych gier…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesSelection">Wyczyść nadpisania strumieniowania dla {0} wybranych gier</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesConfirm">Wyczyścić nadpisania strumieniowania dla {0} wybranych gier? Tej operacji nie można cofnąć.</sys:String>
+
+    <!-- Per-game override dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Title">Ustawienia strumieniowania — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Display">Obraz</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Kodowanie</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Wydajność</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Wyjście</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Zaawansowane</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Wyczyść wszystkie nadpisania</sys:String>
+
+    <!-- Per-game override field labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Resolution">Rozdzielczość</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Fps">Klatki na sekundę</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Przepływność</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Kodek wideo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">Chroma YUV 4:4:4</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Synchronizacja klatek</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Optymalizacja gry</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Tryb wyświetlania</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Konfiguracja dźwięku</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Dodatkowe argumenty Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Zaawansowane. Dołączane dosłownie do wiersza poleceń moonlight-qt. Dzielone po spacjach — bez cudzysłowów powłoki.</sys:String>
+
+    <!-- Override mode labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Inherit">Dziedzicz</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Auto">Auto (dopasuj do klienta)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Mode_Static">Stała wartość</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_On">Wymuś włączone</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Hdr_Off">Wymuś wyłączone</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_OverrideField">Nadpisz</sys:String>
+
+    <!-- Fallback hint labels -->
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Auto">Dziedziczy: automatyczne wykrycie z ekranu klienta</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Static">Dziedziczy: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bitrate">Dziedziczy: {0} Kbps</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Codec">Dziedziczy: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_DisplayMode">Dziedziczy: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_AudioConfig">Dziedziczy: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bool">Dziedziczy: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_MoonlightDefault">Dziedziczy: cokolwiek jest skonfigurowane w Moonlight</sys:String>
+
+    <!-- Bulk dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">Masowa edycja ustawień strumieniowania</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Heading">Zastosuj ustawienia strumieniowania do {0} wybranych gier</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Help">Zaznacz pola, które chcesz zastosować. Niezaznaczone pola pozostaną bez zmian w każdej grze. Aby całkowicie usunąć nadpisania, użyj „Wyczyść nadpisania strumieniowania” z menu kontekstowego.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Apply">Zastosuj do {0} gier</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Zastosuj {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Zaznacz co najmniej jedno pole do zastosowania lub kliknij Anuluj.</sys:String>
+
+</ResourceDictionary>
