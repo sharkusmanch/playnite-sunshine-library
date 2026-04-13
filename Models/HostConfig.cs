@@ -27,6 +27,12 @@ namespace SunshineLibrary.Models
         public List<string> ExcludedAppNames { get; set; } = new List<string>();
         public StreamOverrides Defaults { get; set; } = new StreamOverrides();
 
+        /// <summary>
+        /// Per-host override for orphan deletion. Null means inherit the global
+        /// <c>AutoRemoveOrphanedGames</c> setting; true/false override it for this host only.
+        /// </summary>
+        public bool? AutoRemoveOrphanedGames { get; set; } = null;
+
         public string BaseUrl => $"https://{Address}:{Port}";
     }
 }

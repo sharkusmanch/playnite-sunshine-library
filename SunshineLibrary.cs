@@ -207,11 +207,10 @@ namespace SunshineLibrary
                 .Where(g => g.PluginId == Id && !string.IsNullOrEmpty(g.GameId))
                 .ToList();
 
-            var updates = new List<Game>();
+            var updates = new List<Game>();          // games to mark uninstalled this pass
+            var confirmedOrphans = new List<Game>(); // all confirmed orphans regardless of IsInstalled
             foreach (var g in ourGames)
             {
-                if (!g.IsInstalled) continue;  // already uninstalled; nothing to do
-
                 var parts = g.GameId.Split(new[] { ':' }, 2);
                 if (parts.Length != 2) continue;
                 var hostId = parts[0];
@@ -234,7 +233,10 @@ namespace SunshineLibrary
                     orphan = false;
                 }
 
-                if (orphan)
+                if (!orphan) continue;
+
+                confirmedOrphans.Add(g);
+                if (g.IsInstalled)
                 {
                     g.IsInstalled = false;
                     updates.Add(g);
@@ -247,13 +249,27 @@ namespace SunshineLibrary
                 logger.Info($"Marked {updates.Count} game(s) uninstalled (removed from host or host removed from settings).");
             }
 
-            // Opt-in deletion pass. Only runs when the user explicitly set AutoRemoveOrphanedGames
-            // — by default we preserve history per PLAN §11. Only newly-marked-uninstalled games
-            // from this pass are candidates; pre-existing uninstalled games are left alone in case
-            // the user un-installed them manually for other reasons.
-            if (settingsVm?.Settings?.AutoRemoveOrphanedGames == true && updates.Count > 0)
+            // Opt-in deletion pass over ALL confirmed orphans — not just newly-marked ones —
+            // so that enabling the setting also cleans up orphans accumulated from prior syncs.
+            // Per-host AutoRemoveOrphanedGames takes precedence over the global setting.
+            // Games whose host was removed from settings fall back to the global setting.
+            if (confirmedOrphans.Count > 0)
             {
-                DeleteOrphanGames(updates);
+                var hostMap = activeHosts.ToDictionary(h => h.Id.ToString(), StringComparer.Ordinal);
+                var globalDelete = settingsVm?.Settings?.AutoRemoveOrphanedGames ?? false;
+                var toDelete = confirmedOrphans
+                    .Where(g =>
+                    {
+                        var parts = g.GameId.Split(new[] { ':' }, 2);
+                        if (parts.Length != 2) return globalDelete;
+                        var hid = parts[0];
+                        return hostMap.TryGetValue(hid, out var h) && h.AutoRemoveOrphanedGames.HasValue
+                            ? h.AutoRemoveOrphanedGames.Value
+                            : globalDelete;
+                    })
+                    .ToList();
+                if (toDelete.Count > 0)
+                    DeleteOrphanGames(toDelete);
             }
         }
 

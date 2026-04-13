@@ -22,6 +22,28 @@ Companion to [playnite-apollo-sync](https://github.com/sharkusmanch/playnite-apo
 - `--quit-after` always passed; `TrackingMode.Process` for accurate playtime
 - 19 localizations
 
+## Apollo sync companion
+
+[playnite-apollo-sync](https://github.com/sharkusmanch/playnite-apollo-sync) is the server-side complement to this plugin. Where this plugin pulls apps **from** an Apollo host into Playnite, playnite-apollo-sync pushes your Playnite library **back to** Apollo — so every game you own shows up as a streamable app on the host without manually adding it.
+
+Together they form a bidirectional loop:
+
+```
+Apollo host  ──(SunshineLibrary)──▶  Playnite library
+Apollo host  ◀──(playnite-apollo-sync)──  Playnite library
+```
+
+Key benefits when games are registered on the host via playnite-apollo-sync:
+
+- **Stream exit on game close** — the host terminates the stream session when the game process exits. Combined with this plugin's `TrackingMode.Process` playtime tracking, Moonlight quits as soon as the game closes server-side, and Playnite records accurate playtime with no manual stream teardown needed.
+- **Virtual display** (Apollo only) — Apollo auto-matches the client's resolution per-stream, so games stream at the correct resolution automatically rather than at the host's fixed desktop resolution.
+
+## Apollo Profile Manager
+
+[ApolloProfileManager](https://github.com/ClassicOldSong/ApolloProfileManager) runs on the Apollo host and swaps per-client profiles — save files, game configs, and mod sets — based on which Moonlight client is connecting.
+
+When you launch a game from Playnite via this plugin, ApolloProfileManager ensures the correct profile is active for your specific device: each client gets its own independent saves and settings without any manual file juggling.
+
 ## Install
 
 Download the latest `.pext` from [Releases](https://github.com/sharkusmanch/playnite-sunshine-library/releases) and open it, or install via Playnite's add-on browser.

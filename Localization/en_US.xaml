@@ -122,6 +122,11 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Disable to keep this host in settings but skip it during library syncs. Useful for hosts that are often offline.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Excluded app names (one per line)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Apps matching these names (case-insensitive) will not appear in Playnite. Seeded with Sunshine built-ins (Desktop, Steam Big Picture, Terminate) — remove any you want to keep.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans">Auto-remove orphaned games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help">Per-host override for orphan deletion on sync. "Inherit" defers to the global setting on the General tab.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit">Inherit from global setting</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete">Delete orphaned games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep">Keep orphaned games (mark uninstalled)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestConnection">Test connection</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostDialog_Testing">Testing connection…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TestStepStatus">{0}: {1}</sys:String>

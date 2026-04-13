@@ -36,6 +36,7 @@ namespace SunshineLibrary.Settings
         private PasswordBox passwordBox;
         private CheckBox enabledBox;
         private TextBox excludedBox;
+        private ComboBox autoRemoveCombo;
         private TextBlock statusText;
         private TextBlock statusDetail;
         private Button testBtn;
@@ -255,6 +256,28 @@ namespace SunshineLibrary.Settings
             excludedHelp.SetResourceReference(TextBlock.ForegroundProperty, "TextBrushDarker");
             root.Children.Add(excludedHelp);
 
+            root.Children.Add(new TextBlock
+            {
+                Text = Localize("LOC_SunshineLibrary_HostField_AutoRemoveOrphans"),
+                FontWeight = FontWeights.SemiBold,
+                Margin = new Thickness(0, 4, 0, 2),
+            });
+            autoRemoveCombo = new ComboBox { HorizontalAlignment = HorizontalAlignment.Left, MinWidth = 260 };
+            autoRemoveCombo.Items.Add(new ComboBoxItem { Content = Localize("LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Inherit") });
+            autoRemoveCombo.Items.Add(new ComboBoxItem { Content = Localize("LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Delete") });
+            autoRemoveCombo.Items.Add(new ComboBoxItem { Content = Localize("LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Keep") });
+            autoRemoveCombo.SelectedIndex = working.AutoRemoveOrphanedGames == null ? 0 : working.AutoRemoveOrphanedGames == true ? 1 : 2;
+            root.Children.Add(autoRemoveCombo);
+            var autoRemoveHelp = new TextBlock
+            {
+                Text = Localize("LOC_SunshineLibrary_HostField_AutoRemoveOrphans_Help"),
+                TextWrapping = TextWrapping.Wrap,
+                FontSize = 11,
+                Margin = new Thickness(0, 2, 0, 8),
+            };
+            autoRemoveHelp.SetResourceReference(TextBlock.ForegroundProperty, "TextBrushDarker");
+            root.Children.Add(autoRemoveHelp);
+
             scroll.Content = root;
             return scroll;
         }
@@ -434,6 +457,9 @@ namespace SunshineLibrary.Settings
             working.AdminUser = (userBox.Text ?? string.Empty).Trim();
             working.AdminPassword = passwordBox.Password ?? string.Empty;
             working.Enabled = enabledBox.IsChecked == true;
+            working.AutoRemoveOrphanedGames = autoRemoveCombo.SelectedIndex == 0
+                ? (bool?)null
+                : autoRemoveCombo.SelectedIndex == 1;
 
             var excluded = (excludedBox.Text ?? string.Empty)
                 .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
@@ -494,6 +520,7 @@ namespace SunshineLibrary.Settings
                 Enabled = source.Enabled,
                 ExcludedAppNames = source.ExcludedAppNames != null ? new List<string>(source.ExcludedAppNames) : new List<string>(),
                 Defaults = CloneOverrides(source.Defaults),
+                AutoRemoveOrphanedGames = source.AutoRemoveOrphanedGames,
             };
         }
 
