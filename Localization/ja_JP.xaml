@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight を使って Sunshine または Apollo ホストからゲームをストリーミングします。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight を使って Sunshine ホストからゲームをストリーミングします。</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">すべてのホストを再同期</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">ストリーミングクライアントをテスト</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">ホストの状態…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">設定ファイルがコピーされた疑いがある場合や、最初からやり直したい場合に使用します。ホストは一覧から削除されません — 保存済みのパスワードのみが削除されます。</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine / Apollo ホストを追加</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine / Apollo ホストを編集</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine ホストを追加</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine ホストを編集</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">ラベル</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">アドレス (ホスト名または IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">ポート</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">証明書の確認</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">「{0}」の証明書を信頼しますか？</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine と Apollo は自己署名証明書を使用します。以下のフィンガープリントをピン留めすると、今後の接続時に照合されます。このホストを自分で設定した覚えがない場合は「いいえ」を選択してください。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine は自己署名証明書を使用します。以下のフィンガープリントをピン留めすると、今後の接続時に照合されます。このホストを自分で設定した覚えがない場合は「いいえ」を選択してください。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">このホストの証明書フィンガープリントが変更されました。Sunshine を再インストールした場合に発生しますが、通信が傍受されている可能性もあります。最近ホストを再インストールした場合のみ、新しいフィンガープリントを承認してください。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 フィンガープリント</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">以前に信頼したフィンガープリント</sys:String>

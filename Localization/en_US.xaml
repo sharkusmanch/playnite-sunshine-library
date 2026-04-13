@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Stream games from Sunshine or Apollo hosts via Moonlight.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Stream games from Sunshine hosts via Moonlight.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">Resync all hosts</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">Test streaming client</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Host status…</sys:String>
@@ -139,7 +139,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">Confirm certificate</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">Trust certificate for "{0}"?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine and Apollo use self-signed certificates. Pin the fingerprint below so future connections verify against it. If you didn't set up this host, say No.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine uses self-signed certificates. Pin the fingerprint below so future connections verify against it. If you didn't set up this host, say No.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">The certificate fingerprint for this host has changed. This can happen if Sunshine was reinstalled — or it can mean someone is intercepting the connection. Confirm the new fingerprint only if you recently reinstalled the host.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 fingerprint</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">Previously trusted fingerprint</sys:String>

@@ -3,11 +3,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Plugin identity -->
-    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine / Apollo</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight을 통해 Sunshine 또는 Apollo 호스트에서 게임을 스트리밍합니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Name">Sunshine</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Description">Moonlight을 통해 Sunshine 호스트에서 게임을 스트리밍합니다.</sys:String>
 
     <!-- Main menu -->
-    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine / Apollo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_MenuSection">Sunshine</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ResyncAll">모든 호스트 다시 동기화</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_TestClient">스트리밍 클라이언트 테스트</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">호스트 상태…</sys:String>
@@ -89,8 +89,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_Settings_RevokeAllHelp">설정 파일이 복사되었다고 의심되거나 처음부터 다시 시작하려는 경우 사용하십시오. 호스트를 목록에서 제거하지 않으며 저장된 비밀번호만 제거합니다.</sys:String>
 
     <!-- Add/Edit Host dialog -->
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine / Apollo 호스트 추가</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine / Apollo 호스트 편집</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleAdd">Sunshine 호스트 추가</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostDialog_TitleEdit">Sunshine 호스트 편집</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Label">레이블</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Address">주소 (호스트 이름 또는 IP)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">포트</sys:String>
@@ -109,7 +109,7 @@
     <!-- Cert pin dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Title">인증서 확인</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Heading">"{0}"의 인증서를 신뢰하시겠습니까?</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine과 Apollo는 자체 서명된 인증서를 사용합니다. 아래 지문을 고정하면 이후 연결이 이를 기준으로 검증됩니다. 이 호스트를 직접 설정하지 않았다면 "아니요"를 선택하십시오.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyFirstConnect">Sunshine은 자체 서명된 인증서를 사용합니다. 아래 지문을 고정하면 이후 연결이 이를 기준으로 검증됩니다. 이 호스트를 직접 설정하지 않았다면 "아니요"를 선택하십시오.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_BodyRepin">이 호스트의 인증서 지문이 변경되었습니다. Sunshine을 재설치했을 때 발생할 수 있으며, 누군가 연결을 가로채고 있음을 의미할 수도 있습니다. 최근에 호스트를 재설치한 경우에만 새 지문을 확인하십시오.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_Fingerprint">SHA-256 지문</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_CertDialog_OldFingerprint">이전에 신뢰한 지문</sys:String>
