@@ -1,6 +1,7 @@
 using Playnite.SDK;
 using Playnite.SDK.Plugins;
 using SunshineLibrary.Settings;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace SunshineLibrary.Services.Clients
     /// </summary>
     public class SunshineLibraryClient : LibraryClient
     {
+        private static readonly ILogger logger = LogManager.GetLogger();
         private readonly SunshineLibrarySettingsViewModel settings;
 
         public SunshineLibraryClient(SunshineLibrarySettingsViewModel settings)
@@ -35,9 +37,10 @@ namespace SunshineLibrary.Services.Clients
                     UseShellExecute = true,
                 });
             }
-            catch
+            catch (Exception ex)
             {
                 // Default browser not available, or URL blocked — silent fail is acceptable here.
+                logger.Debug(ex, "SunshineLibraryClient: failed to open URL in default browser");
             }
         }
     }

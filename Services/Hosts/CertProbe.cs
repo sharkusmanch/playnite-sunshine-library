@@ -40,9 +40,9 @@ namespace SunshineLibrary.Services.Hosts
                 return new Result { Success = false, ErrorMessage = "Address is empty." };
 
             using (var tcp = new TcpClient())
+            using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(ct))
             {
                 var connectTask = tcp.ConnectAsync(address, port);
-                var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
                 linkedCts.CancelAfter(timeout);
 
                 try

@@ -98,8 +98,9 @@ namespace SunshineLibrary.Services
             {
                 sid = WindowsIdentity.GetCurrent().User?.Value ?? string.Empty;
             }
-            catch
+            catch (Exception ex)
             {
+                logger.Debug(ex, "CredentialStore: could not read Windows identity SID, using empty string");
                 sid = string.Empty;
             }
             return Encoding.UTF8.GetBytes(sid + ":" + hostId.ToString());
