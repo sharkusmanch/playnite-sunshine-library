@@ -349,7 +349,7 @@ namespace SunshineLibrary
                 var msg = ResourceProvider.GetString(w.MessageKey);
                 if (w.FormatArgs != null && w.FormatArgs.Length > 0)
                 {
-                    try { msg = string.Format(msg, w.FormatArgs); } catch { /* keep raw */ }
+                    try { msg = string.Format(msg, w.FormatArgs); } catch (Exception ex) { logger.Debug(ex, $"SunshineLibrary: string.Format failed for key {w.MessageKey}, using raw string"); }
                 }
                 PlayniteApi.Notifications.Add(new NotificationMessage(
                     $"sunshine-prelaunch-{w.MessageKey}",
@@ -670,9 +670,12 @@ namespace SunshineLibrary
                 progress.ProgressMaxValue = hosts.Count;
                 var summary = syncService.SyncAllAsync(hosts, progress.CancelToken).GetAwaiter().GetResult();
 
-                foreach (var meta in summary.AllGames)
+                using (PlayniteApi.Database.BufferedUpdate())
                 {
-                    PlayniteApi.Database.ImportGame(meta, this);
+                    foreach (var meta in summary.AllGames)
+                    {
+                        PlayniteApi.Database.ImportGame(meta, this);
+                    }
                 }
 
                 foreach (var r in summary.Results)

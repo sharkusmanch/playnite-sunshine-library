@@ -116,7 +116,7 @@ namespace SunshineLibrary.Services.Clients
                         {
                             pkgDirs = Directory.EnumerateDirectories(wingetRoot, pattern, SearchOption.TopDirectoryOnly);
                         }
-                        catch { continue; }
+                        catch { continue; /* permissions or invalid pattern — skip this winget package pattern */ }
 
                         foreach (var pkg in pkgDirs)
                             foreach (var name in exeNames)
@@ -126,7 +126,7 @@ namespace SunshineLibrary.Services.Clients
                                 {
                                     matches = Directory.EnumerateFiles(pkg, name, SearchOption.AllDirectories);
                                 }
-                                catch { continue; }
+                                catch { continue; /* permissions or path error — skip this package directory */ }
                                 foreach (var exe in matches) TryAdd(exe);
                             }
                     }
