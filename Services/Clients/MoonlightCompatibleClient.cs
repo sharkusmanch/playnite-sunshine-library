@@ -156,7 +156,21 @@ namespace SunshineLibrary.Services.Clients
             if (merged.Yuv444.HasValue) args.Add(merged.Yuv444.Value ? "--yuv444" : "--no-yuv444");
             if (merged.FramePacing.HasValue) args.Add(merged.FramePacing.Value ? "--frame-pacing" : "--no-frame-pacing");
             if (merged.GameOptimization.HasValue) args.Add(merged.GameOptimization.Value ? "--game-optimization" : "--no-game-optimization");
-            if (merged.ShowStats.HasValue) args.Add(merged.ShowStats.Value ? "--show-stats" : "--no-show-stats");
+            if (merged.PerformanceOverlay.HasValue) args.Add(merged.PerformanceOverlay.Value ? "--performance-overlay" : "--no-performance-overlay");
+            if (merged.VSync.HasValue) args.Add(merged.VSync.Value ? "--vsync" : "--no-vsync");
+            if (!string.IsNullOrWhiteSpace(merged.VideoDecoder))
+            {
+                args.Add("--video-decoder");
+                args.Add(merged.VideoDecoder);
+            }
+            if (merged.AudioOnHost.HasValue) args.Add(merged.AudioOnHost.Value ? "--audio-on-host" : "--no-audio-on-host");
+            if (merged.MuteOnFocusLoss.HasValue) args.Add(merged.MuteOnFocusLoss.Value ? "--mute-on-focus-loss" : "--no-mute-on-focus-loss");
+            if (merged.KeepAwake.HasValue) args.Add(merged.KeepAwake.Value ? "--keep-awake" : "--no-keep-awake");
+            if (!string.IsNullOrWhiteSpace(merged.CaptureSystemKeys))
+            {
+                args.Add("--capture-system-keys");
+                args.Add(merged.CaptureSystemKeys);
+            }
 
             if (!string.IsNullOrWhiteSpace(merged.ExtraArgs))
             {

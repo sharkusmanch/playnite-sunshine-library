@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">인코딩</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">성능</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">출력</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">세션</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">고급</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">모든 재정의 지우기</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">비트레이트</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">비디오 코덱</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">비디오 디코더</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 크로마</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">프레임 페이싱</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">게임 최적화</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">수직 동기화</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">디스플레이 모드</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">오디오 구성</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">호스트에서 오디오 재생</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">포커스 손실 시 음소거</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">시스템 절전 방지</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">시스템 키 캡처</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">추가 Moonlight 인수</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">고급. moonlight-qt 명령줄에 그대로 추가됩니다. 공백으로 분리되며 셸 인용은 없습니다.</sys:String>
 
@@ -236,7 +243,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">모든 전역 스트리밍 기본값을 초기화하시겠습니까? 해상도, FPS, HDR은 자동(클라이언트에 맞춤)으로 되돌아가고, 나머지 필드는 모두 상속으로 돌아갑니다.</sys:String>
 
     <!-- Per-game override field labels -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">스트리밍 통계 표시</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">성능 오버레이</sys:String>
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">해상도 × fps에서 자동 계산 (예: 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 사용 시 두 배)</sys:String>

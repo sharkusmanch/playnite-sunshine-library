@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Kódování</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Výkon</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Výstup</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">Relace</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Pokročilé</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Vymazat všechna přepsání</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Datový tok</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Video kodek</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">Dekodér videa</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">Barvonosný signál YUV 4:4:4</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Časování snímků</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Optimalizace hry</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">V-Sync</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Režim zobrazení</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Konfigurace zvuku</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">Zvuk na hostu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">Ztlumit při ztrátě fokusu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">Udržet systém aktivní</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">Zachytávat systémové klávesy</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Další argumenty Moonlight</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Pokročilé. Připojeno doslovně k příkazovému řádku moonlight-qt. Rozděleno podle mezer — žádné shellové uvozování.</sys:String>
 
@@ -236,7 +243,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Obnovit všechna globální výchozí nastavení streamování? Rozlišení, FPS a HDR se vrátí na Automaticky (podle klienta); všechna ostatní pole se vrátí na Zdědit.</sys:String>
 
     <!-- Per-game override field labels -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Zobrazit statistiky streamu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Překrytí výkonu</sys:String>
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Automaticky vypočítáno z rozlišení × fps (např. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 tuto hodnotu zdvojnásobí)</sys:String>

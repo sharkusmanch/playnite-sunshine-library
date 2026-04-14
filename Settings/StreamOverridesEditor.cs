@@ -46,11 +46,15 @@ namespace SunshineLibrary.Settings
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Encoding")));
             root.Children.Add(BuildBitrateRow());
             root.Children.Add(BuildCodecRow());
+            root.Children.Add(BuildVideoDecoderRow());
             root.Children.Add(BuildScalarBoolRow(
                 L("LOC_SunshineLibrary_OverrideField_Yuv444"),
                 working.Yuv444, v => working.Yuv444 = v, effectiveFallback.Yuv444));
 
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Performance")));
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_VSync"),
+                working.VSync, v => working.VSync = v, effectiveFallback.VSync));
             root.Children.Add(BuildScalarBoolRow(
                 L("LOC_SunshineLibrary_OverrideField_FramePacing"),
                 working.FramePacing, v => working.FramePacing = v, effectiveFallback.FramePacing));
@@ -59,11 +63,23 @@ namespace SunshineLibrary.Settings
                 working.GameOptimization, v => working.GameOptimization = v, effectiveFallback.GameOptimization));
             root.Children.Add(BuildScalarBoolRow(
                 L("LOC_SunshineLibrary_OverrideField_ShowStats"),
-                working.ShowStats, v => working.ShowStats = v, effectiveFallback.ShowStats));
+                working.PerformanceOverlay, v => working.PerformanceOverlay = v, effectiveFallback.PerformanceOverlay));
 
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Output")));
             root.Children.Add(BuildDisplayModeRow());
             root.Children.Add(BuildAudioRow());
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_AudioOnHost"),
+                working.AudioOnHost, v => working.AudioOnHost = v, effectiveFallback.AudioOnHost));
+
+            root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Session")));
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss"),
+                working.MuteOnFocusLoss, v => working.MuteOnFocusLoss = v, effectiveFallback.MuteOnFocusLoss));
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_KeepAwake"),
+                working.KeepAwake, v => working.KeepAwake = v, effectiveFallback.KeepAwake));
+            root.Children.Add(BuildCaptureSystemKeysRow());
 
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Advanced")));
             root.Children.Add(BuildExtraArgsRow());
@@ -229,6 +245,24 @@ namespace SunshineLibrary.Settings
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_AudioConfig"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_AudioConfig", effectiveFallback.AudioConfig));
+        }
+
+        private FrameworkElement BuildVideoDecoderRow()
+        {
+            var combo = BuildStringEnumCombo(working.VideoDecoder, new[] { "auto", "software", "hardware" });
+            combo.SelectionChanged += (_, __) => working.VideoDecoder = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            return FieldBlock(
+                L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), combo,
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Codec", effectiveFallback.VideoDecoder));
+        }
+
+        private FrameworkElement BuildCaptureSystemKeysRow()
+        {
+            var combo = BuildStringEnumCombo(working.CaptureSystemKeys, new[] { "never", "fullscreen", "always" });
+            combo.SelectionChanged += (_, __) => working.CaptureSystemKeys = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            return FieldBlock(
+                L("LOC_SunshineLibrary_OverrideField_CaptureSystemKeys"), combo,
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Codec", effectiveFallback.CaptureSystemKeys));
         }
 
         private FrameworkElement BuildScalarBoolRow(string label, bool? currentValue, Action<bool?> setter, bool? fallback)

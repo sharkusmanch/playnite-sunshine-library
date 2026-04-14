@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Kodning</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Prestanda</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Utmatning</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">Session</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Avancerat</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Rensa alla overrides</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Bitrate</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Videocodec</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">Videodekoder</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 chroma</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Frame pacing</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Speloptimering</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">V-Sync</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Visningsläge</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Ljudkonfiguration</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">Ljud på värddatorn</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">Stäng av ljud vid fokusförlust</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">Håll systemet vaket</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">Fånga systemtangenter</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Extra Moonlight-argument</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Avancerat. Läggs till ordagrant på moonlight-qt-kommandoraden. Delas på blanksteg — ingen shell-citering.</sys:String>
 
@@ -234,7 +241,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Återställa alla globala strömningsstandarder? Upplösning, FPS och HDR återgår till Automatiskt (matcha klient); alla övriga fält återgår till Ärv.</sys:String>
 
     <!-- Override field -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Visa strömningsstatistik</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Prestandaöverlagring</sys:String>
 
     <!-- Fallback hint -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Beräknas automatiskt från upplösning × fps (t.ex. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 fördubblar detta)</sys:String>

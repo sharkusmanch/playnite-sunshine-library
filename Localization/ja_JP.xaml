@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">エンコード</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">パフォーマンス</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">出力</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">セッション</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">詳細</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">すべてのオーバーライドをクリア</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">ビットレート</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">映像コーデック</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">ビデオデコーダー</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 クロマ</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">フレームペーシング</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">ゲーム最適化</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">垂直同期</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">表示モード</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">音声設定</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">ホストでオーディオを再生</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">フォーカス喪失時にミュート</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">システムのスリープを防ぐ</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">システムキーをキャプチャ</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Moonlight の追加引数</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">上級者向け。moonlight-qt のコマンドラインにそのまま追加されます。空白で区切られ、シェルのクォート処理は行われません。</sys:String>
 
@@ -234,7 +241,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">グローバルなストリーミング既定値をすべてリセットしますか？ 解像度、FPS、HDR は「自動 (クライアントに合わせる)」に戻り、その他のフィールドはすべて「継承」に戻ります。</sys:String>
 
     <!-- Per-game override field labels -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">ストリーム統計を表示</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">パフォーマンスオーバーレイ</sys:String>
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">解像度 × FPS から自動計算 (例: 1080p/60 → 20 Mbps、4K/60 → 80 Mbps; YUV 4:4:4 の場合は 2 倍)</sys:String>

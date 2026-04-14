@@ -94,6 +94,72 @@ namespace SunshineLibrary.Tests
             Assert.AreEqual(20000, merged.BitrateKbps);
         }
 
+        [TestMethod]
+        public void PerformanceOverlay_EmitsCorrectFlag()
+        {
+            var on  = MoonlightCompatibleClient.ComposeArgs(Host(), App(), new StreamOverrides { PerformanceOverlay = true  }, ClientDisplayInfo.Unknown);
+            var off = MoonlightCompatibleClient.ComposeArgs(Host(), App(), new StreamOverrides { PerformanceOverlay = false }, ClientDisplayInfo.Unknown);
+            var nil = MoonlightCompatibleClient.ComposeArgs(Host(), App(), new StreamOverrides { PerformanceOverlay = null  }, ClientDisplayInfo.Unknown);
+
+            CollectionAssert.Contains(on,  "--performance-overlay");
+            CollectionAssert.Contains(off, "--no-performance-overlay");
+            Assert.IsFalse(nil.Contains("--performance-overlay"));
+            Assert.IsFalse(nil.Contains("--show-stats"));
+        }
+
+        [TestMethod]
+        public void SessionBoolFlags_EmitCorrectly()
+        {
+            var overrides = new StreamOverrides
+            {
+                VSync = true,
+                AudioOnHost = false,
+                MuteOnFocusLoss = true,
+                KeepAwake = false,
+            };
+            var args = MoonlightCompatibleClient.ComposeArgs(Host(), App(), overrides, ClientDisplayInfo.Unknown);
+
+            CollectionAssert.Contains(args, "--vsync");
+            CollectionAssert.Contains(args, "--no-audio-on-host");
+            CollectionAssert.Contains(args, "--mute-on-focus-loss");
+            CollectionAssert.Contains(args, "--no-keep-awake");
+
+            // Negations of what we didn't set
+            Assert.IsFalse(args.Contains("--no-vsync"));
+            Assert.IsFalse(args.Contains("--audio-on-host"));
+        }
+
+        [TestMethod]
+        public void VideoDecoder_EmitsWithValue()
+        {
+            var args = MoonlightCompatibleClient.ComposeArgs(Host(), App(), new StreamOverrides { VideoDecoder = "software" }, ClientDisplayInfo.Unknown);
+            Assert.AreEqual("software", ArgAfter(args, "--video-decoder"));
+        }
+
+        [TestMethod]
+        public void CaptureSystemKeys_EmitsWithValue()
+        {
+            var args = MoonlightCompatibleClient.ComposeArgs(Host(), App(), new StreamOverrides { CaptureSystemKeys = "fullscreen" }, ClientDisplayInfo.Unknown);
+            Assert.AreEqual("fullscreen", ArgAfter(args, "--capture-system-keys"));
+        }
+
+        [TestMethod]
+        public void NullSessionFlags_AreOmitted()
+        {
+            var args = MoonlightCompatibleClient.ComposeArgs(Host(), App(), new StreamOverrides(), ClientDisplayInfo.Unknown);
+
+            Assert.IsFalse(args.Contains("--vsync"));
+            Assert.IsFalse(args.Contains("--no-vsync"));
+            Assert.IsFalse(args.Contains("--video-decoder"));
+            Assert.IsFalse(args.Contains("--audio-on-host"));
+            Assert.IsFalse(args.Contains("--no-audio-on-host"));
+            Assert.IsFalse(args.Contains("--mute-on-focus-loss"));
+            Assert.IsFalse(args.Contains("--no-mute-on-focus-loss"));
+            Assert.IsFalse(args.Contains("--keep-awake"));
+            Assert.IsFalse(args.Contains("--no-keep-awake"));
+            Assert.IsFalse(args.Contains("--capture-system-keys"));
+        }
+
         private static string ArgAfter(System.Collections.Generic.List<string> args, string flag)
         {
             int i = args.IndexOf(flag);

@@ -53,7 +53,13 @@ namespace SunshineLibrary.Tests
             Assert.IsNull(b.Yuv444);
             Assert.IsNull(b.FramePacing);
             Assert.IsNull(b.GameOptimization);
-            Assert.IsNull(b.ShowStats);
+            Assert.IsNull(b.PerformanceOverlay);
+            Assert.IsNull(b.VSync);
+            Assert.IsNull(b.VideoDecoder);
+            Assert.IsNull(b.AudioOnHost);
+            Assert.IsNull(b.MuteOnFocusLoss);
+            Assert.IsNull(b.KeepAwake);
+            Assert.IsNull(b.CaptureSystemKeys);
             Assert.IsNull(b.ExtraArgs);
         }
 
@@ -444,19 +450,117 @@ namespace SunshineLibrary.Tests
         }
 
         [TestMethod]
-        public void ShowStats_FullChain()
+        public void PerformanceOverlay_FullChain()
         {
             Assert.AreEqual(true, Merge(
-                global: new StreamOverrides { ShowStats = false },
-                host:   new StreamOverrides { ShowStats = true }
-            ).ShowStats);
+                global: new StreamOverrides { PerformanceOverlay = false },
+                host:   new StreamOverrides { PerformanceOverlay = true }
+            ).PerformanceOverlay);
 
             Assert.AreEqual(false, Merge(
-                host: new StreamOverrides { ShowStats = true },
-                game: new StreamOverrides { ShowStats = false }
-            ).ShowStats);
+                host: new StreamOverrides { PerformanceOverlay = true },
+                game: new StreamOverrides { PerformanceOverlay = false }
+            ).PerformanceOverlay);
 
-            Assert.IsNull(Merge().ShowStats);
+            Assert.IsNull(Merge().PerformanceOverlay);
+        }
+
+        [TestMethod]
+        public void VSync_FullChain()
+        {
+            Assert.AreEqual(true, Merge(
+                global: new StreamOverrides { VSync = false },
+                host:   new StreamOverrides { VSync = true }
+            ).VSync);
+
+            Assert.AreEqual(false, Merge(
+                host: new StreamOverrides { VSync = true },
+                game: new StreamOverrides { VSync = false }
+            ).VSync);
+
+            Assert.IsNull(Merge().VSync);
+        }
+
+        [TestMethod]
+        public void VideoDecoder_FullChain()
+        {
+            Assert.AreEqual("hardware", Merge(
+                global: new StreamOverrides { VideoDecoder = "auto" },
+                host:   new StreamOverrides { VideoDecoder = "software" },
+                game:   new StreamOverrides { VideoDecoder = "hardware" }
+            ).VideoDecoder);
+
+            Assert.AreEqual("software", Merge(
+                global: new StreamOverrides { VideoDecoder = "auto" },
+                host:   new StreamOverrides { VideoDecoder = "software" }
+            ).VideoDecoder);
+
+            Assert.IsNull(Merge().VideoDecoder);
+        }
+
+        [TestMethod]
+        public void AudioOnHost_FullChain()
+        {
+            Assert.AreEqual(true, Merge(
+                global: new StreamOverrides { AudioOnHost = false },
+                host:   new StreamOverrides { AudioOnHost = true }
+            ).AudioOnHost);
+
+            Assert.AreEqual(false, Merge(
+                host: new StreamOverrides { AudioOnHost = true },
+                game: new StreamOverrides { AudioOnHost = false }
+            ).AudioOnHost);
+
+            Assert.IsNull(Merge().AudioOnHost);
+        }
+
+        [TestMethod]
+        public void MuteOnFocusLoss_FullChain()
+        {
+            Assert.AreEqual(true, Merge(
+                global: new StreamOverrides { MuteOnFocusLoss = false },
+                host:   new StreamOverrides { MuteOnFocusLoss = true }
+            ).MuteOnFocusLoss);
+
+            Assert.AreEqual(false, Merge(
+                host: new StreamOverrides { MuteOnFocusLoss = true },
+                game: new StreamOverrides { MuteOnFocusLoss = false }
+            ).MuteOnFocusLoss);
+
+            Assert.IsNull(Merge().MuteOnFocusLoss);
+        }
+
+        [TestMethod]
+        public void KeepAwake_FullChain()
+        {
+            Assert.AreEqual(true, Merge(
+                global: new StreamOverrides { KeepAwake = false },
+                host:   new StreamOverrides { KeepAwake = true }
+            ).KeepAwake);
+
+            Assert.AreEqual(false, Merge(
+                host: new StreamOverrides { KeepAwake = true },
+                game: new StreamOverrides { KeepAwake = false }
+            ).KeepAwake);
+
+            Assert.IsNull(Merge().KeepAwake);
+        }
+
+        [TestMethod]
+        public void CaptureSystemKeys_FullChain()
+        {
+            Assert.AreEqual("always", Merge(
+                global: new StreamOverrides { CaptureSystemKeys = "never" },
+                host:   new StreamOverrides { CaptureSystemKeys = "fullscreen" },
+                game:   new StreamOverrides { CaptureSystemKeys = "always" }
+            ).CaptureSystemKeys);
+
+            Assert.AreEqual("fullscreen", Merge(
+                global: new StreamOverrides { CaptureSystemKeys = "never" },
+                host:   new StreamOverrides { CaptureSystemKeys = "fullscreen" }
+            ).CaptureSystemKeys);
+
+            Assert.IsNull(Merge().CaptureSystemKeys);
         }
 
         // ══════════════════════════════════════════════════════════════════════
