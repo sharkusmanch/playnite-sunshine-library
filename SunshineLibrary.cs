@@ -349,7 +349,14 @@ namespace SunshineLibrary
                 var msg = ResourceProvider.GetString(w.MessageKey);
                 if (w.FormatArgs != null && w.FormatArgs.Length > 0)
                 {
-                    try { msg = string.Format(msg, w.FormatArgs); } catch (Exception ex) { logger.Debug(ex, $"SunshineLibrary: string.Format failed for key {w.MessageKey}, using raw string"); }
+                    try
+                    {
+                        msg = string.Format(msg, w.FormatArgs);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Debug(ex, $"SunshineLibrary: string.Format failed for key {w.MessageKey}, using raw string");
+                    }
                 }
                 PlayniteApi.Notifications.Add(new NotificationMessage(
                     $"sunshine-prelaunch-{w.MessageKey}",

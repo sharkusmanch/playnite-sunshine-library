@@ -1,3 +1,4 @@
+using Playnite.SDK;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,6 +44,8 @@ namespace SunshineLibrary.Services.Clients
     /// </summary>
     public static class ClientLocator
     {
+        private static readonly ILogger logger = LogManager.GetLogger();
+
         public static IReadOnlyList<string> Locate(ClientLocatorConfig config)
         {
             if (config == null || config.ExeNames == null || config.ExeNames.Length == 0)
@@ -116,7 +119,7 @@ namespace SunshineLibrary.Services.Clients
                         {
                             pkgDirs = Directory.EnumerateDirectories(wingetRoot, pattern, SearchOption.TopDirectoryOnly);
                         }
-                        catch { continue; /* permissions or invalid pattern — skip this winget package pattern */ }
+                        catch (Exception ex) { logger.Debug(ex, "ClientLocator: could not enumerate winget package directories, skipping pattern"); continue; }
 
                         foreach (var pkg in pkgDirs)
                             foreach (var name in exeNames)
@@ -126,7 +129,7 @@ namespace SunshineLibrary.Services.Clients
                                 {
                                     matches = Directory.EnumerateFiles(pkg, name, SearchOption.AllDirectories);
                                 }
-                                catch { continue; /* permissions or path error — skip this package directory */ }
+                                catch (Exception ex) { logger.Debug(ex, "ClientLocator: could not enumerate files in package directory, skipping"); continue; }
                                 foreach (var exe in matches) TryAdd(exe);
                             }
                     }
