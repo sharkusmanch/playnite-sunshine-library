@@ -460,7 +460,7 @@ namespace SunshineLibrary.Settings
             controls.Children.Add(valueCombo);
 
             var hint = fallback.HasValue
-                ? string.Format(L("LOC_SunshineLibrary_Override_Fallback_Bool"), fallback.Value ? "On" : "Off")
+                ? string.Format(L("LOC_SunshineLibrary_Override_Fallback_Bool"), fallback.Value ? L("LOC_SunshineLibrary_Bool_On") : L("LOC_SunshineLibrary_Bool_Off"))
                 : null;
             return FieldBlock(label, controls, hint);
         }

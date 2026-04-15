@@ -244,6 +244,9 @@
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (auto-calc)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(none)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">Host: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">On</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Off</sys:String>
 
     <!-- Bulk dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">Bulk edit streaming settings</sys:String>

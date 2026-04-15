@@ -111,14 +111,14 @@ namespace SunshineLibrary.Settings
             }
 
             // Host sub-header
-            var hostLabel = new TextBlock
+            var hostSubHeader = new TextBlock
             {
-                Text = string.Format("Host: {0}", this.hostLabel),
+                Text = string.Format(L("LOC_SunshineLibrary_EffectiveSettings_HostLabel"), this.hostLabel),
                 FontSize = 12,
                 Margin = new Thickness(0, 0, 0, 10),
             };
-            hostLabel.SetResourceReference(TextBlock.ForegroundProperty, "TextBrushDarker");
-            content.Children.Add(hostLabel);
+            hostSubHeader.SetResourceReference(TextBlock.ForegroundProperty, "TextBrushDarker");
+            content.Children.Add(hostSubHeader);
 
             // Provenance table
             content.Children.Add(BuildProvenanceGrid());

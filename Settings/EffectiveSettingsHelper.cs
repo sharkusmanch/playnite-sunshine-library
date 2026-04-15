@@ -76,7 +76,7 @@ namespace SunshineLibrary.Settings
                 if (merged.Hdr == HdrMode.Auto)
                 {
                     note = display.IsKnown
-                        ? string.Format(L("LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay"), display.HdrEnabled ? "On" : "Off")
+                        ? string.Format(L("LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay"), display.HdrEnabled ? L("LOC_SunshineLibrary_Bool_On") : L("LOC_SunshineLibrary_Bool_Off"))
                         : L("LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable");
                 }
                 list.Add(Field("LOC_SunshineLibrary_OverrideField_Hdr", val, src, note));
@@ -87,7 +87,7 @@ namespace SunshineLibrary.Settings
 
             // Bitrate (special-cased: auto-calculated when no layer sets it)
             {
-                var src = GetSourceNullableInt(pg?.BitrateKbps, h?.BitrateKbps, g?.BitrateKbps);
+                var src = GetSourceEnum<int>(pg?.BitrateKbps, h?.BitrateKbps, g?.BitrateKbps);
                 string val, note;
                 if (merged.BitrateKbps.HasValue)
                 {
@@ -192,14 +192,6 @@ namespace SunshineLibrary.Settings
             return OverrideSource.BuiltIn;
         }
 
-        private static OverrideSource GetSourceNullableInt(int? pg, int? h, int? g)
-        {
-            if (pg.HasValue) return OverrideSource.PerGame;
-            if (h.HasValue) return OverrideSource.Host;
-            if (g.HasValue) return OverrideSource.Global;
-            return OverrideSource.BuiltIn;
-        }
-
         private static OverrideSource GetSourceStr(string pg, string h, string g)
         {
             if (!string.IsNullOrEmpty(pg)) return OverrideSource.PerGame;
@@ -237,8 +229,8 @@ namespace SunshineLibrary.Settings
 
         private static string FormatBool(bool? val)
         {
-            if (val == true) return "On";
-            if (val == false) return "Off";
+            if (val == true) return L("LOC_SunshineLibrary_Bool_On");
+            if (val == false) return L("LOC_SunshineLibrary_Bool_Off");
             return Dash();
         }
 

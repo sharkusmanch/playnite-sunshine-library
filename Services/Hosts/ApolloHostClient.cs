@@ -159,6 +159,9 @@ namespace SunshineLibrary.Services.Hosts
             var login = await EnsureSessionAsync(ct).ConfigureAwait(false);
             if (!login.IsOk) return false;
 
+            // GetJsonAsync catches and classifies all network exceptions internally.
+            // This outer catch is a defensive belt-and-suspenders guard against any
+            // unexpected throw that would otherwise surface as a detection failure.
             try
             {
                 var r = await GetJsonAsync<Newtonsoft.Json.Linq.JToken>("api/playnite/status", ct).ConfigureAwait(false);

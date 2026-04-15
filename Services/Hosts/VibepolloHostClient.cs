@@ -28,14 +28,14 @@ namespace SunshineLibrary.Services.Hosts
         public override async Task<HostResult<IReadOnlyList<RemoteApp>>> ListAppsAsync(CancellationToken ct)
         {
             var login = await EnsureSessionAsync(ct).ConfigureAwait(false);
-            if (!login.IsOk) return Fail(login);
+            if (!login.IsOk) return ToGeneric<IReadOnlyList<RemoteApp>>(login);
 
             // Primary fetch: /api/apps gives stable UUIDs used for cover art and GameId.
             var appsResult = await GetJsonAsync<ApolloAppsResponse>("api/apps", ct).ConfigureAwait(false);
             if (!appsResult.IsOk)
             {
                 if (appsResult.Kind == HostResultKind.AuthFailed) InvalidateSession();
-                return Fail(appsResult);
+                return ToGeneric<IReadOnlyList<RemoteApp>>(appsResult.AsStatus());
             }
 
             // Enrichment fetch: /api/playnite/games gives PluginName + Categories.
@@ -119,20 +119,5 @@ namespace SunshineLibrary.Services.Hosts
             return map;
         }
 
-        private static HostResult<IReadOnlyList<RemoteApp>> Fail(HostResult r)
-        {
-            switch (r.Kind)
-            {
-                case HostResultKind.AuthFailed: return HostResult<IReadOnlyList<RemoteApp>>.AuthFailed();
-                case HostResultKind.CertMismatch: return HostResult<IReadOnlyList<RemoteApp>>.CertMismatch(r.NewCertFingerprintSpkiSha256);
-                case HostResultKind.CertMissing: return HostResult<IReadOnlyList<RemoteApp>>.CertMissing();
-                case HostResultKind.Timeout: return HostResult<IReadOnlyList<RemoteApp>>.Timeout();
-                case HostResultKind.ServerError: return HostResult<IReadOnlyList<RemoteApp>>.ServerError(r.StatusCode ?? 0, r.Message);
-                case HostResultKind.Cancelled: return HostResult<IReadOnlyList<RemoteApp>>.Cancelled();
-                default: return HostResult<IReadOnlyList<RemoteApp>>.Unreachable(r.Message);
-            }
-        }
-
-        private static HostResult<IReadOnlyList<RemoteApp>> Fail<T>(HostResult<T> r) => Fail(r.AsStatus());
     }
 }
