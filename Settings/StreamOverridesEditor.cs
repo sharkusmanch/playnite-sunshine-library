@@ -373,7 +373,7 @@ namespace SunshineLibrary.Settings
             combo.SelectionChanged += (_, __) => working.VideoDecoder = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), combo,
-                FormatFallback("LOC_SunshineLibrary_Override_Fallback_DisplayMode", effectiveFallback.VideoDecoder));
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Static", effectiveFallback.VideoDecoder));
         }
 
         private FrameworkElement BuildCaptureSystemKeysRow()
@@ -382,7 +382,7 @@ namespace SunshineLibrary.Settings
             combo.SelectionChanged += (_, __) => working.CaptureSystemKeys = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_CaptureSystemKeys"), combo,
-                FormatFallback("LOC_SunshineLibrary_Override_Fallback_DisplayMode", effectiveFallback.CaptureSystemKeys));
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Static", effectiveFallback.CaptureSystemKeys));
         }
 
         private FrameworkElement BuildScalarBoolRow(string label, bool? currentValue, Action<bool?> setter, bool? fallback)

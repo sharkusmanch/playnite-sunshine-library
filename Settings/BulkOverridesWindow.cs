@@ -101,6 +101,7 @@ namespace SunshineLibrary.Settings
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_Yuv444"), out applyYuv444, BuildBoolControls(out yuv444Combo)));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_FramePacing"), out applyFramePacing, BuildBoolControls(out framePacingCombo)));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_GameOptimization"), out applyGameOpt, BuildBoolControls(out gameOptCombo)));
+            // Key intentionally reused (value updated in-place to "Performance overlay") to avoid breaking external localization files.
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_ShowStats"), out applyPerfOverlay, BuildBoolControls(out perfOverlayCombo)));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_VSync"), out applyVSync, BuildBoolControls(out vSyncCombo)));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), out applyVideoDecoder, BuildVideoDecoderControls()));
