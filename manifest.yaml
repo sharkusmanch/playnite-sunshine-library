@@ -1,5 +1,17 @@
 AddonId: SunshineLibrary_496637e1-1607-4016-aa4b-d6f732c21210
 Packages:
+  - Version: 0.0.4
+    RequiredApiVersion: 6.12.0
+    ReleaseDate: 2026-04-15
+    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.4/SunshineLibrary_v0.0.4.pext
+    Changelog:
+      - Add CLAUDE.md with C# and Playnite coding guidelines
+      - Fix exception handling, resource disposal, and database batching violations from CLAUDE.md audit
+      - 'Address PR feedback: log exceptions in ClientLocator, expand string.Format try/catch'
+      - Add Renovate config for automated dependency updates
+      - Add session streaming flags and fix --performance-overlay bug
+      - Add dynamic resolution presets based on detected display aspect ratio
+      - Remove dead code in BuildResolutionRow
   - Version: 0.0.3
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-04-13
