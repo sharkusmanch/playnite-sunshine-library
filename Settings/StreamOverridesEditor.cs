@@ -119,9 +119,7 @@ namespace SunshineLibrary.Settings
             };
 
             var presets = ResolutionPresetsForDisplay(_display);
-            UIElement presetsPanel = presets.Length > 0
-                ? BuildResolutionPresetsPanel(presets, modeCombo, staticBox)
-                : null;
+            var presetsPanel = BuildResolutionPresetsPanel(presets, modeCombo, staticBox);
 
             modeCombo.SelectionChanged += (_, __) =>
             {
@@ -147,36 +145,28 @@ namespace SunshineLibrary.Settings
             });
             var inlineControls = HorizontalRow();
             inlineControls.Children.Add(modeCombo);
-            if (presets.Length > 0)
+            Action<int> stepPreset = direction =>
             {
-                Action<int> stepPreset = direction =>
-                {
-                    SelectByTag(modeCombo, ResolutionMode.Static);
-                    string current = staticBox.Text.Trim();
-                    int idx = Array.FindIndex(presets, p => string.Equals(p, current, StringComparison.OrdinalIgnoreCase));
-                    int next = idx < 0
-                        ? (direction > 0 ? 0 : presets.Length - 1)
-                        : Math.Max(0, Math.Min(presets.Length - 1, idx + direction));
-                    staticBox.Text = presets[next];
-                };
-                var stepDown = new Button { Content = "-", Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 0, 2, 0), FontSize = 11 };
-                var stepUp = new Button { Content = "+", Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 0, 4, 0), FontSize = 11 };
-                stepDown.SetResourceReference(Control.ForegroundProperty, "TextBrush");
-                stepUp.SetResourceReference(Control.ForegroundProperty, "TextBrush");
-                stepDown.Click += (_, __) => stepPreset(-1);
-                stepUp.Click += (_, __) => stepPreset(+1);
-                inlineControls.Children.Add(stepDown);
-                inlineControls.Children.Add(staticBox);
-                inlineControls.Children.Add(stepUp);
-            }
-            else
-            {
-                inlineControls.Children.Add(staticBox);
-            }
+                SelectByTag(modeCombo, ResolutionMode.Static);
+                string current = staticBox.Text.Trim();
+                int idx = Array.FindIndex(presets, p => string.Equals(p, current, StringComparison.OrdinalIgnoreCase));
+                int next = idx < 0
+                    ? (direction > 0 ? 0 : presets.Length - 1)
+                    : Math.Max(0, Math.Min(presets.Length - 1, idx + direction));
+                staticBox.Text = presets[next];
+            };
+            var stepDown = new Button { Content = "-", Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 0, 2, 0), FontSize = 11 };
+            var stepUp = new Button { Content = "+", Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 0, 4, 0), FontSize = 11 };
+            stepDown.SetResourceReference(Control.ForegroundProperty, "TextBrush");
+            stepUp.SetResourceReference(Control.ForegroundProperty, "TextBrush");
+            stepDown.Click += (_, __) => stepPreset(-1);
+            stepUp.Click += (_, __) => stepPreset(+1);
+            inlineControls.Children.Add(stepDown);
+            inlineControls.Children.Add(staticBox);
+            inlineControls.Children.Add(stepUp);
             controlsRow.Children.Add(inlineControls);
             outer.Children.Add(controlsRow);
-            if (presetsPanel != null)
-                outer.Children.Add(presetsPanel);
+            outer.Children.Add(presetsPanel);
             var hint = FormatResolutionFallback();
             if (!string.IsNullOrEmpty(hint))
                 outer.Children.Add(FallbackHint(hint));
@@ -383,7 +373,7 @@ namespace SunshineLibrary.Settings
             combo.SelectionChanged += (_, __) => working.VideoDecoder = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), combo,
-                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Codec", effectiveFallback.VideoDecoder));
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_DisplayMode", effectiveFallback.VideoDecoder));
         }
 
         private FrameworkElement BuildCaptureSystemKeysRow()
@@ -392,7 +382,7 @@ namespace SunshineLibrary.Settings
             combo.SelectionChanged += (_, __) => working.CaptureSystemKeys = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_CaptureSystemKeys"), combo,
-                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Codec", effectiveFallback.CaptureSystemKeys));
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_DisplayMode", effectiveFallback.CaptureSystemKeys));
         }
 
         private FrameworkElement BuildScalarBoolRow(string label, bool? currentValue, Action<bool?> setter, bool? fallback)
