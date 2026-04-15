@@ -5,11 +5,14 @@ namespace SunshineLibrary.Models
     /// and Apollo (ClassicOldSong fork) share the admin API surface but Apollo
     /// adds endpoints (OTP, client management, virtual display) and guarantees
     /// stable per-app uuids that Sunshine doesn't.
+    /// Vibepollo (Nonary/Vibepollo) is an Apollo fork that additionally exposes
+    /// Playnite library metadata via /api/playnite/* endpoints.
     /// </summary>
     public enum ServerType
     {
         Unknown,
         Sunshine,
-        Apollo
+        Apollo,
+        Vibepollo
     }
 }

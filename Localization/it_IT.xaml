@@ -240,4 +240,33 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Overlay delle prestazioni</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calcolato automaticamente da risoluzione × fps (es. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 raddoppia questo valore)</sys:String>
 
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Visualizza impostazioni di streaming effettive…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Riga di comando effettiva</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Informazioni schermo non disponibili — la risoluzione Auto, fps e HDR potrebbero variare al momento dell'avvio.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Impostazioni di streaming effettive — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">L'host di questo gioco non è più configurato. Aggiungi nuovamente l'host nelle impostazioni e riprova.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Informazioni schermo non disponibili — i campi risoluzione Auto, fps e HDR vengono mostrati senza i valori risolti a runtime.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Riga di comando Moonlight effettiva</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Copia</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Chiudi</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Campo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Valore</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Sorgente</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Nota runtime</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">integrato</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">globale</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">questo gioco</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (dallo schermo)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(schermo non disponibile)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Calcolato automaticamente</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (calcolo auto)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(nessuno)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
+
 </ResourceDictionary>

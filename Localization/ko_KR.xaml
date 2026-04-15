@@ -248,4 +248,33 @@
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">해상도 × fps에서 자동 계산 (예: 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 사용 시 두 배)</sys:String>
 
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">유효 스트리밍 설정 보기…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">유효 명령줄</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">디스플레이 정보를 사용할 수 없음 — 자동 해상도, fps, HDR은 실행 시 다를 수 있습니다.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">유효 스트리밍 설정 — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">이 게임의 호스트가 더 이상 구성되어 있지 않습니다. 설정에서 호스트를 다시 추가하고 시도하십시오.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">디스플레이 정보를 사용할 수 없음 — 자동 해상도, fps, HDR 필드가 런타임 해석 값 없이 표시됩니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">유효 Moonlight 명령줄</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">복사</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">닫기</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">필드</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">값</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">소스</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">런타임 메모</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">기본 제공</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">전역</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">호스트</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">이 게임</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (디스플레이에서)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(디스플레이 정보 없음)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">자동 계산</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (자동 계산)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(없음)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
+
 </ResourceDictionary>

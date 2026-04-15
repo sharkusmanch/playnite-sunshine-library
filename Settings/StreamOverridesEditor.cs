@@ -27,6 +27,15 @@ namespace SunshineLibrary.Settings
         private readonly StreamOverrides effectiveFallback;
         private readonly ClientDisplayInfo _display;
 
+        /// <summary>
+        /// Invoked synchronously on the UI thread after any field write to <c>working</c>.
+        /// Consumers (e.g. <see cref="GameOverridesWindow"/>) wire this to refresh a live preview.
+        /// </summary>
+        public Action OnWorkingChanged { get; set; }
+
+        /// <summary>Client display info detected at construction time. Used by the preview panel.</summary>
+        internal ClientDisplayInfo Display { get { return _display; } }
+
         // All field labels are the same width so controls start at a consistent column.
         private const double LabelWidth = 145;
 
@@ -127,10 +136,12 @@ namespace SunshineLibrary.Settings
                 working.ResolutionMode = m == ResolutionMode.Inherit ? (ResolutionMode?)null : m;
                 staticBox.IsEnabled = m == ResolutionMode.Static;
                 if (m != ResolutionMode.Static) working.ResolutionStatic = null;
+                OnWorkingChanged?.Invoke();
             };
             staticBox.TextChanged += (_, __) =>
             {
                 working.ResolutionStatic = string.IsNullOrWhiteSpace(staticBox.Text) ? null : staticBox.Text.Trim();
+                OnWorkingChanged?.Invoke();
             };
 
             // Build layout manually so the presets row can sit below the controls row.
@@ -264,10 +275,12 @@ namespace SunshineLibrary.Settings
                 working.FpsMode = m == FpsMode.Inherit ? (FpsMode?)null : m;
                 staticBox.IsEnabled = m == FpsMode.Static;
                 if (m != FpsMode.Static) working.FpsStatic = null;
+                OnWorkingChanged?.Invoke();
             };
             staticBox.TextChanged += (_, __) =>
             {
                 working.FpsStatic = int.TryParse(staticBox.Text, out var fps) ? fps : (int?)null;
+                OnWorkingChanged?.Invoke();
             };
 
             var controls = HorizontalRow();
@@ -288,6 +301,7 @@ namespace SunshineLibrary.Settings
             {
                 var m = (HdrMode)((ComboBoxItem)combo.SelectedItem).Tag;
                 working.Hdr = m == HdrMode.Inherit ? (HdrMode?)null : m;
+                OnWorkingChanged?.Invoke();
             };
             return FieldBlock(L("LOC_SunshineLibrary_OverrideField_Hdr"), combo, FormatHdrFallback());
         }
@@ -317,16 +331,19 @@ namespace SunshineLibrary.Settings
             {
                 valueBox.IsEnabled = true;
                 if (int.TryParse(valueBox.Text, out var v)) working.BitrateKbps = v;
+                OnWorkingChanged?.Invoke();
             };
             overrideBox.Unchecked += (_, __) =>
             {
                 valueBox.IsEnabled = false;
                 working.BitrateKbps = null;
+                OnWorkingChanged?.Invoke();
             };
             valueBox.TextChanged += (_, __) =>
             {
                 if (overrideBox.IsChecked == true)
                     working.BitrateKbps = int.TryParse(valueBox.Text, out var v) ? v : (int?)null;
+                OnWorkingChanged?.Invoke();
             };
 
             var controls = HorizontalRow();
@@ -343,7 +360,11 @@ namespace SunshineLibrary.Settings
         private FrameworkElement BuildCodecRow()
         {
             var combo = BuildStringEnumCombo(working.VideoCodec, new[] { "auto", "H.264", "HEVC", "AV1" });
-            combo.SelectionChanged += (_, __) => working.VideoCodec = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            combo.SelectionChanged += (_, __) =>
+            {
+                working.VideoCodec = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+                OnWorkingChanged?.Invoke();
+            };
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_VideoCodec"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_Codec", effectiveFallback.VideoCodec));
@@ -352,7 +373,11 @@ namespace SunshineLibrary.Settings
         private FrameworkElement BuildDisplayModeRow()
         {
             var combo = BuildStringEnumCombo(working.DisplayMode, new[] { "fullscreen", "windowed", "borderless" });
-            combo.SelectionChanged += (_, __) => working.DisplayMode = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            combo.SelectionChanged += (_, __) =>
+            {
+                working.DisplayMode = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+                OnWorkingChanged?.Invoke();
+            };
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_DisplayMode"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_DisplayMode", effectiveFallback.DisplayMode));
@@ -361,7 +386,11 @@ namespace SunshineLibrary.Settings
         private FrameworkElement BuildAudioRow()
         {
             var combo = BuildStringEnumCombo(working.AudioConfig, new[] { "stereo", "5.1-surround", "7.1-surround" });
-            combo.SelectionChanged += (_, __) => working.AudioConfig = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            combo.SelectionChanged += (_, __) =>
+            {
+                working.AudioConfig = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+                OnWorkingChanged?.Invoke();
+            };
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_AudioConfig"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_AudioConfig", effectiveFallback.AudioConfig));
@@ -370,7 +399,11 @@ namespace SunshineLibrary.Settings
         private FrameworkElement BuildVideoDecoderRow()
         {
             var combo = BuildStringEnumCombo(working.VideoDecoder, new[] { "auto", "software", "hardware" });
-            combo.SelectionChanged += (_, __) => working.VideoDecoder = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            combo.SelectionChanged += (_, __) =>
+            {
+                working.VideoDecoder = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+                OnWorkingChanged?.Invoke();
+            };
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_Static", effectiveFallback.VideoDecoder));
@@ -379,7 +412,11 @@ namespace SunshineLibrary.Settings
         private FrameworkElement BuildCaptureSystemKeysRow()
         {
             var combo = BuildStringEnumCombo(working.CaptureSystemKeys, new[] { "never", "fullscreen", "always" });
-            combo.SelectionChanged += (_, __) => working.CaptureSystemKeys = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            combo.SelectionChanged += (_, __) =>
+            {
+                working.CaptureSystemKeys = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+                OnWorkingChanged?.Invoke();
+            };
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_CaptureSystemKeys"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_Static", effectiveFallback.CaptureSystemKeys));
@@ -403,16 +440,19 @@ namespace SunshineLibrary.Settings
             {
                 valueCombo.IsEnabled = true;
                 setter((bool)((ComboBoxItem)valueCombo.SelectedItem).Tag);
+                OnWorkingChanged?.Invoke();
             };
             overrideBox.Unchecked += (_, __) =>
             {
                 valueCombo.IsEnabled = false;
                 setter(null);
+                OnWorkingChanged?.Invoke();
             };
             valueCombo.SelectionChanged += (_, __) =>
             {
                 if (overrideBox.IsChecked == true)
                     setter((bool)((ComboBoxItem)valueCombo.SelectedItem).Tag);
+                OnWorkingChanged?.Invoke();
             };
 
             var controls = HorizontalRow();
@@ -445,6 +485,7 @@ namespace SunshineLibrary.Settings
             box.TextChanged += (_, __) =>
             {
                 working.ExtraArgs = string.IsNullOrWhiteSpace(box.Text) ? null : box.Text.Trim();
+                OnWorkingChanged?.Invoke();
             };
             outer.Children.Add(box);
 

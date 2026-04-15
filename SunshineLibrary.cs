@@ -420,6 +420,12 @@ namespace SunshineLibrary
                     Description = ResourceProvider.GetString("LOC_SunshineLibrary_Menu_StreamingSettings"),
                     Action = _ => OpenPerGameOverrideDialog(game),
                 };
+                yield return new GameMenuItem
+                {
+                    MenuSection = section,
+                    Description = ResourceProvider.GetString("LOC_SunshineLibrary_Menu_ViewEffectiveSettings"),
+                    Action = _ => OpenEffectiveSettingsDialog(game),
+                };
             }
             else
             {
@@ -448,7 +454,18 @@ namespace SunshineLibrary
                 .MergedWith(settingsVm.Settings?.GlobalOverrides)
                 .MergedWith(host?.Defaults);
             var current = overrideStore.TryGet(game.GameId);
-            var dlg = new GameOverridesWindow(PlayniteApi, game.Name, current, fallback);
+
+            // Look up the remote app name from cache so the preview shows the host-side name.
+            RemoteApp remoteApp = null;
+            if (host != null)
+            {
+                var appStableId = ParseAppId(game.GameId);
+                var cachedApps = appStableId != null ? appCache.TryLoad(host.Id) : null;
+                var cachedApp = cachedApps?.FirstOrDefault(a => a.StableId == appStableId);
+                remoteApp = new RemoteApp { Name = cachedApp?.Name ?? game.Name, StableId = appStableId };
+            }
+
+            var dlg = new GameOverridesWindow(PlayniteApi, game.Name, current, fallback, host, remoteApp);
             if (!dlg.ShowDialog(System.Windows.Application.Current?.MainWindow)) return;
 
             if (dlg.CleanClear)
@@ -459,6 +476,46 @@ namespace SunshineLibrary
             {
                 overrideStore.Set(game.GameId, dlg.Result);
             }
+        }
+
+        private void OpenEffectiveSettingsDialog(Game game)
+        {
+            var host = ResolveHostFromGame(game);
+            if (host == null)
+            {
+                System.Windows.MessageBox.Show(
+                    ResourceProvider.GetString("LOC_SunshineLibrary_EffectiveSettings_HostGone"),
+                    ResourceProvider.GetString("LOC_SunshineLibrary_Name"),
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+                return;
+            }
+
+            var appStableId = ParseAppId(game.GameId);
+            if (appStableId == null) return;
+
+            var display = DisplayProbe.Detect();
+            var global = settingsVm.Settings?.GlobalOverrides;
+            var hostDefs = host.Defaults;
+            var perGame = overrideStore.TryGet(game.GameId);
+            var merged = StreamOverrides.BuiltinDefault
+                .MergedWith(global)
+                .MergedWith(hostDefs)
+                .MergedWith(perGame);
+
+            var cachedApps = appCache.TryLoad(host.Id);
+            var cachedApp = cachedApps?.FirstOrDefault(a => a.StableId == appStableId);
+            var remoteApp = new RemoteApp { Name = cachedApp?.Name ?? game.Name, StableId = appStableId };
+
+            var args = MoonlightCompatibleClient.ComposeArgs(host, remoteApp, merged, display);
+            var cmdLine = PasteArguments.Build(args);
+
+            var provenance = EffectiveSettingsHelper.BuildProvenanceList(
+                StreamOverrides.BuiltinDefault, global, hostDefs, perGame, merged, display);
+
+            var dlg = new EffectiveSettingsWindow(
+                PlayniteApi, game.Name, host.Label, provenance, cmdLine, display.IsKnown);
+            dlg.ShowDialog(System.Windows.Application.Current?.MainWindow);
         }
 
         private void OpenBulkOverrideDialog(IReadOnlyList<Game> games)
@@ -525,6 +582,16 @@ namespace SunshineLibrary
                 Description = ResourceProvider.GetString("LOC_SunshineLibrary_Menu_CleanOrphans"),
                 Action = _ => CleanOrphanOverrides(),
             };
+
+            if (ActiveHosts().Any(h => h.ServerType == ServerType.Vibepollo))
+            {
+                yield return new MainMenuItem
+                {
+                    MenuSection = $"@{section}",
+                    Description = ResourceProvider.GetString("LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary"),
+                    Action = _ => RunVibepolloRefresh(),
+                };
+            }
         }
 
         /// <summary>
@@ -599,6 +666,63 @@ namespace SunshineLibrary
                 "sunshine-orphan-games-removed",
                 string.Format(ResourceProvider.GetString("LOC_SunshineLibrary_RemoveOrphanGames_Done"), orphans.Count),
                 NotificationType.Info));
+        }
+
+        /// <summary>
+        /// POSTs /api/playnite/force_sync to each Vibepollo host (telling it to reconcile
+        /// its Playnite library), then runs a full resync so newly installed games appear
+        /// in Playnite immediately.
+        /// </summary>
+        private void RunVibepolloRefresh()
+        {
+            var vibepolloHosts = ActiveHosts().Where(h => h.ServerType == ServerType.Vibepollo).ToList();
+            if (vibepolloHosts.Count == 0) return;
+
+            PlayniteApi.Dialogs.ActivateGlobalProgress(progress =>
+            {
+                // Step 1: force_sync on each Vibepollo host
+                progress.ProgressMaxValue = vibepolloHosts.Count + 1;
+                foreach (var host in vibepolloHosts)
+                {
+                    if (progress.CancelToken.IsCancellationRequested) return;
+                    progress.CurrentProgressValue++;
+
+                    HostClient client = null;
+                    try
+                    {
+                        client = HostClientFactory.Create(host);
+                        var r = client.ForceSyncAsync(progress.CancelToken).GetAwaiter().GetResult();
+                        if (!r.IsOk)
+                            logger.Debug($"[{host.Label}] force_sync returned {r.Kind}");
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Warn($"[{host.Label}] Vibepollo refresh failed: {SafeLogging.Redact(ex.Message)}");
+                    }
+                    finally
+                    {
+                        client?.Dispose();
+                    }
+                }
+
+                if (progress.CancelToken.IsCancellationRequested) return;
+
+                // Step 2: pull the updated app lists into Playnite
+                progress.CurrentProgressValue++;
+                var allHosts = ActiveHosts().ToList();
+                var summary = syncService.SyncAllAsync(allHosts, progress.CancelToken).GetAwaiter().GetResult();
+                using (PlayniteApi.Database.BufferedUpdate())
+                {
+                    foreach (var meta in summary.AllGames)
+                        PlayniteApi.Database.ImportGame(meta, this);
+                }
+
+                foreach (var r in summary.Results)
+                {
+                    if (r.Status != null && !r.Status.IsOk && !r.FromCache)
+                        SurfaceError(r.Host, r.Status);
+                }
+            }, new GlobalProgressOptions(ResourceProvider.GetString("LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary"), true));
         }
 
         private void RunHostStatusProbe()

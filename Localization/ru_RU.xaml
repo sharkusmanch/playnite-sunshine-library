@@ -246,4 +246,33 @@
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Рассчитывается автоматически из разрешения × fps (напр. 1080p/60 → 20 Мбит/с, 4K/60 → 80 Мбит/с; YUV 4:4:4 удваивает значение)</sys:String>
 
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Просмотреть эффективные настройки стриминга…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Эффективная командная строка</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Информация о дисплее недоступна — автоматические разрешение, fps и HDR могут отличаться в момент запуска.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Эффективные настройки стриминга — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">Хост для этой игры больше не настроен. Добавьте хост обратно в настройках и повторите попытку.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Информация о дисплее недоступна — поля с автоматическим разрешением, fps и HDR показаны без значений, определяемых во время выполнения.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Эффективная командная строка Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Скопировать</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Закрыть</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Параметр</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Значение</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Источник</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Примечание о выполнении</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">встроенный</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">глобальный</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">хост</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">эта игра</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (с дисплея)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(дисплей недоступен)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Рассчитывается автоматически</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (авторасчёт)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(нет)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
+
 </ResourceDictionary>

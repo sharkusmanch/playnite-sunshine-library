@@ -248,4 +248,33 @@
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Automaticky vypočítáno z rozlišení × fps (např. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 tuto hodnotu zdvojnásobí)</sys:String>
 
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Zobrazit efektivní nastavení streamování…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Efektivní příkazový řádek</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Informace o obrazovce nejsou dostupné — automatické rozlišení, fps a HDR se mohou při spuštění lišit.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Efektivní nastavení streamování — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">Hostitel pro tuto hru již není nakonfigurován. Přidejte hostitele zpět v nastavení a zkuste to znovu.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Informace o obrazovce nejsou dostupné — pole s automatickým rozlišením, fps a HDR jsou zobrazena bez hodnot určovaných za běhu.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Efektivní příkazový řádek Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Kopírovat</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Zavřít</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Pole</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Hodnota</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Zdroj</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Poznámka za běhu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">vestavěný</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">globální</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">hostitel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">tato hra</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (z obrazovky)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(obrazovka nedostupná)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Automaticky vypočítáno</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (auto-výpočet)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(žádné)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
+
 </ResourceDictionary>

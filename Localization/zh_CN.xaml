@@ -246,4 +246,33 @@
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">根据分辨率 × 帧率自动计算(例如 1080p/60 → 20 Mbps,4K/60 → 80 Mbps;YUV 4:4:4 将使此值翻倍)</sys:String>
 
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">查看有效串流设置…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">有效命令行</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">显示器信息不可用 — 自动分辨率、帧率和 HDR 可能在启动时有所不同。</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">有效串流设置 — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">此游戏的主机不再处于配置状态。请在设置中重新添加该主机后重试。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">显示器信息不可用 — 自动分辨率、帧率和 HDR 字段未显示运行时解析值。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">有效 Moonlight 命令行</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">复制</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">关闭</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">字段</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">值</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">来源</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">运行时备注</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">内置</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">全局</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">主机</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">此游戏</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (来自显示器)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(显示器信息不可用)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">自动计算</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (自动计算)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(无)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
+
 </ResourceDictionary>

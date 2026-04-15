@@ -15,7 +15,7 @@ namespace SunshineLibrary.Services.Hosts
     /// All protected endpoints require the cookie; the base-class Authorization
     /// header is cleared and replaced with a lazy login on first use.
     /// </summary>
-    public sealed class ApolloHostClient : HostClient
+    public class ApolloHostClient : HostClient
     {
         public override ServerType ServerType => ServerType.Apollo;
 
@@ -43,7 +43,7 @@ namespace SunshineLibrary.Services.Hosts
         /// response header is captured automatically and replayed on every subsequent
         /// request to the same origin.
         /// </summary>
-        private async Task<HostResult> EnsureSessionAsync(CancellationToken ct)
+        protected async Task<HostResult> EnsureSessionAsync(CancellationToken ct)
         {
             if (_sessionEstablished) return HostResult.Ok();
             if (_loginFailed) return HostResult.AuthFailed(); // credentials rejected — don't hammer server
@@ -84,7 +84,7 @@ namespace SunshineLibrary.Services.Hosts
 
         // Resets the session so the next call re-authenticates (e.g. after cookie expiry).
         // Does NOT reset _loginFailed — a credential failure stays failed for this instance's lifetime.
-        private void InvalidateSession() => _sessionEstablished = false;
+        protected void InvalidateSession() => _sessionEstablished = false;
 
         // ── HostClient overrides ──────────────────────────────────────────────
 
@@ -149,6 +149,27 @@ namespace SunshineLibrary.Services.Hosts
             return r;
         }
 
+        /// <summary>
+        /// Probes /api/playnite/status to distinguish Vibepollo from plain Apollo.
+        /// Vibepollo returns 200; Apollo returns 404 for this endpoint.
+        /// Called by <see cref="HostClientFactory"/> during server-type detection.
+        /// </summary>
+        public async Task<bool> IsVibepolloAsync(CancellationToken ct)
+        {
+            var login = await EnsureSessionAsync(ct).ConfigureAwait(false);
+            if (!login.IsOk) return false;
+
+            try
+            {
+                var r = await GetJsonAsync<Newtonsoft.Json.Linq.JToken>("api/playnite/status", ct).ConfigureAwait(false);
+                return r.IsOk;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public override void Dispose()
         {
             _loginGate.Dispose();
@@ -157,7 +178,7 @@ namespace SunshineLibrary.Services.Hosts
 
         // ── helpers ───────────────────────────────────────────────────────────
 
-        private static string FallbackId(string name, string cmd, int idx)
+        protected static string FallbackId(string name, string cmd, int idx)
             => $"fallback:{idx}:{name?.GetHashCode() ?? 0:x}:{cmd?.GetHashCode() ?? 0:x}";
 
         /// <summary>Propagate a typed error result into the apps-list result type.</summary>
@@ -165,7 +186,7 @@ namespace SunshineLibrary.Services.Hosts
             => ToGeneric<IReadOnlyList<RemoteApp>>(r);
 
         /// <summary>Lift a status-only <see cref="HostResult"/> into a typed result.</summary>
-        private static HostResult<T> ToGeneric<T>(HostResult r)
+        protected static HostResult<T> ToGeneric<T>(HostResult r)
         {
             switch (r.Kind)
             {
