@@ -273,6 +273,9 @@
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">自动计算</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (自动计算)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(无)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">主机: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">开</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">关</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>
