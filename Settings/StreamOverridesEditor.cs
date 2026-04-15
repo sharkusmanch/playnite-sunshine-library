@@ -1,6 +1,8 @@
 using Playnite.SDK;
 using SunshineLibrary.Models;
+using SunshineLibrary.Services;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -23,6 +25,7 @@ namespace SunshineLibrary.Settings
     {
         private readonly StreamOverrides working;
         private readonly StreamOverrides effectiveFallback;
+        private readonly ClientDisplayInfo _display;
 
         // All field labels are the same width so controls start at a consistent column.
         private const double LabelWidth = 145;
@@ -31,6 +34,16 @@ namespace SunshineLibrary.Settings
         {
             this.working = working;
             this.effectiveFallback = effectiveFallback ?? StreamOverrides.BuiltinDefault;
+            _display = DisplayProbe.Detect();
+            // Fallback: WPF system parameters give DIP values but the aspect ratio
+            // equals the physical pixel ratio — sufficient for preset selection.
+            if (!_display.IsKnown)
+            {
+                int w = (int)SystemParameters.PrimaryScreenWidth;
+                int h = (int)SystemParameters.PrimaryScreenHeight;
+                if (w > 0 && h > 0)
+                    _display = new ClientDisplayInfo { Width = w, Height = h };
+            }
         }
 
         public UIElement Build()
@@ -46,11 +59,15 @@ namespace SunshineLibrary.Settings
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Encoding")));
             root.Children.Add(BuildBitrateRow());
             root.Children.Add(BuildCodecRow());
+            root.Children.Add(BuildVideoDecoderRow());
             root.Children.Add(BuildScalarBoolRow(
                 L("LOC_SunshineLibrary_OverrideField_Yuv444"),
                 working.Yuv444, v => working.Yuv444 = v, effectiveFallback.Yuv444));
 
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Performance")));
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_VSync"),
+                working.VSync, v => working.VSync = v, effectiveFallback.VSync));
             root.Children.Add(BuildScalarBoolRow(
                 L("LOC_SunshineLibrary_OverrideField_FramePacing"),
                 working.FramePacing, v => working.FramePacing = v, effectiveFallback.FramePacing));
@@ -59,11 +76,23 @@ namespace SunshineLibrary.Settings
                 working.GameOptimization, v => working.GameOptimization = v, effectiveFallback.GameOptimization));
             root.Children.Add(BuildScalarBoolRow(
                 L("LOC_SunshineLibrary_OverrideField_ShowStats"),
-                working.ShowStats, v => working.ShowStats = v, effectiveFallback.ShowStats));
+                working.PerformanceOverlay, v => working.PerformanceOverlay = v, effectiveFallback.PerformanceOverlay));
 
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Output")));
             root.Children.Add(BuildDisplayModeRow());
             root.Children.Add(BuildAudioRow());
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_AudioOnHost"),
+                working.AudioOnHost, v => working.AudioOnHost = v, effectiveFallback.AudioOnHost));
+
+            root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Session")));
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss"),
+                working.MuteOnFocusLoss, v => working.MuteOnFocusLoss = v, effectiveFallback.MuteOnFocusLoss));
+            root.Children.Add(BuildScalarBoolRow(
+                L("LOC_SunshineLibrary_OverrideField_KeepAwake"),
+                working.KeepAwake, v => working.KeepAwake = v, effectiveFallback.KeepAwake));
+            root.Children.Add(BuildCaptureSystemKeysRow());
 
             root.Children.Add(Heading(L("LOC_SunshineLibrary_OverrideDialog_Group_Advanced")));
             root.Children.Add(BuildExtraArgsRow());
@@ -89,6 +118,9 @@ namespace SunshineLibrary.Settings
                 IsEnabled = working.ResolutionMode == ResolutionMode.Static,
             };
 
+            var presets = ResolutionPresetsForDisplay(_display);
+            var presetsPanel = BuildResolutionPresetsPanel(presets, modeCombo, staticBox);
+
             modeCombo.SelectionChanged += (_, __) =>
             {
                 var m = (ResolutionMode)((ComboBoxItem)modeCombo.SelectedItem).Tag;
@@ -101,10 +133,114 @@ namespace SunshineLibrary.Settings
                 working.ResolutionStatic = string.IsNullOrWhiteSpace(staticBox.Text) ? null : staticBox.Text.Trim();
             };
 
-            var controls = HorizontalRow();
-            controls.Children.Add(modeCombo);
-            controls.Children.Add(staticBox);
-            return FieldBlock(L("LOC_SunshineLibrary_OverrideField_Resolution"), controls, FormatResolutionFallback());
+            // Build layout manually so the presets row can sit below the controls row.
+            var outer = new StackPanel { Margin = new Thickness(0, 4, 0, 8) };
+            var controlsRow = new StackPanel { Orientation = Orientation.Horizontal };
+            controlsRow.Children.Add(new TextBlock
+            {
+                Text = L("LOC_SunshineLibrary_OverrideField_Resolution"),
+                Width = LabelWidth,
+                FontWeight = FontWeights.SemiBold,
+                VerticalAlignment = VerticalAlignment.Center,
+            });
+            var inlineControls = HorizontalRow();
+            inlineControls.Children.Add(modeCombo);
+            Action<int> stepPreset = direction =>
+            {
+                SelectByTag(modeCombo, ResolutionMode.Static);
+                string current = staticBox.Text.Trim();
+                int idx = Array.FindIndex(presets, p => string.Equals(p, current, StringComparison.OrdinalIgnoreCase));
+                int next = idx < 0
+                    ? (direction > 0 ? 0 : presets.Length - 1)
+                    : Math.Max(0, Math.Min(presets.Length - 1, idx + direction));
+                staticBox.Text = presets[next];
+            };
+            var stepDown = new Button { Content = "-", Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 0, 2, 0), FontSize = 11 };
+            var stepUp = new Button { Content = "+", Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 0, 4, 0), FontSize = 11 };
+            stepDown.SetResourceReference(Control.ForegroundProperty, "TextBrush");
+            stepUp.SetResourceReference(Control.ForegroundProperty, "TextBrush");
+            stepDown.Click += (_, __) => stepPreset(-1);
+            stepUp.Click += (_, __) => stepPreset(+1);
+            inlineControls.Children.Add(stepDown);
+            inlineControls.Children.Add(staticBox);
+            inlineControls.Children.Add(stepUp);
+            controlsRow.Children.Add(inlineControls);
+            outer.Children.Add(controlsRow);
+            outer.Children.Add(presetsPanel);
+            var hint = FormatResolutionFallback();
+            if (!string.IsNullOrEmpty(hint))
+                outer.Children.Add(FallbackHint(hint));
+            return outer;
+        }
+
+        private UIElement BuildResolutionPresetsPanel(string[] presets, ComboBox modeCombo, TextBox staticBox)
+        {
+            var panel = new WrapPanel { Margin = new Thickness(LabelWidth, 4, 0, 0) };
+            string currentRes = _display.IsKnown ? _display.AsResolution : null;
+            foreach (var res in presets)
+            {
+                string captured = res;
+                bool isCurrent = string.Equals(res, currentRes, StringComparison.OrdinalIgnoreCase);
+                var btn = new Button
+                {
+                    Content = res,
+                    Padding = new Thickness(8, 2, 8, 2),
+                    Margin = new Thickness(0, 0, 4, 4),
+                    FontSize = 11,
+                    FontWeight = isCurrent ? FontWeights.Bold : FontWeights.Normal,
+                };
+                btn.SetResourceReference(Control.ForegroundProperty, "TextBrush");
+                btn.Click += (_, __) =>
+                {
+                    SelectByTag(modeCombo, ResolutionMode.Static);
+                    staticBox.Text = captured;
+                };
+                panel.Children.Add(btn);
+            }
+            return panel;
+        }
+
+        internal static string[] ResolutionPresetsForDisplay(ClientDisplayInfo display)
+        {
+            int refW = display.IsKnown ? display.Width : 1920;
+            int refH = display.IsKnown ? display.Height : 1080;
+            int g = Gcd(refW, refH);
+            int baseW = refW / g;
+            int baseH = refH / g;
+
+            // Reference heights chosen so that every 9-height display (16:9, 32:9, most
+            // ultrawides) lands on the standard named resolutions (720p → 4K). For other
+            // ratios (16:10, 4:3) the output is still exact aspect-ratio-correct multiples,
+            // just not the historically-named resolutions.
+            int[] refHeights = { 720, 900, 1080, 1440, 2160 };
+            var presets = new List<string>();
+            foreach (int h in refHeights)
+            {
+                if (h % baseH == 0)
+                    presets.Add(string.Format("{0}x{1}", h / baseH * baseW, h));
+            }
+
+            // For unusual aspect ratios where few reference heights divide evenly
+            // (e.g. 2560x1080 has a 64:27 base — only 1080 and 2160 align), fall back
+            // to ratio-scaled widths rounded to the nearest even pixel.
+            if (presets.Count < 3)
+            {
+                double ratio = (double)refW / refH;
+                presets.Clear();
+                foreach (int h in refHeights)
+                {
+                    int w = (int)Math.Round(ratio * h / 2.0) * 2;
+                    if (w > 0) presets.Add(string.Format("{0}x{1}", w, h));
+                }
+            }
+
+            return presets.ToArray();
+        }
+
+        private static int Gcd(int a, int b)
+        {
+            while (b != 0) { int t = b; b = a % b; a = t; }
+            return a;
         }
 
         private FrameworkElement BuildFpsRow()
@@ -229,6 +365,24 @@ namespace SunshineLibrary.Settings
             return FieldBlock(
                 L("LOC_SunshineLibrary_OverrideField_AudioConfig"), combo,
                 FormatFallback("LOC_SunshineLibrary_Override_Fallback_AudioConfig", effectiveFallback.AudioConfig));
+        }
+
+        private FrameworkElement BuildVideoDecoderRow()
+        {
+            var combo = BuildStringEnumCombo(working.VideoDecoder, new[] { "auto", "software", "hardware" });
+            combo.SelectionChanged += (_, __) => working.VideoDecoder = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            return FieldBlock(
+                L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), combo,
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Static", effectiveFallback.VideoDecoder));
+        }
+
+        private FrameworkElement BuildCaptureSystemKeysRow()
+        {
+            var combo = BuildStringEnumCombo(working.CaptureSystemKeys, new[] { "never", "fullscreen", "always" });
+            combo.SelectionChanged += (_, __) => working.CaptureSystemKeys = (combo.SelectedItem as ComboBoxItem)?.Tag as string;
+            return FieldBlock(
+                L("LOC_SunshineLibrary_OverrideField_CaptureSystemKeys"), combo,
+                FormatFallback("LOC_SunshineLibrary_Override_Fallback_Static", effectiveFallback.CaptureSystemKeys));
         }
 
         private FrameworkElement BuildScalarBoolRow(string label, bool? currentValue, Action<bool?> setter, bool? fallback)

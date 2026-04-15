@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">编码</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">性能</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">输出</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">会话</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">高级</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">清除所有覆盖设置</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">比特率</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">视频编解码器</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">视频解码器</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 色度</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">帧调速</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">游戏优化</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">垂直同步</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">显示模式</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">音频配置</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">在主机播放音频</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">失去焦点时静音</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">保持系统唤醒</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">捕获系统按键</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">额外的 Moonlight 参数</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">高级。原样附加到 moonlight-qt 命令行。按空格拆分 — 不进行 shell 引用。</sys:String>
 
@@ -234,7 +241,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">是否重置所有全局串流默认值?分辨率、FPS 和 HDR 将恢复为自动(匹配客户端);所有其他字段将恢复为继承。</sys:String>
 
     <!-- Per-game override field labels -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">显示串流统计信息</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">性能叠加层</sys:String>
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">根据分辨率 × 帧率自动计算(例如 1080p/60 → 20 Mbps,4K/60 → 80 Mbps;YUV 4:4:4 将使此值翻倍)</sys:String>

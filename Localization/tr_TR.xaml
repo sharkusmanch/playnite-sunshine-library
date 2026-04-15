@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Kodlama</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Performans</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Çıkış</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">Oturum</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Gelişmiş</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Tüm geçersiz kılmaları temizle</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Bit hızı</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Video kodeği</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">Video kod çözücü</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 kroma</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Kare zamanlaması</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Oyun optimizasyonu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">V-Sync</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Görüntüleme modu</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Ses yapılandırması</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">Sesi ana makinede çal</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">Odak kaybında sesi kapat</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">Sistemi uyanık tut</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">Sistem tuşlarını yakala</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Ek Moonlight argümanları</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Gelişmiş. moonlight-qt komut satırına olduğu gibi eklenir. Boşluklardan bölünür — kabuk tırnaklaması yoktur.</sys:String>
 
@@ -236,7 +243,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Tüm genel yayın varsayılanları sıfırlansın mı? Çözünürlük, FPS ve HDR, Otomatik (istemciyle eşleştir) değerine döner; diğer tüm alanlar Devral değerine döner.</sys:String>
 
     <!-- Override fields -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Yayın istatistiklerini göster</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Performans katmanı</sys:String>
 
     <!-- Fallback hints -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Çözünürlük × fps'den otomatik hesaplanır (ör. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 bunu iki katına çıkarır)</sys:String>

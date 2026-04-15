@@ -173,6 +173,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Encoding</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Performance</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Output</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">Session</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Advanced</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Clear all overrides</sys:String>
 
@@ -182,12 +183,18 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Bitrate</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Video codec</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">Video decoder</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">YUV 4:4:4 chroma</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">V-Sync</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Frame pacing</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Game optimization</sys:String>
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Show stream stats</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Performance overlay</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Display mode</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Audio configuration</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">Audio on host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">Mute on focus loss</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">Keep system awake</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">Capture system keys</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Extra Moonlight arguments</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Advanced. Appended verbatim to the moonlight-qt command line. Split on whitespace — no shell quoting.</sys:String>
 

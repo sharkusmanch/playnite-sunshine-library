@@ -21,7 +21,13 @@ namespace SunshineLibrary.Models
         public bool? Yuv444 { get; set; }
         public bool? FramePacing { get; set; }
         public bool? GameOptimization { get; set; }
-        public bool? ShowStats { get; set; }
+        public bool? PerformanceOverlay { get; set; }
+        public bool? VSync { get; set; }
+        public string VideoDecoder { get; set; }       // "auto" | "software" | "hardware"
+        public bool? AudioOnHost { get; set; }
+        public bool? MuteOnFocusLoss { get; set; }
+        public bool? KeepAwake { get; set; }
+        public string CaptureSystemKeys { get; set; }  // "never" | "fullscreen" | "always"
         public string ExtraArgs { get; set; }          // advanced, opt-in
 
         public static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
@@ -49,7 +55,13 @@ namespace SunshineLibrary.Models
                 Yuv444 = other.Yuv444 ?? Yuv444,
                 FramePacing = other.FramePacing ?? FramePacing,
                 GameOptimization = other.GameOptimization ?? GameOptimization,
-                ShowStats = other.ShowStats ?? ShowStats,
+                PerformanceOverlay = other.PerformanceOverlay ?? PerformanceOverlay,
+                VSync = other.VSync ?? VSync,
+                VideoDecoder = other.VideoDecoder ?? VideoDecoder,
+                AudioOnHost = other.AudioOnHost ?? AudioOnHost,
+                MuteOnFocusLoss = other.MuteOnFocusLoss ?? MuteOnFocusLoss,
+                KeepAwake = other.KeepAwake ?? KeepAwake,
+                CaptureSystemKeys = other.CaptureSystemKeys ?? CaptureSystemKeys,
                 ExtraArgs = other.ExtraArgs ?? ExtraArgs,
             };
         }

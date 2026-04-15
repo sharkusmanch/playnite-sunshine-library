@@ -19,19 +19,26 @@ namespace SunshineLibrary.Services
         {
             try
             {
-                var deviceName = ResolveTargetDeviceName();
-                int width = 0, height = 0, refresh = 0;
-                if (!string.IsNullOrEmpty(deviceName) && TryGetDeviceModes(deviceName, out width, out height, out refresh))
+                var screen = ResolveTargetScreen();
+                if (screen == null) return ClientDisplayInfo.Unknown;
+
+                // Screen.Bounds gives physical pixels in a DPI-aware process (which Playnite is).
+                // This is more reliable than EnumDisplaySettingsEx, which can fail silently in
+                // settings-dialog contexts. Refresh rate still comes from EnumDisplaySettingsEx
+                // but falls back to 0 rather than blocking the whole result.
+                int width = screen.Bounds.Width;
+                int height = screen.Bounds.Height;
+                if (width <= 0 || height <= 0) return ClientDisplayInfo.Unknown;
+
+                int refresh = TryGetRefreshHz(screen.DeviceName);
+                bool hdr = TryGetHdrEnabled(screen.DeviceName);
+                return new ClientDisplayInfo
                 {
-                    bool hdr = TryGetHdrEnabled(deviceName);
-                    return new ClientDisplayInfo
-                    {
-                        Width = width,
-                        Height = height,
-                        RefreshHz = refresh,
-                        HdrEnabled = hdr,
-                    };
-                }
+                    Width = width,
+                    Height = height,
+                    RefreshHz = refresh,
+                    HdrEnabled = hdr,
+                };
             }
             catch (Exception ex)
             {
@@ -42,7 +49,7 @@ namespace SunshineLibrary.Services
 
         // --- device resolution ---------------------------------------------------
 
-        private static string ResolveTargetDeviceName()
+        private static System.Windows.Forms.Screen ResolveTargetScreen()
         {
             // Prefer the display that contains Playnite's main window; fall back to primary.
             try
@@ -56,7 +63,7 @@ namespace SunshineLibrary.Services
                         var topLeft = mw.PointToScreen(new Point(0, 0));
                         var screen = System.Windows.Forms.Screen.FromPoint(
                             new System.Drawing.Point((int)topLeft.X, (int)topLeft.Y));
-                        if (screen != null) return screen.DeviceName;
+                        if (screen != null) return screen;
                     }
                 }
             }
@@ -64,10 +71,10 @@ namespace SunshineLibrary.Services
             {
                 logger.Debug(ex, "DisplayProbe: could not resolve Playnite window's display, falling back to primary.");
             }
-            return System.Windows.Forms.Screen.PrimaryScreen?.DeviceName;
+            return System.Windows.Forms.Screen.PrimaryScreen;
         }
 
-        // --- Win32 EnumDisplaySettings for width/height/refresh ------------------
+        // --- Win32 EnumDisplaySettings for refresh rate --------------------------
 
         private const int ENUM_CURRENT_SETTINGS = -1;
 
@@ -109,16 +116,20 @@ namespace SunshineLibrary.Services
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern bool EnumDisplaySettingsEx(string lpszDeviceName, int iModeNum, ref DEVMODE lpDevMode, int dwFlags);
 
-        private static bool TryGetDeviceModes(string deviceName, out int width, out int height, out int refresh)
+        private static int TryGetRefreshHz(string deviceName)
         {
-            width = height = refresh = 0;
-            var dm = new DEVMODE();
-            dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
-            if (!EnumDisplaySettingsEx(deviceName, ENUM_CURRENT_SETTINGS, ref dm, 0)) return false;
-            width = dm.dmPelsWidth;
-            height = dm.dmPelsHeight;
-            refresh = dm.dmDisplayFrequency;
-            return width > 0 && height > 0;
+            try
+            {
+                var dm = new DEVMODE();
+                dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
+                if (EnumDisplaySettingsEx(deviceName, ENUM_CURRENT_SETTINGS, ref dm, 0))
+                    return dm.dmDisplayFrequency;
+            }
+            catch (Exception ex)
+            {
+                logger.Debug(ex, "DisplayProbe: could not read refresh rate.");
+            }
+            return 0;
         }
 
         // --- Win32 DisplayConfigGetDeviceInfo for HDR (Win10 1803+) --------------

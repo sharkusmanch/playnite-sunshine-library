@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Кодування</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Продуктивність</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Вивід</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">Сеанс</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Додатково</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Скинути всі перевизначення</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Бітрейт</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Відеокодек</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">Декодер відео</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">Колірність YUV 4:4:4</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Ритм кадрів</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Оптимізація гри</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">Вертикальна синхронізація</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Режим відображення</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Налаштування звуку</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">Відтворювати звук на хості</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">Вимикати звук при втраті фокусу</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">Не давати системі переходити в сон</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">Перехоплювати системні клавіші</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Додаткові аргументи Moonlight</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Для досвідчених користувачів. Додаються до командного рядка moonlight-qt як є. Розділяються пробілами — без екранування оболонки.</sys:String>
 
@@ -232,7 +239,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Скинути всі глобальні стандарти трансляції? Роздільність, FPS і HDR повернуться до значення «Авто» (за клієнтом); усі інші поля повернуться до «Успадковувати».</sys:String>
 
     <!-- Per-game override field labels -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Показувати статистику потоку</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Оверлей продуктивності</sys:String>
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Розраховується автоматично за роздільністю × FPS (напр. 1080p/60 → 20 Мбіт/с, 4K/60 → 80 Мбіт/с; YUV 4:4:4 подвоює це значення)</sys:String>

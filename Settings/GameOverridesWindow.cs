@@ -125,7 +125,10 @@ namespace SunshineLibrary.Settings
                 && string.IsNullOrEmpty(o.VideoCodec)
                 && string.IsNullOrEmpty(o.DisplayMode)
                 && string.IsNullOrEmpty(o.AudioConfig)
-                && o.Yuv444 == null && o.FramePacing == null && o.GameOptimization == null && o.ShowStats == null
+                && o.Yuv444 == null && o.FramePacing == null && o.GameOptimization == null && o.PerformanceOverlay == null
+                && o.VSync == null && string.IsNullOrEmpty(o.VideoDecoder)
+                && o.AudioOnHost == null && o.MuteOnFocusLoss == null && o.KeepAwake == null
+                && string.IsNullOrEmpty(o.CaptureSystemKeys)
                 && string.IsNullOrEmpty(o.ExtraArgs);
         }
 
@@ -143,7 +146,13 @@ namespace SunshineLibrary.Settings
             Yuv444 = s.Yuv444,
             FramePacing = s.FramePacing,
             GameOptimization = s.GameOptimization,
-            ShowStats = s.ShowStats,
+            PerformanceOverlay = s.PerformanceOverlay,
+            VSync = s.VSync,
+            VideoDecoder = s.VideoDecoder,
+            AudioOnHost = s.AudioOnHost,
+            MuteOnFocusLoss = s.MuteOnFocusLoss,
+            KeepAwake = s.KeepAwake,
+            CaptureSystemKeys = s.CaptureSystemKeys,
             ExtraArgs = s.ExtraArgs,
         };
 

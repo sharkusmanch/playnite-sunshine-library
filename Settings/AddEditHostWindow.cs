@@ -541,7 +541,13 @@ namespace SunshineLibrary.Settings
                 Yuv444 = s.Yuv444,
                 FramePacing = s.FramePacing,
                 GameOptimization = s.GameOptimization,
-                ShowStats = s.ShowStats,
+                PerformanceOverlay = s.PerformanceOverlay,
+                VSync = s.VSync,
+                VideoDecoder = s.VideoDecoder,
+                AudioOnHost = s.AudioOnHost,
+                MuteOnFocusLoss = s.MuteOnFocusLoss,
+                KeepAwake = s.KeepAwake,
+                CaptureSystemKeys = s.CaptureSystemKeys,
                 ExtraArgs = s.ExtraArgs,
             };
         }

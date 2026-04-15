@@ -28,7 +28,9 @@ namespace SunshineLibrary.Settings
         // Apply-checkboxes per field.
         private CheckBox applyResolution, applyFps, applyHdr, applyBitrate;
         private CheckBox applyCodec, applyDisplayMode, applyAudio, applyYuv444;
-        private CheckBox applyFramePacing, applyGameOpt, applyShowStats, applyExtraArgs;
+        private CheckBox applyFramePacing, applyGameOpt, applyPerfOverlay;
+        private CheckBox applyVSync, applyVideoDecoder, applyAudioOnHost;
+        private CheckBox applyMuteOnFocusLoss, applyKeepAwake, applyCaptureSysKeys, applyExtraArgs;
 
         // Values.
         private ComboBox resModeCombo; private TextBox resStaticBox;
@@ -36,7 +38,9 @@ namespace SunshineLibrary.Settings
         private ComboBox hdrCombo;
         private TextBox bitrateBox;
         private ComboBox codecCombo, displayModeCombo, audioCombo;
-        private ComboBox yuv444Combo, framePacingCombo, gameOptCombo, showStatsCombo;
+        private ComboBox yuv444Combo, framePacingCombo, gameOptCombo, perfOverlayCombo;
+        private ComboBox vSyncCombo, videoDecoderCombo, audioOnHostCombo;
+        private ComboBox muteOnFocusLossCombo, keepAwakeCombo, captureSysKeysCombo;
         private TextBox extraArgsBox;
 
         public BulkOverridesWindow(IPlayniteAPI api, int selectedCount)
@@ -97,7 +101,14 @@ namespace SunshineLibrary.Settings
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_Yuv444"), out applyYuv444, BuildBoolControls(out yuv444Combo)));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_FramePacing"), out applyFramePacing, BuildBoolControls(out framePacingCombo)));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_GameOptimization"), out applyGameOpt, BuildBoolControls(out gameOptCombo)));
-            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_ShowStats"), out applyShowStats, BuildBoolControls(out showStatsCombo)));
+            // Key intentionally reused (value updated in-place to "Performance overlay") to avoid breaking external localization files.
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_ShowStats"), out applyPerfOverlay, BuildBoolControls(out perfOverlayCombo)));
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_VSync"), out applyVSync, BuildBoolControls(out vSyncCombo)));
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_VideoDecoder"), out applyVideoDecoder, BuildVideoDecoderControls()));
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_AudioOnHost"), out applyAudioOnHost, BuildBoolControls(out audioOnHostCombo)));
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss"), out applyMuteOnFocusLoss, BuildBoolControls(out muteOnFocusLossCombo)));
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_KeepAwake"), out applyKeepAwake, BuildBoolControls(out keepAwakeCombo)));
+            root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_CaptureSystemKeys"), out applyCaptureSysKeys, BuildCaptureSystemKeysControls()));
             root.Children.Add(TriStateRow(L("LOC_SunshineLibrary_OverrideField_ExtraArgs"), out applyExtraArgs, BuildExtraArgsControls()));
 
             var buttons = new StackPanel
@@ -166,7 +177,13 @@ namespace SunshineLibrary.Settings
             if (applyYuv444.IsChecked == true) { edit.SetYuv444 = true; edit.Yuv444 = ReadBool(yuv444Combo); }
             if (applyFramePacing.IsChecked == true) { edit.SetFramePacing = true; edit.FramePacing = ReadBool(framePacingCombo); }
             if (applyGameOpt.IsChecked == true) { edit.SetGameOpt = true; edit.GameOptimization = ReadBool(gameOptCombo); }
-            if (applyShowStats.IsChecked == true) { edit.SetShowStats = true; edit.ShowStats = ReadBool(showStatsCombo); }
+            if (applyPerfOverlay.IsChecked == true) { edit.SetPerfOverlay = true; edit.PerformanceOverlay = ReadBool(perfOverlayCombo); }
+            if (applyVSync.IsChecked == true) { edit.SetVSync = true; edit.VSync = ReadBool(vSyncCombo); }
+            if (applyVideoDecoder.IsChecked == true) { edit.SetVideoDecoder = true; edit.VideoDecoder = ReadStringEnum(videoDecoderCombo); }
+            if (applyAudioOnHost.IsChecked == true) { edit.SetAudioOnHost = true; edit.AudioOnHost = ReadBool(audioOnHostCombo); }
+            if (applyMuteOnFocusLoss.IsChecked == true) { edit.SetMuteOnFocusLoss = true; edit.MuteOnFocusLoss = ReadBool(muteOnFocusLossCombo); }
+            if (applyKeepAwake.IsChecked == true) { edit.SetKeepAwake = true; edit.KeepAwake = ReadBool(keepAwakeCombo); }
+            if (applyCaptureSysKeys.IsChecked == true) { edit.SetCaptureSysKeys = true; edit.CaptureSystemKeys = ReadStringEnum(captureSysKeysCombo); }
             if (applyExtraArgs.IsChecked == true)
             {
                 edit.SetExtraArgs = true;
@@ -239,6 +256,8 @@ namespace SunshineLibrary.Settings
         private UIElement BuildCodecControls() => codecCombo = BuildStringEnumCombo(new[] { "auto", "H.264", "HEVC", "AV1" });
         private UIElement BuildDisplayModeControls() => displayModeCombo = BuildStringEnumCombo(new[] { "fullscreen", "windowed", "borderless" });
         private UIElement BuildAudioControls() => audioCombo = BuildStringEnumCombo(new[] { "stereo", "5.1-surround", "7.1-surround" });
+        private UIElement BuildVideoDecoderControls() => videoDecoderCombo = BuildStringEnumCombo(new[] { "auto", "software", "hardware" });
+        private UIElement BuildCaptureSystemKeysControls() => captureSysKeysCombo = BuildStringEnumCombo(new[] { "never", "fullscreen", "always" });
 
         private UIElement BuildBoolControls(out ComboBox combo)
         {
@@ -304,13 +323,21 @@ namespace SunshineLibrary.Settings
         public bool SetYuv444; public bool? Yuv444;
         public bool SetFramePacing; public bool? FramePacing;
         public bool SetGameOpt; public bool? GameOptimization;
-        public bool SetShowStats; public bool? ShowStats;
+        public bool SetPerfOverlay; public bool? PerformanceOverlay;
+        public bool SetVSync; public bool? VSync;
+        public bool SetVideoDecoder; public string VideoDecoder;
+        public bool SetAudioOnHost; public bool? AudioOnHost;
+        public bool SetMuteOnFocusLoss; public bool? MuteOnFocusLoss;
+        public bool SetKeepAwake; public bool? KeepAwake;
+        public bool SetCaptureSysKeys; public string CaptureSystemKeys;
         public bool SetExtraArgs; public string ExtraArgs;
 
         public bool HasAnyField =>
             SetResolution || SetFps || SetHdr || SetBitrate || SetVideoCodec ||
             SetDisplayMode || SetAudioConfig || SetYuv444 || SetFramePacing ||
-            SetGameOpt || SetShowStats || SetExtraArgs;
+            SetGameOpt || SetPerfOverlay || SetVSync || SetVideoDecoder ||
+            SetAudioOnHost || SetMuteOnFocusLoss || SetKeepAwake || SetCaptureSysKeys ||
+            SetExtraArgs;
 
         /// <summary>Apply selected fields to an existing override, returning the modified override.</summary>
         public StreamOverrides ApplyTo(StreamOverrides existing)
@@ -326,7 +353,13 @@ namespace SunshineLibrary.Settings
             if (SetYuv444) { o.Yuv444 = Yuv444; }
             if (SetFramePacing) { o.FramePacing = FramePacing; }
             if (SetGameOpt) { o.GameOptimization = GameOptimization; }
-            if (SetShowStats) { o.ShowStats = ShowStats; }
+            if (SetPerfOverlay) { o.PerformanceOverlay = PerformanceOverlay; }
+            if (SetVSync) { o.VSync = VSync; }
+            if (SetVideoDecoder) { o.VideoDecoder = VideoDecoder; }
+            if (SetAudioOnHost) { o.AudioOnHost = AudioOnHost; }
+            if (SetMuteOnFocusLoss) { o.MuteOnFocusLoss = MuteOnFocusLoss; }
+            if (SetKeepAwake) { o.KeepAwake = KeepAwake; }
+            if (SetCaptureSysKeys) { o.CaptureSystemKeys = CaptureSystemKeys; }
             if (SetExtraArgs) { o.ExtraArgs = ExtraArgs; }
             return o;
         }
@@ -345,7 +378,13 @@ namespace SunshineLibrary.Settings
             Yuv444 = s.Yuv444,
             FramePacing = s.FramePacing,
             GameOptimization = s.GameOptimization,
-            ShowStats = s.ShowStats,
+            PerformanceOverlay = s.PerformanceOverlay,
+            VSync = s.VSync,
+            VideoDecoder = s.VideoDecoder,
+            AudioOnHost = s.AudioOnHost,
+            MuteOnFocusLoss = s.MuteOnFocusLoss,
+            KeepAwake = s.KeepAwake,
+            CaptureSystemKeys = s.CaptureSystemKeys,
             ExtraArgs = s.ExtraArgs,
         };
     }

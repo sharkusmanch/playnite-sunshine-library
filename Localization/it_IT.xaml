@@ -143,6 +143,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Encoding">Codifica</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Performance">Prestazioni</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Output">Uscita</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Session">Sessione</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_Group_Advanced">Avanzate</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideDialog_ClearAll">Cancella tutti gli override</sys:String>
 
@@ -152,11 +153,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Hdr">HDR</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Bitrate">Bitrate</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoCodec">Codec video</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VideoDecoder">Decodificatore video</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_Yuv444">Chroma YUV 4:4:4</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_FramePacing">Cadenza fotogrammi</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_GameOptimization">Ottimizzazione gioco</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_VSync">V-Sync</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_DisplayMode">Modalità schermo</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioConfig">Configurazione audio</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_AudioOnHost">Audio sull'host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_MuteOnFocusLoss">Silenzia alla perdita del focus</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_KeepAwake">Mantieni il sistema attivo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_CaptureSystemKeys">Cattura tasti di sistema</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs">Argomenti Moonlight aggiuntivi</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ExtraArgs_Help">Avanzato. Aggiunto così com'è alla riga di comando di moonlight-qt. Suddiviso in base agli spazi, senza gestione delle virgolette di shell.</sys:String>
 
@@ -230,7 +237,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">Ripristinare tutte le impostazioni predefinite globali di streaming? Risoluzione, FPS e HDR torneranno ad Auto (come il client); tutti gli altri campi torneranno a Eredita.</sys:String>
 
     <!-- Per-game override field labels -->
-    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Mostra statistiche dello streaming</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Overlay delle prestazioni</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calcolato automaticamente da risoluzione × fps (es. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 raddoppia questo valore)</sys:String>
 
 </ResourceDictionary>
