@@ -711,6 +711,9 @@ namespace SunshineLibrary
                 progress.CurrentProgressValue++;
                 var allHosts = ActiveHosts().ToList();
                 var summary = syncService.SyncAllAsync(allHosts, progress.CancelToken).GetAwaiter().GetResult();
+                ReconcileOrphansByName(summary);
+                MarkOrphansUninstalled(summary, allHosts);
+
                 using (PlayniteApi.Database.BufferedUpdate())
                 {
                     foreach (var meta in summary.AllGames)
