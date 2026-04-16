@@ -96,6 +96,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Poort</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Admin-gebruikersnaam</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Admin-wachtwoord</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Ingeschakeld</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Uitgesloten app-namen (één per regel)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Apps die met deze namen overeenkomen (hoofdletterongevoelig) verschijnen niet in Playnite. Vooraf gevuld met Sunshine-standaarden (Desktop, Steam Big Picture, Terminate) — verwijder wat je wilt behouden.</sys:String>

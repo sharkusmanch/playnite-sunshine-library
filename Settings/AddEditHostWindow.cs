@@ -34,6 +34,7 @@ namespace SunshineLibrary.Settings
         private TextBox portBox;
         private TextBox userBox;
         private PasswordBox passwordBox;
+        private PasswordBox apiTokenBox;
         private CheckBox enabledBox;
         private TextBox excludedBox;
         private ComboBox autoRemoveCombo;
@@ -174,6 +175,19 @@ namespace SunshineLibrary.Settings
             passwordBox = new PasswordBox();
             if (!string.IsNullOrEmpty(working.AdminPassword)) passwordBox.Password = working.AdminPassword;
             root.Children.Add(FieldRow(Localize("LOC_SunshineLibrary_HostField_AdminPassword"), passwordBox));
+
+            apiTokenBox = new PasswordBox();
+            if (!string.IsNullOrEmpty(working.ApiToken)) apiTokenBox.Password = working.ApiToken;
+            root.Children.Add(FieldRow(Localize("LOC_SunshineLibrary_HostField_ApiToken"), apiTokenBox));
+            var tokenHelp = new TextBlock
+            {
+                Text = Localize("LOC_SunshineLibrary_HostField_ApiToken_Help"),
+                TextWrapping = TextWrapping.Wrap,
+                FontSize = 11,
+                Margin = new Thickness(0, 0, 0, 8),
+            };
+            tokenHelp.SetResourceReference(TextBlock.ForegroundProperty, "TextBrushDarker");
+            root.Children.Add(tokenHelp);
 
             // Test Connection section — directly under credentials so it's where users look.
             var testPanel = new StackPanel { Margin = new Thickness(0, 16, 0, 16) };
@@ -456,6 +470,7 @@ namespace SunshineLibrary.Settings
             working.Port = port;
             working.AdminUser = (userBox.Text ?? string.Empty).Trim();
             working.AdminPassword = passwordBox.Password ?? string.Empty;
+            working.ApiToken = (apiTokenBox.Password ?? string.Empty).Trim();
             working.Enabled = enabledBox.IsChecked == true;
             working.AutoRemoveOrphanedGames = autoRemoveCombo.SelectedIndex == 0
                 ? (bool?)null
@@ -513,6 +528,7 @@ namespace SunshineLibrary.Settings
                 Port = source.Port,
                 AdminUser = source.AdminUser,
                 AdminPassword = source.AdminPassword,
+                ApiToken = source.ApiToken,
                 CertFingerprintSpkiSha256 = source.CertFingerprintSpkiSha256,
                 ServerType = source.ServerType,
                 ServerVersion = source.ServerVersion,

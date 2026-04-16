@@ -148,6 +148,7 @@ namespace SunshineLibrary.Services.Hosts
                 Port = host.Port,
                 AdminUser = host.AdminUser,
                 AdminPassword = host.AdminPassword,
+                ApiToken = host.ApiToken,
                 CertFingerprintSpkiSha256 = string.IsNullOrEmpty(host.CertFingerprintSpkiSha256)
                     ? certResult.SpkiSha256
                     : host.CertFingerprintSpkiSha256,
@@ -178,6 +179,7 @@ namespace SunshineLibrary.Services.Hosts
                         Port = probeHost.Port,
                         AdminUser = probeHost.AdminUser,
                         AdminPassword = probeHost.AdminPassword,
+                        ApiToken = probeHost.ApiToken,
                         CertFingerprintSpkiSha256 = probeHost.CertFingerprintSpkiSha256,
                         ServerType = serverType,
                         Enabled = true,

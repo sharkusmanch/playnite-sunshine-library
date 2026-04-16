@@ -31,10 +31,10 @@ namespace SunshineLibrary.Services
             credsDir = Path.Combine(extensionDataDir, "creds");
         }
 
-        public void Save(Guid hostId, string user, string password)
+        public void Save(Guid hostId, string user, string password, string token = null)
         {
             Directory.CreateDirectory(credsDir);
-            var payload = new CredBlob { User = user ?? string.Empty, Password = password ?? string.Empty };
+            var payload = new CredBlob { User = user ?? string.Empty, Password = password ?? string.Empty, Token = token ?? string.Empty };
             var json = JsonConvert.SerializeObject(payload);
             var plaintext = Encoding.UTF8.GetBytes(json);
             var entropy = GetEntropy(hostId);
@@ -42,7 +42,7 @@ namespace SunshineLibrary.Services
             File.WriteAllBytes(PathFor(hostId), ciphertext);
         }
 
-        public (string User, string Password)? TryLoad(Guid hostId)
+        public (string User, string Password, string Token)? TryLoad(Guid hostId)
         {
             var path = PathFor(hostId);
             if (!File.Exists(path)) return null;
@@ -55,7 +55,7 @@ namespace SunshineLibrary.Services
                 var json = Encoding.UTF8.GetString(plaintext);
                 var blob = JsonConvert.DeserializeObject<CredBlob>(json);
                 if (blob == null) return null;
-                return (blob.User ?? string.Empty, blob.Password ?? string.Empty);
+                return (blob.User ?? string.Empty, blob.Password ?? string.Empty, blob.Token ?? string.Empty);
             }
             catch (CryptographicException ex)
             {
@@ -119,6 +119,9 @@ namespace SunshineLibrary.Services
 
             [JsonProperty("password")]
             public string Password { get; set; }
+
+            [JsonProperty("token")]
+            public string Token { get; set; }
         }
     }
 }

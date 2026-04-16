@@ -25,14 +25,19 @@ namespace SunshineLibrary.Services.Hosts
 
         public ApolloHostClient(HostConfig config) : base(config)
         {
-            // Apollo rejects the Basic auth header; clear it so it is never sent.
-            Http.DefaultRequestHeaders.Authorization = null;
+            // Apollo rejects the Basic auth header. Use Bearer when a token is configured;
+            // otherwise clear auth entirely and rely on session-cookie login.
+            Http.DefaultRequestHeaders.Authorization = !string.IsNullOrEmpty(config.ApiToken)
+                ? new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", config.ApiToken)
+                : null;
         }
 
         // Test-only seam.
         internal ApolloHostClient(HostConfig config, HttpMessageHandler handler) : base(config, handler)
         {
-            Http.DefaultRequestHeaders.Authorization = null;
+            Http.DefaultRequestHeaders.Authorization = !string.IsNullOrEmpty(config.ApiToken)
+                ? new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", config.ApiToken)
+                : null;
         }
 
         // ── session management ────────────────────────────────────────────────
@@ -47,6 +52,13 @@ namespace SunshineLibrary.Services.Hosts
         {
             if (_sessionEstablished) return HostResult.Ok();
             if (_loginFailed) return HostResult.AuthFailed(); // credentials rejected — don't hammer server
+
+            // Bearer token bypasses the session-cookie login entirely.
+            if (!string.IsNullOrEmpty(Config.ApiToken))
+            {
+                _sessionEstablished = true;
+                return HostResult.Ok();
+            }
 
             await _loginGate.WaitAsync(ct).ConfigureAwait(false);
             try

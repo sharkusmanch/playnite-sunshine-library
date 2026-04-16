@@ -19,6 +19,13 @@ namespace SunshineLibrary.Models
         /// </summary>
         [JsonIgnore]
         public string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Vibepollo/Apollo Bearer token. When set, used instead of session-cookie login.
+        /// In-memory only — stored in the same DPAPI blob as AdminPassword.
+        /// </summary>
+        [JsonIgnore]
+        public string ApiToken { get; set; }
         public string CertFingerprintSpkiSha256 { get; set; }
         public ServerType ServerType { get; set; } = ServerType.Unknown;
         public string ServerVersion { get; set; }

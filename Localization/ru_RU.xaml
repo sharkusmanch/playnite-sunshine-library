@@ -96,6 +96,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Порт</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Имя пользователя администратора</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Пароль администратора</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Включён</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Исключаемые имена приложений (по одному в строке)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Приложения с этими именами (без учёта регистра) не будут отображаться в Playnite. Предзаполнено встроенными записями Sunshine (Desktop, Steam Big Picture, Terminate) — удалите те, что хотите оставить.</sys:String>
