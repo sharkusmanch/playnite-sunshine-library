@@ -56,8 +56,51 @@ namespace SunshineLibrary
         /// <summary>Called by the settings VM after EndEdit — gives the plugin a chance to react.</summary>
         public void OnSettingsSaved()
         {
-            // Notification preview is surfaced on next sync; no immediate action needed for M2b.
             logger.Info($"Settings saved — {settingsVm.Settings.Hosts?.Count ?? 0} host(s) configured.");
+            CleanUpRemovedHostGames();
+        }
+
+        /// <summary>
+        /// When hosts are removed from settings, immediately mark their games uninstalled
+        /// (and delete them if AutoRemoveOrphanedGames is on) rather than waiting for the
+        /// next library sync cycle.
+        /// </summary>
+        private void CleanUpRemovedHostGames()
+        {
+            var configuredIds = new HashSet<Guid>(
+                settingsVm.Settings.Hosts?.Where(h => h != null).Select(h => h.Id)
+                ?? Enumerable.Empty<Guid>());
+
+            var globalDelete = settingsVm.Settings?.AutoRemoveOrphanedGames ?? false;
+
+            var toUninstall = new List<Game>();
+            var toDelete = new List<Game>();
+            foreach (var g in PlayniteApi.Database.Games)
+            {
+                if (g.PluginId != Id || string.IsNullOrEmpty(g.GameId)) continue;
+                var parts = g.GameId.Split(new[] { ':' }, 2);
+                if (parts.Length != 2) continue;
+                if (!Guid.TryParse(parts[0], out var hostId)) continue;
+                if (configuredIds.Contains(hostId)) continue;
+
+                if (globalDelete)
+                    toDelete.Add(g);
+                else if (g.IsInstalled)
+                {
+                    g.IsInstalled = false;
+                    toUninstall.Add(g);
+                }
+            }
+
+            if (toUninstall.Count > 0)
+            {
+                PlayniteApi.Database.Games.Update(toUninstall);
+                logger.Info($"Marked {toUninstall.Count} game(s) uninstalled after host removal from settings.");
+            }
+            if (toDelete.Count > 0)
+            {
+                DeleteOrphanGames(toDelete);
+            }
         }
 
         private IEnumerable<HostConfig> ActiveHosts() =>
