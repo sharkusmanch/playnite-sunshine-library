@@ -96,6 +96,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">端口</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">管理员用户名</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">管理员密码</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">启用</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">排除的应用名称(每行一个)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">与这些名称匹配的应用(不区分大小写)不会出现在 Playnite 中。已预填 Sunshine 内置项(Desktop、Steam Big Picture、Terminate)— 如需保留,请移除相应项。</sys:String>
@@ -245,5 +249,37 @@
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">根据分辨率 × 帧率自动计算(例如 1080p/60 → 20 Mbps,4K/60 → 80 Mbps;YUV 4:4:4 将使此值翻倍)</sys:String>
+
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">查看有效串流设置…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">有效命令行</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">显示器信息不可用 — 自动分辨率、帧率和 HDR 可能在启动时有所不同。</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">有效串流设置 — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">此游戏的主机不再处于配置状态。请在设置中重新添加该主机后重试。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">显示器信息不可用 — 自动分辨率、帧率和 HDR 字段未显示运行时解析值。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">有效 Moonlight 命令行</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">复制</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">关闭</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">字段</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">值</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">来源</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">运行时备注</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">内置</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">全局</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">主机</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">此游戏</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (来自显示器)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(显示器信息不可用)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">自动计算</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (自动计算)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(无)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">主机: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">开</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">关</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>

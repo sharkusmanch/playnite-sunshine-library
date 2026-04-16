@@ -96,6 +96,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Порт</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Ім’я користувача адміністратора</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Пароль адміністратора</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Увімкнено</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Виключені назви застосунків (по одній у рядку)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Застосунки з цими назвами (без урахування регістру) не з’являтимуться в Playnite. Попередньо заповнено вбудованими записами Sunshine (Desktop, Steam Big Picture, Terminate) — вилучіть ті, які хочете залишити.</sys:String>
@@ -243,5 +247,37 @@
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Розраховується автоматично за роздільністю × FPS (напр. 1080p/60 → 20 Мбіт/с, 4K/60 → 80 Мбіт/с; YUV 4:4:4 подвоює це значення)</sys:String>
+
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Переглянути ефективні параметри трансляції…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Ефективний командний рядок</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Інформація про дисплей недоступна — автоматичні роздільність, fps і HDR можуть відрізнятися під час запуску.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Ефективні параметри трансляції — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">Хост для цієї гри більше не налаштовано. Додайте хост назад у параметрах і спробуйте знову.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Інформація про дисплей недоступна — поля з автоматичною роздільністю, fps і HDR показано без значень, що визначаються під час виконання.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Ефективний командний рядок Moonlight</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Копіювати</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Закрити</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Параметр</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Значення</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Джерело</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Примітка виконання</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">вбудований</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">глобальний</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">хост</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">ця гра</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (з дисплея)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(дисплей недоступний)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Розраховується автоматично</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (авторозрахунок)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(немає)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">Хост: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">Увімк.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Вимк.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>

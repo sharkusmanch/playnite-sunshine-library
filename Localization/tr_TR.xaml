@@ -96,6 +96,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Yönetici kullanıcı adı</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Yönetici parolası</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Etkin</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Hariç tutulan uygulama adları (her satıra bir tane)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Bu adlarla eşleşen uygulamalar (büyük/küçük harf duyarsız) Playnite'ta görünmez. Sunshine yerleşikleri (Desktop, Steam Big Picture, Terminate) ile önceden doldurulmuştur — tutmak istediklerinizi kaldırın.</sys:String>
@@ -247,5 +251,37 @@
 
     <!-- Fallback hints -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Çözünürlük × fps'den otomatik hesaplanır (ör. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 bunu iki katına çıkarır)</sys:String>
+
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Geçerli yayın ayarlarını görüntüle…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Geçerli komut satırı</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Ekran bilgisi kullanılamıyor — Otomatik çözünürlük, fps ve HDR başlatma sırasında farklılık gösterebilir.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Geçerli yayın ayarları — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">Bu oyunun sunucusu artık yapılandırılmamış. Sunucuyu ayarlara geri ekleyip tekrar deneyin.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Ekran bilgisi kullanılamıyor — Otomatik çözünürlük, fps ve HDR alanları çalışma zamanı değerleri olmadan gösteriliyor.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Geçerli Moonlight komut satırı</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Kopyala</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Kapat</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Alan</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Değer</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Kaynak</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Çalışma zamanı notu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">yerleşik</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">genel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">sunucu</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">bu oyun</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (ekrandan)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(ekran bilgisi yok)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Otomatik hesaplanır</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (otomatik hesap)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(yok)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">Host: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">Açık</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Kapalı</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>

@@ -96,6 +96,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Puerto</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Nombre de usuario administrador</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Contraseña de administrador</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Activado</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Nombres de aplicaciones excluidos (uno por línea)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Las aplicaciones que coincidan con estos nombres (sin distinguir mayúsculas) no aparecerán en Playnite. Se incluyen por defecto los predeterminados de Sunshine (Desktop, Steam Big Picture, Terminate): elimina los que quieras conservar.</sys:String>
@@ -224,5 +228,37 @@
     <sys:String x:Key="LOC_SunshineLibrary_Defaults_ResetConfirm">¿Restablecer todos los valores predeterminados globales de streaming? Resolución, FPS y HDR volverán a Auto (igualar al cliente); el resto de campos volverán a Heredar.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Superposición de rendimiento</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Calculado automáticamente a partir de resolución × fps (p. ej. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 duplica este valor)</sys:String>
+
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Ver ajustes de streaming efectivos…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Línea de comandos efectiva</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Información de pantalla no disponible — la resolución Auto, fps y HDR pueden diferir al iniciar.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Ajustes de streaming efectivos — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">El host de este juego ya no está configurado. Vuelve a añadir el host en los ajustes e inténtalo de nuevo.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Información de pantalla no disponible — los campos de resolución Auto, fps y HDR se muestran sin sus valores resueltos en tiempo de ejecución.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Línea de comandos Moonlight efectiva</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Copiar</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Cerrar</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Campo</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Valor</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Fuente</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Nota de ejecución</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">integrado</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">global</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">este juego</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (desde la pantalla)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(pantalla no disponible)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Calculado automáticamente</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (cálculo auto)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(ninguno)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">Host: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">Activado</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Desactivado</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>

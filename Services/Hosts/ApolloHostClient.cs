@@ -15,7 +15,7 @@ namespace SunshineLibrary.Services.Hosts
     /// All protected endpoints require the cookie; the base-class Authorization
     /// header is cleared and replaced with a lazy login on first use.
     /// </summary>
-    public sealed class ApolloHostClient : HostClient
+    public class ApolloHostClient : HostClient
     {
         public override ServerType ServerType => ServerType.Apollo;
 
@@ -25,14 +25,19 @@ namespace SunshineLibrary.Services.Hosts
 
         public ApolloHostClient(HostConfig config) : base(config)
         {
-            // Apollo rejects the Basic auth header; clear it so it is never sent.
-            Http.DefaultRequestHeaders.Authorization = null;
+            // Apollo rejects the Basic auth header. Use Bearer when a token is configured;
+            // otherwise clear auth entirely and rely on session-cookie login.
+            Http.DefaultRequestHeaders.Authorization = !string.IsNullOrEmpty(config.ApiToken)
+                ? new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", config.ApiToken)
+                : null;
         }
 
         // Test-only seam.
         internal ApolloHostClient(HostConfig config, HttpMessageHandler handler) : base(config, handler)
         {
-            Http.DefaultRequestHeaders.Authorization = null;
+            Http.DefaultRequestHeaders.Authorization = !string.IsNullOrEmpty(config.ApiToken)
+                ? new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", config.ApiToken)
+                : null;
         }
 
         // ── session management ────────────────────────────────────────────────
@@ -43,10 +48,17 @@ namespace SunshineLibrary.Services.Hosts
         /// response header is captured automatically and replayed on every subsequent
         /// request to the same origin.
         /// </summary>
-        private async Task<HostResult> EnsureSessionAsync(CancellationToken ct)
+        protected async Task<HostResult> EnsureSessionAsync(CancellationToken ct)
         {
             if (_sessionEstablished) return HostResult.Ok();
             if (_loginFailed) return HostResult.AuthFailed(); // credentials rejected — don't hammer server
+
+            // Bearer token bypasses the session-cookie login entirely.
+            if (!string.IsNullOrEmpty(Config.ApiToken))
+            {
+                _sessionEstablished = true;
+                return HostResult.Ok();
+            }
 
             await _loginGate.WaitAsync(ct).ConfigureAwait(false);
             try
@@ -69,7 +81,29 @@ namespace SunshineLibrary.Services.Hosts
                 var r = await PostJsonAsync("api/login", body, null, ct).ConfigureAwait(false);
                 if (!r.IsOk)
                 {
-                    if (r.Kind == HostResultKind.AuthFailed) _loginFailed = true;
+                    if (r.Kind == HostResultKind.AuthFailed)
+                    {
+                        _loginFailed = true;
+                        return r;
+                    }
+                    // Server rejected the login endpoint in a way that suggests it doesn't
+                    // support session-cookie auth at all (400 Bad Request, 404 Not Found,
+                    // 405 Method Not Allowed). Fall back to HTTP Basic Auth by re-applying
+                    // the header the base class set before the constructor cleared it.
+                    // Transient errors (5xx) are intentionally excluded so they surface as
+                    // real errors rather than silently switching auth modes.
+                    if (r.Kind == HostResultKind.ServerError
+                        && (r.StatusCode == 400 || r.StatusCode == 404 || r.StatusCode == 405))
+                    {
+                        logger.Info($"[{Config.Label}] /api/login returned {r.StatusCode}; falling back to HTTP Basic Auth");
+                        var cred = System.Text.Encoding.UTF8.GetBytes(
+                            $"{Config.AdminUser}:{Config.AdminPassword ?? string.Empty}");
+                        Http.DefaultRequestHeaders.Authorization =
+                            new System.Net.Http.Headers.AuthenticationHeaderValue(
+                                "Basic", Convert.ToBase64String(cred));
+                        _sessionEstablished = true;
+                        return HostResult.Ok();
+                    }
                     return r;
                 }
 
@@ -84,7 +118,7 @@ namespace SunshineLibrary.Services.Hosts
 
         // Resets the session so the next call re-authenticates (e.g. after cookie expiry).
         // Does NOT reset _loginFailed — a credential failure stays failed for this instance's lifetime.
-        private void InvalidateSession() => _sessionEstablished = false;
+        protected void InvalidateSession() => _sessionEstablished = false;
 
         // ── HostClient overrides ──────────────────────────────────────────────
 
@@ -149,6 +183,30 @@ namespace SunshineLibrary.Services.Hosts
             return r;
         }
 
+        /// <summary>
+        /// Probes /api/playnite/status to distinguish Vibepollo from plain Apollo.
+        /// Vibepollo returns 200; Apollo returns 404 for this endpoint.
+        /// Called by <see cref="HostClientFactory"/> during server-type detection.
+        /// </summary>
+        public async Task<bool> IsVibepolloAsync(CancellationToken ct)
+        {
+            var login = await EnsureSessionAsync(ct).ConfigureAwait(false);
+            if (!login.IsOk) return false;
+
+            // GetJsonAsync catches and classifies all network exceptions internally.
+            // This outer catch is a defensive belt-and-suspenders guard against any
+            // unexpected throw that would otherwise surface as a detection failure.
+            try
+            {
+                var r = await GetJsonAsync<Newtonsoft.Json.Linq.JToken>("api/playnite/status", ct).ConfigureAwait(false);
+                return r.IsOk;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public override void Dispose()
         {
             _loginGate.Dispose();
@@ -157,7 +215,7 @@ namespace SunshineLibrary.Services.Hosts
 
         // ── helpers ───────────────────────────────────────────────────────────
 
-        private static string FallbackId(string name, string cmd, int idx)
+        protected static string FallbackId(string name, string cmd, int idx)
             => $"fallback:{idx}:{name?.GetHashCode() ?? 0:x}:{cmd?.GetHashCode() ?? 0:x}";
 
         /// <summary>Propagate a typed error result into the apps-list result type.</summary>
@@ -165,7 +223,7 @@ namespace SunshineLibrary.Services.Hosts
             => ToGeneric<IReadOnlyList<RemoteApp>>(r);
 
         /// <summary>Lift a status-only <see cref="HostResult"/> into a typed result.</summary>
-        private static HostResult<T> ToGeneric<T>(HostResult r)
+        protected static HostResult<T> ToGeneric<T>(HostResult r)
         {
             switch (r.Kind)
             {

@@ -174,9 +174,20 @@ namespace SunshineLibrary.Services
 
         private PlayniteGameMetadata BuildMeta(HostConfig host, RemoteApp app, bool fromCache)
         {
-            var source = new PlayniteMetadata($"Sunshine: {host.Label}");
+            var sourcePrefix = host.ServerType == ServerType.Vibepollo ? "Vibepollo" : "Sunshine";
+            var source = new PlayniteMetadata($"{sourcePrefix}: {host.Label}");
             var platform = new PlayniteSpec("pc_windows");
             var feature = new PlayniteMetadata("Game Streaming");
+
+            var tags = new HashSet<MetadataProperty>();
+            if (!string.IsNullOrEmpty(app.PluginName))
+                tags.Add(new PlayniteMetadata(app.PluginName));
+            if (app.Categories != null)
+                foreach (var cat in app.Categories)
+                    if (!string.IsNullOrWhiteSpace(cat))
+                        tags.Add(new PlayniteMetadata(cat));
+            if (fromCache)
+                tags.Add(new PlayniteMetadata(OfflineTagName));
 
             var meta = new PlayniteGameMetadata
             {
@@ -188,10 +199,8 @@ namespace SunshineLibrary.Services
                 Features = new HashSet<MetadataProperty> { feature },
             };
 
-            if (fromCache)
-            {
-                meta.Tags = new HashSet<MetadataProperty> { new PlayniteMetadata(OfflineTagName) };
-            }
+            if (tags.Count > 0)
+                meta.Tags = tags;
 
             return meta;
         }

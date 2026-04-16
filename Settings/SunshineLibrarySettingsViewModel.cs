@@ -72,6 +72,7 @@ namespace SunshineLibrary.Settings
                 {
                     if (h == null) continue;
                     h.AdminPassword = null;
+                    h.ApiToken = null;
                 }
             }
         }
@@ -87,6 +88,7 @@ namespace SunshineLibrary.Settings
                 {
                     h.AdminUser = creds.Value.User;
                     h.AdminPassword = creds.Value.Password;
+                    h.ApiToken = creds.Value.Token;
                 }
             }
         }
@@ -122,7 +124,7 @@ namespace SunshineLibrary.Settings
             foreach (var h in Settings.Hosts ?? new List<HostConfig>())
             {
                 if (h == null || h.Id == System.Guid.Empty) continue;
-                credentialStore.Save(h.Id, h.AdminUser ?? string.Empty, h.AdminPassword ?? string.Empty);
+                credentialStore.Save(h.Id, h.AdminUser ?? string.Empty, h.AdminPassword ?? string.Empty, h.ApiToken ?? string.Empty);
             }
 
             // Prune credential files for hosts that were removed in this edit.

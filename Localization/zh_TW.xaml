@@ -96,6 +96,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">連接埠</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">管理員使用者名稱</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">管理員密碼</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">啟用</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">排除的應用程式名稱(每行一個)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">符合這些名稱的應用程式(不分大小寫)不會出現在 Playnite 中。已預先填入 Sunshine 內建項目(Desktop、Steam Big Picture、Terminate)— 如想保留,請移除相應項目。</sys:String>
@@ -245,5 +249,37 @@
 
     <!-- Fallback hint labels -->
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">依解析度 × FPS 自動計算(例如 1080p/60 → 20 Mbps、4K/60 → 80 Mbps;YUV 4:4:4 會使此值加倍)</sys:String>
+
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">檢視有效串流設定…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">有效命令列</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">顯示器資訊無法取得 — 自動解析度、fps 和 HDR 可能在啟動時有所不同。</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">有效串流設定 — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">此遊戲的主機不再處於設定狀態。請在設定中重新新增該主機後再試一次。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">顯示器資訊無法取得 — 自動解析度、fps 和 HDR 欄位未顯示執行時期解析值。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">有效 Moonlight 命令列</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">複製</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">關閉</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">欄位</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">值</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">來源</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">執行時期備註</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">內建</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">全域</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">主機</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">此遊戲</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (來自顯示器)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(顯示器資訊無法取得)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">自動計算</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (自動計算)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(無)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">主機: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">開</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">關</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>

@@ -110,6 +110,14 @@ namespace SunshineLibrary.Services.Hosts
 
         public abstract Task<HostResult> CloseCurrentAppAsync(CancellationToken ct);
 
+        /// <summary>
+        /// Ask the host to reconcile its upstream game library before the next app-list fetch.
+        /// Vibepollo overrides this to POST /api/playnite/force_sync; all other flavors no-op.
+        /// Callers treat failure as advisory — the sync continues with whatever the host has.
+        /// </summary>
+        public virtual Task<HostResult> ForceSyncAsync(CancellationToken ct)
+            => Task.FromResult(HostResult.Ok());
+
         // --- shared helpers -------------------------------------------------------
 
         protected async Task<HostResult<T>> GetJsonAsync<T>(string relativePath, CancellationToken ct)

@@ -13,6 +13,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Menu_HostStatus">Host status…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_CleanOrphans">Clean up orphaned overrides</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Remove orphaned games…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Refresh Vibepollo host library…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">No orphaned games found. All your library entries match apps currently on reachable hosts.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Remove {0} orphaned game(s) from the library? Playtime, per-game streaming overrides, and covers will be permanently deleted. Hosts that are currently offline are skipped — their games are never pruned automatically.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Removed {0} orphaned game(s).</sys:String>
@@ -118,6 +119,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Port</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Admin username</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Admin password</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Host enabled</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled_Help">Disable to keep this host in settings but skip it during library syncs. Useful for hosts that are often offline.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Excluded app names (one per line)</sys:String>
@@ -163,6 +168,7 @@
     <sys:String x:Key="LOC_SunshineLibrary_Common_Cancel">Cancel</sys:String>
 
     <!-- Game context menu -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">View effective streaming settings…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_BulkEdit">Edit streaming settings for {0} selected games…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesSelection">Clear streaming overrides for {0} selected games</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Menu_ClearOverridesConfirm">Clear streaming overrides for {0} selected games? This cannot be undone.</sys:String>
@@ -216,6 +222,35 @@
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_Bool">Inherits: {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_MoonlightDefault">Inherits: whatever Moonlight is configured to use</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Auto-calculated from resolution × fps (e.g. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 doubles this)</sys:String>
+
+    <!-- Live preview strip (GameOverridesWindow) -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Effective command line</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Display info unavailable — Auto resolution, fps, and HDR may differ at launch time.</sys:String>
+
+    <!-- Effective settings dialog (read-only, right-click menu) -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Effective streaming settings — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">The host for this game is no longer configured. Add the host back in settings and try again.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Display info unavailable — Auto resolution, fps, and HDR fields are shown without their runtime-resolved values.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Effective Moonlight command line</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Copy</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Close</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Field</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Value</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Source</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Runtime note</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">built-in</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">global</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">this game</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (from display)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(display unavailable)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Auto-calculated</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (auto-calc)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(none)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">Host: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">On</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Off</sys:String>
 
     <!-- Bulk dialog -->
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_Title">Bulk edit streaming settings</sys:String>

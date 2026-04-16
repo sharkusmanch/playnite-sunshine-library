@@ -96,6 +96,10 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Port">Poort</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminUser">Admin-gebruikersnaam</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Admin-wachtwoord</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Ingeschakeld</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Uitgesloten app-namen (één per regel)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Apps die met deze namen overeenkomen (hoofdletterongevoelig) verschijnen niet in Playnite. Vooraf gevuld met Sunshine-standaarden (Desktop, Steam Big Picture, Terminate) — verwijder wat je wilt behouden.</sys:String>
@@ -243,5 +247,37 @@
     <!-- Override fields -->
     <sys:String x:Key="LOC_SunshineLibrary_OverrideField_ShowStats">Prestatieweergave</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Override_Fallback_BitrateAuto">Automatisch berekend op basis van resolutie × fps (bijv. 1080p/60 → 20 Mbps, 4K/60 → 80 Mbps; YUV 4:4:4 verdubbelt dit)</sys:String>
+
+    <!-- Game context menu: view effective settings -->
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ViewEffectiveSettings">Effectieve streaminginstellingen weergeven…</sys:String>
+
+    <!-- Live preview strip -->
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_Label">Effectieve opdrachtregel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Preview_NoDisplayHint">Beeldscherminformatie niet beschikbaar — Automatische resolutie, fps en HDR kunnen afwijken bij het starten.</sys:String>
+
+    <!-- Effective settings dialog -->
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettingsDialog_Title">Effectieve streaminginstellingen — {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostGone">De host voor dit spel is niet meer geconfigureerd. Voeg de host opnieuw toe in de instellingen en probeer opnieuw.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_DisplayUnavailable">Beeldscherminformatie niet beschikbaar — Velden voor automatische resolutie, fps en HDR worden getoond zonder hun runtime-opgeloste waarden.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_CommandLine">Effectieve Moonlight-opdrachtregel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Copy">Kopiëren</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Close">Sluiten</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColField">Veld</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColValue">Waarde</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColSource">Bron</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_ColNote">Runtime-opmerking</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_BuiltIn">ingebouwd</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Global">globaal</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_Host">host</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_Source_PerGame">dit spel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoFromDisplay">→ {0} (van beeldscherm)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_AutoUnavailable">(beeldscherm niet beschikbaar)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAuto">Automatisch berekend</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalc">→ {0} Kbps (auto-berekend)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_None">(geen)</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_HostLabel">Host: {0}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_On">Aan</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Uit</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
 </ResourceDictionary>

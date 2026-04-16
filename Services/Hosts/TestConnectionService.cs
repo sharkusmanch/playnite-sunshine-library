@@ -148,6 +148,7 @@ namespace SunshineLibrary.Services.Hosts
                 Port = host.Port,
                 AdminUser = host.AdminUser,
                 AdminPassword = host.AdminPassword,
+                ApiToken = host.ApiToken,
                 CertFingerprintSpkiSha256 = string.IsNullOrEmpty(host.CertFingerprintSpkiSha256)
                     ? certResult.SpkiSha256
                     : host.CertFingerprintSpkiSha256,
@@ -159,13 +160,24 @@ namespace SunshineLibrary.Services.Hosts
 
             using (var client = HostClientFactory.Create(probeHost))
             {
-                // Server-type probe first — /api/config. Cheap, confirms auth works.
+                // Server-type detection — skip if the user pre-configured a type.
                 var flavorStep = new StepResult { Step = Step.ServerTypeDetect };
-                var serverType = await HostClientFactory.ProbeServerTypeAsync(client, ct).ConfigureAwait(false);
+                ServerType serverType;
+                if (probeHost.ServerType != ServerType.Unknown)
+                {
+                    serverType = probeHost.ServerType;
+                    flavorStep.Ok = true;
+                    flavorStep.Message = $"{serverType} (pre-set)";
+                    flavorStep.Data = serverType.ToString();
+                }
+                else
+                {
+                    serverType = await HostClientFactory.ProbeServerTypeAsync(client, ct).ConfigureAwait(false);
+                    flavorStep.Ok = serverType != ServerType.Unknown;
+                    flavorStep.Message = serverType.ToString();
+                    flavorStep.Data = serverType.ToString();
+                }
                 outcome.DetectedServerType = serverType;
-                flavorStep.Ok = serverType != ServerType.Unknown;
-                flavorStep.Message = serverType.ToString();
-                flavorStep.Data = serverType.ToString();
                 Report(progress, outcome, flavorStep);
 
                 // List apps — full end-to-end success signal.
@@ -178,6 +190,7 @@ namespace SunshineLibrary.Services.Hosts
                         Port = probeHost.Port,
                         AdminUser = probeHost.AdminUser,
                         AdminPassword = probeHost.AdminPassword,
+                        ApiToken = probeHost.ApiToken,
                         CertFingerprintSpkiSha256 = probeHost.CertFingerprintSpkiSha256,
                         ServerType = serverType,
                         Enabled = true,
