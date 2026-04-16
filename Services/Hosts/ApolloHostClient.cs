@@ -81,7 +81,29 @@ namespace SunshineLibrary.Services.Hosts
                 var r = await PostJsonAsync("api/login", body, null, ct).ConfigureAwait(false);
                 if (!r.IsOk)
                 {
-                    if (r.Kind == HostResultKind.AuthFailed) _loginFailed = true;
+                    if (r.Kind == HostResultKind.AuthFailed)
+                    {
+                        _loginFailed = true;
+                        return r;
+                    }
+                    // Server rejected the login endpoint in a way that suggests it doesn't
+                    // support session-cookie auth at all (400 Bad Request, 404 Not Found,
+                    // 405 Method Not Allowed). Fall back to HTTP Basic Auth by re-applying
+                    // the header the base class set before the constructor cleared it.
+                    // Transient errors (5xx) are intentionally excluded so they surface as
+                    // real errors rather than silently switching auth modes.
+                    if (r.Kind == HostResultKind.ServerError
+                        && (r.StatusCode == 400 || r.StatusCode == 404 || r.StatusCode == 405))
+                    {
+                        logger.Info($"[{Config.Label}] /api/login returned {r.StatusCode}; falling back to HTTP Basic Auth");
+                        var cred = System.Text.Encoding.UTF8.GetBytes(
+                            $"{Config.AdminUser}:{Config.AdminPassword ?? string.Empty}");
+                        Http.DefaultRequestHeaders.Authorization =
+                            new System.Net.Http.Headers.AuthenticationHeaderValue(
+                                "Basic", Convert.ToBase64String(cred));
+                        _sessionEstablished = true;
+                        return HostResult.Ok();
+                    }
                     return r;
                 }
 
