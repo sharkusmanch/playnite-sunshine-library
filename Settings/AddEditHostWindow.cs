@@ -35,6 +35,7 @@ namespace SunshineLibrary.Settings
         private TextBox userBox;
         private PasswordBox passwordBox;
         private PasswordBox apiTokenBox;
+        private ComboBox serverTypeCombo;
         private CheckBox enabledBox;
         private TextBox excludedBox;
         private ComboBox autoRemoveCombo;
@@ -188,6 +189,16 @@ namespace SunshineLibrary.Settings
             };
             tokenHelp.SetResourceReference(TextBlock.ForegroundProperty, "TextBrushDarker");
             root.Children.Add(tokenHelp);
+
+            serverTypeCombo = new ComboBox { HorizontalAlignment = HorizontalAlignment.Left, MinWidth = 260 };
+            serverTypeCombo.Items.Add(new ComboBoxItem { Content = Localize("LOC_SunshineLibrary_HostField_ServerType_AutoDetect") });
+            serverTypeCombo.Items.Add(new ComboBoxItem { Content = "Sunshine" });
+            serverTypeCombo.Items.Add(new ComboBoxItem { Content = "Apollo" });
+            serverTypeCombo.Items.Add(new ComboBoxItem { Content = "Vibepollo" });
+            var serverTypeIndex = (int)working.ServerType;
+            serverTypeCombo.SelectedIndex = serverTypeIndex >= 0 && serverTypeIndex < serverTypeCombo.Items.Count
+                ? serverTypeIndex : 0;
+            root.Children.Add(FieldRow(Localize("LOC_SunshineLibrary_HostField_ServerType"), serverTypeCombo));
 
             // Test Connection section — directly under credentials so it's where users look.
             var testPanel = new StackPanel { Margin = new Thickness(0, 16, 0, 16) };
@@ -395,6 +406,7 @@ namespace SunshineLibrary.Settings
             if (outcome.Success)
             {
                 working.ServerType = outcome.DetectedServerType;
+                serverTypeCombo.SelectedIndex = (int)outcome.DetectedServerType;
                 SetStatus(string.Format(Localize("LOC_SunshineLibrary_HostDialog_TestOk"),
                     outcome.DetectedServerType, outcome.AppCount), Brushes.MediumSeaGreen);
             }
@@ -471,6 +483,9 @@ namespace SunshineLibrary.Settings
             working.AdminUser = (userBox.Text ?? string.Empty).Trim();
             working.AdminPassword = passwordBox.Password ?? string.Empty;
             working.ApiToken = (apiTokenBox.Password ?? string.Empty).Trim();
+            var idx = serverTypeCombo.SelectedIndex;
+            working.ServerType = idx >= 0 && idx < serverTypeCombo.Items.Count
+                ? (ServerType)idx : ServerType.Unknown;
             working.Enabled = enabledBox.IsChecked == true;
             working.AutoRemoveOrphanedGames = autoRemoveCombo.SelectedIndex == 0
                 ? (bool?)null

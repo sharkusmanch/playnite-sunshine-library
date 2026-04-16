@@ -98,6 +98,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">Contraseña de administrador</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">Activado</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">Nombres de aplicaciones excluidos (uno por línea)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">Las aplicaciones que coincidan con estos nombres (sin distinguir mayúsculas) no aparecerán en Playnite. Se incluyen por defecto los predeterminados de Sunshine (Desktop, Steam Big Picture, Terminate): elimina los que quieras conservar.</sys:String>

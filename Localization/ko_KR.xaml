@@ -98,6 +98,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">관리자 비밀번호</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">사용</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">제외할 앱 이름 (한 줄에 하나)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">이 이름과 일치하는 앱(대소문자 구분 없음)은 Playnite에 표시되지 않습니다. Sunshine 기본 항목(Desktop, Steam Big Picture, Terminate)이 미리 입력되어 있습니다. 유지할 항목은 제거하십시오.</sys:String>

@@ -98,6 +98,8 @@
     <sys:String x:Key="LOC_SunshineLibrary_HostField_AdminPassword">管理員密碼</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken">API Token</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ApiToken_Help">Vibepollo/Apollo: authenticate with a Bearer token instead of username/password. Generate in the web console (Admin → API Tokens). Required scopes: GET /api/config, /api/playnite/status, /api/apps, /api/playnite/games; POST /api/playnite/force_sync, /api/apps/close.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType">Server type</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_HostField_ServerType_AutoDetect">Auto-detect</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_Enabled">啟用</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames">排除的應用程式名稱(每行一個)</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_HostField_ExcludedAppNames_Help">符合這些名稱的應用程式(不分大小寫)不會出現在 Playnite 中。已預先填入 Sunshine 內建項目(Desktop、Steam Big Picture、Terminate)— 如想保留,請移除相應項目。</sys:String>

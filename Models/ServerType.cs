@@ -10,9 +10,9 @@ namespace SunshineLibrary.Models
     /// </summary>
     public enum ServerType
     {
-        Unknown,
-        Sunshine,
-        Apollo,
-        Vibepollo
+        Unknown  = 0,
+        Sunshine = 1,
+        Apollo   = 2,
+        Vibepollo = 3,
     }
 }
