@@ -1,5 +1,26 @@
 AddonId: SunshineLibrary_496637e1-1607-4016-aa4b-d6f732c21210
 Packages:
+  - Version: 0.0.5
+    RequiredApiVersion: 6.12.0
+    ReleaseDate: 2026-04-16
+    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.5/SunshineLibrary_v0.0.5.pext
+    Changelog:
+      - Add Vibepollo support and effective streaming settings UI
+      - 'RunVibepolloRefresh: reconcile and mark orphans after sync'
+      - 'Address code review feedback on PR #10'
+      - Add missing LOC keys to all 18 non-English locale files
+      - Update dependency Microsoft.NET.Test.Sdk to 17.14.1
+      - Update dependency PlayniteSDK to 6.16.0
+      - Add Bearer token auth support for Vibepollo/Apollo hosts
+      - Fall back to HTTP Basic Auth when session-cookie login fails
+      - Add server type dropdown to Add/Edit Host dialog
+      - 'Fix: uninstall/remove host games immediately when host is removed'
+      - 'ci: make Claude Code Review manually triggered via @claude comment'
+      - 'ci: restrict Claude Code Review trigger to repo owner'
+      - Update dependency System.ValueTuple to 4.6.2
+      - Update actions/checkout action to v6
+      - Update dependency Microsoft.NET.Test.Sdk to v18
+      - Update GitHub Artifact Actions
   - Version: 0.0.4
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-04-15
