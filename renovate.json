@@ -3,7 +3,13 @@
   "extends": [
     "config:recommended"
   ],
-  "ignoreDeps": [
-    "Newtonsoft.Json"
+  "packageRules": [
+    {
+      "description": "Newtonsoft.Json is pinned to 10.0.3 because that is the version Playnite loads into its own AppDomain. The plugin references it with ExcludeAssets=runtime and binds against Playnite's copy at runtime, so compiling against anything newer risks MissingMethodException on APIs that only exist in the later assembly. Keep the test project on the same version so tests exercise the JSON library the plugin actually runs against. Revisit only when Playnite itself ships a newer Newtonsoft.Json.",
+      "matchPackageNames": [
+        "Newtonsoft.Json"
+      ],
+      "enabled": false
+    }
   ]
 }

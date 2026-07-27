@@ -10,7 +10,9 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="4.3.2" />
     <PackageReference Include="MSTest.TestFramework" Version="4.3.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <!-- Must match SunshineLibrary.csproj: tests should exercise the same Newtonsoft
+         assembly the plugin binds against inside Playnite. See renovate.json. -->
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="PlayniteSDK" Version="6.16.0" />
   </ItemGroup>
 

@@ -10,12 +10,12 @@ Companion to [playnite-apollo-sync](https://github.com/sharkusmanch/playnite-apo
 - Auto-detects Sunshine vs Apollo via `/api/config`
 - Per-host SPKI certificate pinning with TOFU confirmation dialog
 - DPAPI-encrypted admin passwords (never touch plain JSON)
-- Cache fallback: offline hosts serve last-good apps tagged `offline` — library survives network blips
+- Cache fallback: offline hosts serve last-good apps so the library survives network blips (the `SunshineLibrary: offline` tag is applied at first import only — Playnite does not re-tag games it already has)
 - Inline cover art from host
 - Auto-detects client display (resolution / refresh / HDR) at launch
 - Global → host → per-game override chain (tri-state `Inherit | Auto | Static`)
 - Bulk per-game overrides via multi-select right-click
-- Orphan reconciliation: app re-added to host → Playnite entry rematched by name, playtime preserved
+- Orphan reconciliation: app re-added to host → Playnite entry rematched by name, playtime preserved (only entries actually missing from the sync are eligible)
 - Optional orphan deletion (off by default — preserves history)
 - Moonlight locator probes PATH / Scoop / Winget / standard installers
 - Pre-launch sanity warnings (HDR + H.264, bitrate / fps range)
@@ -133,7 +133,15 @@ When an app is removed from a host, or the host is removed from settings:
 |---|---|---|
 | Host synced live, app gone | `IsInstalled = false` | Deleted + override wiped |
 | Host removed from settings | `IsInstalled = false` | Deleted + override wiped |
+| Host unchecked (**Enabled** off) | Left alone | Left alone |
 | Host offline / auth broken | Left alone (cache fallback) | Left alone |
+| Host synced live but returned **zero** apps | Left alone | Left alone |
+
+Only positive evidence counts. Disabling a host means "stop syncing it", not "its apps are
+gone" — its games are never pruned. Likewise, a host that authenticates but returns an empty
+list is indistinguishable from a reset config or an over-broad **Excluded app names**, so that
+host is skipped for the pass and a warning goes to the log. To clear those out deliberately,
+remove the host from settings, or use **Remove orphaned games…**.
 
 Reconciliation: if an app re-appears on the host (even with a new Apollo uuid or new Sunshine hash), the existing Playnite entry is re-matched by name — playtime and per-game overrides are preserved.
 
