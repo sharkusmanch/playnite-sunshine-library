@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} spel tillgängliga</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: ansluten, men inga appar returnerades, så värdens spel lämnades orörda. Kontrollera värdens applista och dina uteslutningsfilter och använd ”Ta bort överblivna spel…” om de verkligen har tagits bort allihop.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: inga ändringar</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Ta bort överblivna spel…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Uppdatera Vibepollo-värdens bibliotek…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Inga överblivna spel hittades. Alla biblioteksposter matchar appar på nåbara värdar.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Ta bort {0} överblivet/överblivna spel från biblioteket? Speltid, per-spel-strömnings-overrides och omslag tas bort permanent. Värdar som för tillfället är offline hoppas över — deras spel rensas aldrig automatiskt.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Tog bort {0} överblivet/överblivna spel.</sys:String>

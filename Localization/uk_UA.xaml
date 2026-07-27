@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: доступно ігор: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: підключено, але не повернуто жодного застосунку, тому ігри цього хоста залишилися без змін. Перевірте список застосунків на хості та фільтри виключень, а потім скористайтеся «Видалити осиротілі ігри…», якщо їх справді було видалено всі.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: без змін</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Видалити осиротілі ігри…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Оновити бібліотеку хоста Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Осиротілих ігор не знайдено. Усі записи бібліотеки відповідають застосункам на доступних хостах.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Видалити {0} осиротіл(у/их) гр(у/и) з бібліотеки? Час у грі, перевизначення трансляції та обкладинки буде видалено назавжди. Хости, що зараз недоступні, пропускаються — їхні ігри ніколи не видаляються автоматично.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Видалено осиротілих ігор: {0}.</sys:String>

@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}:{1} 個遊戲可用</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}：已連線，但未傳回任何應用程式，因此該主機的遊戲保持不變。請檢查主機的應用程式清單與排除篩選條件；若確實已全部移除，請使用「移除孤立的遊戲…」。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}:無變更</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">移除孤立的遊戲…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">重新整理 Vibepollo 主機庫…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">未找到孤立的遊戲。您的遊戲庫項目皆與目前可連線主機上的應用程式相符。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">從遊戲庫中移除 {0} 個孤立的遊戲?遊玩時數、個別遊戲的串流覆寫設定及封面將被永久刪除。目前離線的主機將被略過 — 其遊戲不會被自動清除。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">已移除 {0} 個孤立的遊戲。</sys:String>

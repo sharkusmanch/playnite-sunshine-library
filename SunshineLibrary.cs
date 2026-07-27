@@ -221,6 +221,7 @@ namespace SunshineLibrary
                 {
                     emptyYieldHostIds.Add(r.Host.Id.ToString());
                     logger.Warn($"[{r.Host.Label}] synced live but returned no apps — skipping orphan pruning for this host. Use \"Remove orphaned games…\" if the apps really were all removed.");
+                    SurfaceEmptyYieldGuard(r.Host);
                 }
                 else
                 {
@@ -921,6 +922,22 @@ namespace SunshineLibrary
             var id = $"sunshine-sync-{host.Id}";
             var text = string.Format(ResourceProvider.GetString("LOC_SunshineLibrary_Sync_Success"), host.Label, count);
             PlayniteApi.Notifications.Add(new NotificationMessage(id, text, NotificationType.Info));
+        }
+
+        /// <summary>
+        /// The empty-yield guard suppresses cleanup for a host, which is otherwise invisible
+        /// outside the log — a user relying on AutoRemoveOrphanedGames would just see stale
+        /// entries never go away. The notification id is per-host and stable, so a host that
+        /// trips the guard on every sync replaces its own message instead of stacking.
+        /// </summary>
+        private void SurfaceEmptyYieldGuard(HostConfig host)
+        {
+            var mode = settingsVm.Settings?.NotificationMode ?? NotificationMode.Always;
+            if (mode == NotificationMode.Never) return;
+
+            var text = string.Format(ResourceProvider.GetString("LOC_SunshineLibrary_Sync_EmptyYieldGuard"), host.Label);
+            PlayniteApi.Notifications.Add(new NotificationMessage(
+                $"sunshine-empty-yield-{host.Id}", text, NotificationType.Info));
         }
 
         private void SurfaceError(HostConfig host, HostResult status)

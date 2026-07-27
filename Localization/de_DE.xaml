@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} Spiele verfügbar</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: verbunden, aber keine Apps zurückgegeben – die Spiele dieses Hosts blieben unverändert. Prüfe die App-Liste des Hosts und deine Ausschlussfilter und verwende „Verwaiste Spiele entfernen…“, falls wirklich alle entfernt wurden.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: keine Änderungen</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Verwaiste Spiele entfernen…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Vibepollo-Host-Bibliothek aktualisieren…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Keine verwaisten Spiele gefunden. Alle Bibliothekseinträge stimmen mit Apps auf erreichbaren Hosts überein.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">{0} verwaiste(s) Spiel(e) aus der Bibliothek entfernen? Spielzeit, spielspezifische Streaming-Overrides und Cover werden unwiderruflich gelöscht. Hosts, die gerade offline sind, werden übersprungen — ihre Spiele werden nie automatisch bereinigt.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} verwaiste(s) Spiel(e) entfernt.</sys:String>

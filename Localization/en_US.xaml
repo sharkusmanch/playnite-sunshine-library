@@ -39,6 +39,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} games available</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: connected but returned no apps, so its games were left untouched. Check the host's app list and your excluded app names, then use "Remove orphaned games…" if they really were all removed.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: no changes</sys:String>
 
     <!-- Notifications: host errors -->
