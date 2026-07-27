@@ -139,9 +139,12 @@ When an app is removed from a host, or the host is removed from settings:
 
 Only positive evidence counts. Disabling a host means "stop syncing it", not "its apps are
 gone" — its games are never pruned. Likewise, a host that authenticates but returns an empty
-list is indistinguishable from a reset config or an over-broad **Excluded app names**, so that
-host is skipped for the pass and a warning goes to the log. To clear those out deliberately,
-remove the host from settings, or use **Remove orphaned games…**.
+list is indistinguishable from a reset config or an over-broad **Excluded app names**, so
+automatic sync skips that host for the pass and logs a warning.
+
+**Remove orphaned games…** is the deliberate override: it re-syncs, applies the same rules
+*without* the empty-yield guard, and shows a count for confirmation before deleting. That's
+the path to take when a host really did have all its apps removed.
 
 Reconciliation: if an app re-appears on the host (even with a new Apollo uuid or new Sunshine hash), the existing Playnite entry is re-matched by name — playtime and per-game overrides are preserved.
 

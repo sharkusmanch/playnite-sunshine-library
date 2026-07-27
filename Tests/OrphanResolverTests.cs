@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SunshineLibrary.Models;
 using SunshineLibrary.Services;
 using System;
 using System.Collections.Generic;
@@ -46,16 +47,54 @@ namespace SunshineLibrary.Tests
         /// Regression: unchecking "Enabled" on a host must not orphan its games. The apps
         /// are still on the server; with AutoRemoveOrphanedGames on, treating them as
         /// orphans deletes playtime, covers and overrides on a settings toggle.
+        ///
+        /// The original bug was in the host set the caller passed in, so this drives the
+        /// scope selection rather than hardcoding the ID list: HostScope.Configured is what
+        /// the plugin feeds to ResolveOrphans. Swapping it for HostScope.Active — the bug —
+        /// drops HostA from the configured set and fails this test.
         /// </summary>
         [TestMethod]
         public void NotOrphan_WhenHostConfiguredButDisabled()
         {
-            // Disabled host: still configured, but never synced, so not in the live set.
-            var orphans = Resolve(
-                existing: new[] { HostA + ":app1", HostA + ":app2" },
-                configured: new[] { HostA });
+            var settingsHosts = new List<HostConfig>
+            {
+                new HostConfig { Id = Guid.Parse(HostA), Label = "living room", Enabled = false },
+            };
 
-            Assert.AreEqual(0, orphans.Count);
+            var orphans = OrphanResolver.ResolveOrphans(
+                new[] { HostA + ":app1", HostA + ":app2" },
+                Set(),                                  // disabled host never syncs, so nothing yielded
+                Set(),                                  // ...and it is not live
+                Set(HostScope.Configured(settingsHosts).Select(h => h.Id.ToString()).ToArray()),
+                Set());
+
+            Assert.AreEqual(0, orphans.Count, "disabling a host must not orphan its games");
+        }
+
+        [TestMethod]
+        public void HostScope_ConfiguredKeepsDisabledHosts_ActiveDropsThem()
+        {
+            var hosts = new List<HostConfig>
+            {
+                new HostConfig { Id = Guid.Parse(HostA), Enabled = true },
+                new HostConfig { Id = Guid.Parse(HostB), Enabled = false },
+                null,
+            };
+
+            CollectionAssert.AreEquivalent(
+                new[] { HostA, HostB },
+                HostScope.Configured(hosts).Select(h => h.Id.ToString()).ToList());
+
+            CollectionAssert.AreEquivalent(
+                new[] { HostA },
+                HostScope.Active(hosts).Select(h => h.Id.ToString()).ToList());
+        }
+
+        [TestMethod]
+        public void HostScope_HandlesNullHostList()
+        {
+            Assert.AreEqual(0, HostScope.Configured(null).Count());
+            Assert.AreEqual(0, HostScope.Active(null).Count());
         }
 
         [TestMethod]
@@ -100,17 +139,22 @@ namespace SunshineLibrary.Tests
             Assert.AreEqual(0, orphans.Count);
         }
 
+        /// <summary>
+        /// The guard must not spill onto other hosts. Inputs mirror what the plugin actually
+        /// produces: HostB is live and yielded something (so it is genuinely missing app9),
+        /// while HostA is live and yielded nothing.
+        /// </summary>
         [TestMethod]
         public void EmptyYieldGuard_IsScopedToTheAffectedHostOnly()
         {
             var orphans = Resolve(
-                existing: new[] { HostA + ":app1", HostB + ":app9" },
-                yielded: new string[0],
+                existing: new[] { HostA + ":app1", HostB + ":app9", HostB + ":app8" },
+                yielded: new[] { HostB + ":app8" },
                 live: new[] { HostA, HostB },
                 configured: new[] { HostA, HostB },
                 emptyYield: new[] { HostA });
 
-            // HostA is protected by the guard; HostB synced live and genuinely lost its app.
+            // HostA is protected by the guard; HostB synced live and genuinely lost app9.
             CollectionAssert.AreEquivalent(new[] { HostB + ":app9" }, orphans.ToList());
         }
 

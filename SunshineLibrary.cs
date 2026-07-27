@@ -104,16 +104,14 @@ namespace SunshineLibrary
         }
 
         /// <summary>Hosts we actually talk to — sync, launch, and status probes.</summary>
-        private IEnumerable<HostConfig> ActiveHosts() =>
-            settingsVm.Settings?.Hosts?.Where(h => h != null && h.Enabled) ?? Enumerable.Empty<HostConfig>();
+        private IEnumerable<HostConfig> ActiveHosts() => HostScope.Active(settingsVm.Settings?.Hosts);
 
         /// <summary>
         /// Every host still present in settings, enabled or not. Orphan scoping must use
         /// this, never <see cref="ActiveHosts"/>: a disabled host's apps still exist on the
         /// server, so unchecking "Enabled" must not make its games look deleted.
         /// </summary>
-        private IEnumerable<HostConfig> ConfiguredHosts() =>
-            settingsVm.Settings?.Hosts?.Where(h => h != null) ?? Enumerable.Empty<HostConfig>();
+        private IEnumerable<HostConfig> ConfiguredHosts() => HostScope.Configured(settingsVm.Settings?.Hosts);
 
         public override IEnumerable<GameMetadata> GetGames(LibraryGetGamesArgs args)
         {
@@ -137,7 +135,7 @@ namespace SunshineLibrary
             }
 
             ReconcileOrphansByName(summary);
-            MarkOrphansUninstalled(summary, ConfiguredHosts().ToList());
+            MarkOrphansUninstalled(summary);
 
             return summary.AllGames;
         }
@@ -196,8 +194,18 @@ namespace SunshineLibrary
         /// <summary>
         /// Builds this pass's host-state sets from the sync summary and returns the database
         /// rows that <see cref="OrphanResolver.ResolveOrphans"/> confirms are gone upstream.
+        ///
+        /// Reads the configured-host set itself rather than taking it as a parameter: passing
+        /// the enabled-only list here is precisely the bug this replaced, and there is no
+        /// caller that legitimately wants a narrower set.
+        ///
+        /// <paramref name="guardEmptyYield"/> is on for automatic sync, where a host that
+        /// returns nothing is more likely misconfigured than genuinely empty. The manual
+        /// "Remove orphaned games…" path turns it off — the user is looking at a count and a
+        /// confirmation dialog, and that menu item is the documented way to clear a host that
+        /// really did have all its apps removed.
         /// </summary>
-        private List<Game> FindOrphanGames(SyncService.SyncSummary summary, IReadOnlyList<HostConfig> configuredHosts)
+        private List<Game> FindOrphanGames(SyncService.SyncSummary summary, bool guardEmptyYield)
         {
             var live = summary.Results
                 .Where(r => r.Host != null && r.Status != null && r.Status.IsOk && !r.FromCache)
@@ -206,18 +214,22 @@ namespace SunshineLibrary
             var liveHostIds = new HashSet<string>(
                 live.Select(r => r.Host.Id.ToString()), StringComparer.Ordinal);
 
-            // A live host yielding nothing is indistinguishable from a reset config or an
-            // over-broad ExcludedAppNames. Pruning on that signal would wipe the host.
-            var emptyYieldHostIds = new HashSet<string>(
-                live.Where(r => r.Games.Count == 0).Select(r => r.Host.Id.ToString()),
-                StringComparer.Ordinal);
+            var emptyYieldHostIds = new HashSet<string>(StringComparer.Ordinal);
             foreach (var r in live.Where(r => r.Games.Count == 0))
             {
-                logger.Warn($"[{r.Host.Label}] synced live but returned no apps — skipping orphan pruning for this host.");
+                if (guardEmptyYield)
+                {
+                    emptyYieldHostIds.Add(r.Host.Id.ToString());
+                    logger.Warn($"[{r.Host.Label}] synced live but returned no apps — skipping orphan pruning for this host. Use \"Remove orphaned games…\" if the apps really were all removed.");
+                }
+                else
+                {
+                    logger.Info($"[{r.Host.Label}] synced live and returned no apps; pruning anyway (manual, confirmed).");
+                }
             }
 
             var configuredHostIds = new HashSet<string>(
-                configuredHosts.Select(h => h.Id.ToString()), StringComparer.Ordinal);
+                ConfiguredHosts().Select(h => h.Id.ToString()), StringComparer.Ordinal);
 
             var yieldedIds = new HashSet<string>(
                 summary.AllGames.Select(g => g.GameId), StringComparer.Ordinal);
@@ -245,9 +257,9 @@ namespace SunshineLibrary
         /// See <see cref="OrphanResolver.ResolveOrphans"/> for what does and doesn't
         /// count as evidence a game is gone.
         /// </summary>
-        private void MarkOrphansUninstalled(SyncService.SyncSummary summary, IReadOnlyList<HostConfig> configuredHosts)
+        private void MarkOrphansUninstalled(SyncService.SyncSummary summary)
         {
-            var confirmedOrphans = FindOrphanGames(summary, configuredHosts);
+            var confirmedOrphans = FindOrphanGames(summary, guardEmptyYield: true);
 
             var updates = new List<Game>();
             foreach (var g in confirmedOrphans)
@@ -270,7 +282,7 @@ namespace SunshineLibrary
             if (confirmedOrphans.Count > 0)
             {
                 var hostMap = new Dictionary<string, HostConfig>(StringComparer.Ordinal);
-                foreach (var h in configuredHosts)
+                foreach (var h in ConfiguredHosts())
                 {
                     hostMap[h.Id.ToString()] = h;
                 }
@@ -687,7 +699,9 @@ namespace SunshineLibrary
                 ? new SyncService.SyncSummary()
                 : Task.Run(() => syncService.SyncAllAsync(hosts, ct), ct).GetAwaiter().GetResult();
 
-            var orphans = FindOrphanGames(summary, ConfiguredHosts().ToList());
+            // Manual, count-confirmed path — no empty-yield guard. This is the escape hatch
+            // for a host whose apps really were all removed.
+            var orphans = FindOrphanGames(summary, guardEmptyYield: false);
 
             if (orphans.Count == 0)
             {
@@ -756,7 +770,7 @@ namespace SunshineLibrary
                 var allHosts = ActiveHosts().ToList();
                 var summary = syncService.SyncAllAsync(allHosts, progress.CancelToken).GetAwaiter().GetResult();
                 ReconcileOrphansByName(summary);
-                MarkOrphansUninstalled(summary, ConfiguredHosts().ToList());
+                MarkOrphansUninstalled(summary);
                 ImportNewGames(summary);
 
                 foreach (var r in summary.Results)

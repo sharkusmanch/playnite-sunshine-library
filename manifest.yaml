@@ -9,7 +9,7 @@ Packages:
       - 'Fix: manual resync no longer duplicates the entire library on every run'
       - 'Fix: orphan reconciliation no longer steals a live game when two apps share a name'
       - 'Fix: a host that syncs but returns zero apps no longer prunes the whole host'
-      - Extract orphan and rebind rules into a testable resolver, with 17 regression tests
+      - Extract orphan and rebind rules into a testable resolver and cover them with tests
       - 'CI: validate AssemblyVersion against extension.yaml, run tests before release'
   - Version: 0.0.5
     RequiredApiVersion: 6.12.0

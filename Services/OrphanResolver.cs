@@ -1,8 +1,27 @@
+using SunshineLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SunshineLibrary.Services
 {
+    /// <summary>
+    /// The two host scopes, defined side by side because confusing them is a data-loss bug:
+    /// <see cref="Active"/> is who we talk to, <see cref="Configured"/> is who still exists in
+    /// settings. Orphan scoping must always use <see cref="Configured"/> — a disabled host's
+    /// apps are still on the server, so treating it as absent deletes live games.
+    /// </summary>
+    public static class HostScope
+    {
+        /// <summary>Hosts to sync, launch against, and probe. Excludes disabled hosts.</summary>
+        public static IEnumerable<HostConfig> Active(IEnumerable<HostConfig> hosts) =>
+            hosts?.Where(h => h != null && h.Enabled) ?? Enumerable.Empty<HostConfig>();
+
+        /// <summary>Every host still present in settings, enabled or not.</summary>
+        public static IEnumerable<HostConfig> Configured(IEnumerable<HostConfig> hosts) =>
+            hosts?.Where(h => h != null) ?? Enumerable.Empty<HostConfig>();
+    }
+
     /// <summary>
     /// A game identity as the orphan logic sees it: the composite "hostId:appStableId"
     /// GameId plus the display name. Lets the decision rules be exercised without a
@@ -159,11 +178,9 @@ namespace SunshineLibrary.Services
 
                 rebinds.Add(new Rebind { OldGameId = orphan.GameId, NewGameId = meta.GameId });
 
-                // Keep the indices honest so a second yielded app with the same name on
-                // the same host doesn't re-bind to the orphan we just consumed.
+                // Consume the candidate so a second yielded app with the same name on the
+                // same host can't re-bind to the orphan we just claimed.
                 candidates.Remove(key);
-                existingIds.Remove(orphan.GameId);
-                existingIds.Add(meta.GameId);
             }
 
             return rebinds;
