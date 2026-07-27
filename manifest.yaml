@@ -11,6 +11,7 @@ Packages:
       - 'Fix: a host that syncs but returns zero apps no longer prunes the whole host'
       - Extract orphan and rebind rules into a testable resolver and cover them with tests
       - 'CI: validate AssemblyVersion against extension.yaml, run tests before release'
+      - 'Known limitation: duplicate entries created by the resync bug in 0.0.5 and earlier are not removed automatically — delete them in Playnite (multi-select) or re-add the host'
   - Version: 0.0.5
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-04-16
