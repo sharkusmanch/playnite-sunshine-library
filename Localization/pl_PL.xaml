@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: dostępnych gier: {1}</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: połączono, ale nie zwrócono żadnych aplikacji, więc gry tego hosta pozostały bez zmian. Sprawdź listę aplikacji hosta i filtry wykluczeń, a jeśli naprawdę wszystkie zostały usunięte, użyj opcji „Usuń osierocone gry…”.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: brak zmian</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Usuń osierocone gry…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Odśwież bibliotekę hosta Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Nie znaleziono osieroconych gier. Wszystkie wpisy w bibliotece odpowiadają aplikacjom dostępnym na osiągalnych hostach.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Usunąć {0} osieroconych gier z biblioteki? Czas gry, nadpisania strumieniowania dla poszczególnych gier oraz okładki zostaną trwale usunięte. Hosty, które są obecnie niedostępne, są pomijane — ich gry nigdy nie są usuwane automatycznie.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Usunięto {0} osieroconych gier.</sys:String>

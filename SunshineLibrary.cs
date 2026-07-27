@@ -103,8 +103,15 @@ namespace SunshineLibrary
             }
         }
 
-        private IEnumerable<HostConfig> ActiveHosts() =>
-            settingsVm.Settings?.Hosts?.Where(h => h != null && h.Enabled) ?? Enumerable.Empty<HostConfig>();
+        /// <summary>Hosts we actually talk to — sync, launch, and status probes.</summary>
+        private IEnumerable<HostConfig> ActiveHosts() => HostScope.Active(settingsVm.Settings?.Hosts);
+
+        /// <summary>
+        /// Every host still present in settings, enabled or not. Orphan scoping must use
+        /// this, never <see cref="ActiveHosts"/>: a disabled host's apps still exist on the
+        /// server, so unchecking "Enabled" must not make its games look deleted.
+        /// </summary>
+        private IEnumerable<HostConfig> ConfiguredHosts() => HostScope.Configured(settingsVm.Settings?.Hosts);
 
         public override IEnumerable<GameMetadata> GetGames(LibraryGetGamesArgs args)
         {
@@ -128,82 +135,54 @@ namespace SunshineLibrary
             }
 
             ReconcileOrphansByName(summary);
-            MarkOrphansUninstalled(summary, hosts);
+            MarkOrphansUninstalled(summary);
 
             return summary.AllGames;
         }
 
         /// <summary>
-        /// Server identity is unstable: Apollo rotates `uuid` when an app is removed
-        /// and re-added; Sunshine's `sha256(name|cmd)` changes when the launch cmd
-        /// is edited. Without reconciliation, either edit creates a duplicate game
-        /// in Playnite and the old playtime/overrides become orphan state.
-        ///
-        /// Before Playnite processes the yield, walk yielded metadata: for each
-        /// GameId that doesn't already exist in the DB, look for an existing game
-        /// under our plugin scoped to the same host whose Name matches (case-
-        /// insensitive, exact). If found, rewrite that game's GameId to the new
-        /// one and migrate its OverrideStore entry. Playnite's diff then matches
-        /// the existing row and preserves everything.
-        ///
-        /// Scoped per-host so a rename on host A never touches host B. Known gap:
-        /// if the user renames in Playnite AND the app is re-added server-side,
-        /// the name no longer matches and we create a duplicate. Acceptable for v1.
+        /// Applies <see cref="OrphanResolver.ResolveRebinds"/> to the database: rewrites the
+        /// GameId of games whose upstream app ID changed, and migrates their OverrideStore
+        /// entries so those don't get orphaned in turn. Playnite's diff then matches the
+        /// existing row and preserves playtime, cover and overrides.
         /// </summary>
         private void ReconcileOrphansByName(SyncService.SyncSummary summary)
         {
             if (summary?.Results == null) return;
 
-            // Pre-index existing games by (hostId, lowercased name). Allocating once
-            // is cheap; walking DB per yielded app would be O(N·M).
-            var byHostName = new Dictionary<string, Game>(StringComparer.Ordinal);
-            var existingGameIds = new HashSet<string>(StringComparer.Ordinal);
-            foreach (var g in PlayniteApi.Database.Games)
-            {
-                if (g.PluginId != Id || string.IsNullOrEmpty(g.GameId)) continue;
-                existingGameIds.Add(g.GameId);
+            var ourGames = PlayniteApi.Database.Games
+                .Where(g => g.PluginId == Id && !string.IsNullOrEmpty(g.GameId))
+                .ToList();
 
-                var parts = g.GameId.Split(new[] { ':' }, 2);
-                if (parts.Length != 2 || string.IsNullOrEmpty(g.Name)) continue;
-                var key = parts[0] + ":" + g.Name.ToLowerInvariant();
-                // First one wins — duplicates under the same name on the same host are
-                // already ambiguous and we can't auto-resolve them.
-                if (!byHostName.ContainsKey(key)) byHostName[key] = g;
+            var rebinds = OrphanResolver.ResolveRebinds(
+                ourGames.Select(g => new GameRef(g.GameId, g.Name)),
+                summary.AllGames.Select(m => new GameRef(m.GameId, m.Name)));
+            if (rebinds.Count == 0) return;
+
+            var byId = new Dictionary<string, Game>(StringComparer.Ordinal);
+            foreach (var g in ourGames)
+            {
+                if (!byId.ContainsKey(g.GameId)) byId[g.GameId] = g;
             }
 
             var updates = new List<Game>();
-            foreach (var meta in summary.AllGames)
+            foreach (var rebind in rebinds)
             {
-                if (string.IsNullOrEmpty(meta.GameId)) continue;
-                if (existingGameIds.Contains(meta.GameId)) continue; // primary match wins, skip
+                Game game;
+                if (!byId.TryGetValue(rebind.OldGameId, out game)) continue;
 
-                var parts = meta.GameId.Split(new[] { ':' }, 2);
-                if (parts.Length != 2 || string.IsNullOrEmpty(meta.Name)) continue;
-                var key = parts[0] + ":" + meta.Name.ToLowerInvariant();
+                game.GameId = rebind.NewGameId;
+                game.IsInstalled = true;
+                updates.Add(game);
 
-                if (!byHostName.TryGetValue(key, out var orphan)) continue;
-                if (orphan.GameId == meta.GameId) continue; // shouldn't happen given existingGameIds check
-
-                var oldGameId = orphan.GameId;
-                orphan.GameId = meta.GameId;
-                orphan.IsInstalled = true;
-                updates.Add(orphan);
-
-                // Migrate per-game override so it doesn't get orphaned itself.
-                var ov = overrideStore.TryGet(oldGameId);
+                var ov = overrideStore.TryGet(rebind.OldGameId);
                 if (ov != null)
                 {
-                    overrideStore.Set(meta.GameId, ov);
-                    overrideStore.Remove(oldGameId);
+                    overrideStore.Set(rebind.NewGameId, ov);
+                    overrideStore.Remove(rebind.OldGameId);
                 }
 
-                // Refresh our in-memory indices so a second yielded app with the same
-                // name on the same host doesn't re-bind to the same orphan.
-                existingGameIds.Remove(oldGameId);
-                existingGameIds.Add(meta.GameId);
-                byHostName.Remove(key);
-
-                logger.Info($"Reconciled orphan '{meta.Name}' on host {parts[0]}: {oldGameId} -> {meta.GameId}");
+                logger.Info($"Reconciled orphan '{game.Name}': {rebind.OldGameId} -> {rebind.NewGameId}");
             }
 
             if (updates.Count > 0)
@@ -213,78 +192,82 @@ namespace SunshineLibrary
         }
 
         /// <summary>
-        /// When an app is removed from a Sunshine/Apollo host (or the host itself is
-        /// removed from settings), mark the corresponding Playnite games uninstalled.
-        /// Preserves playtime, overrides, and cover — the user may want to keep the
-        /// history if the app comes back.
+        /// Builds this pass's host-state sets from the sync summary and returns the database
+        /// rows that <see cref="OrphanResolver.ResolveOrphans"/> confirms are gone upstream.
         ///
-        /// Scoping rules to avoid thrashing on transient failures:
-        ///   - Only prune against hosts that synced LIVE (not cache-fallback).
-        ///     A host that failed to reach its admin API might just be offline;
-        ///     uninstalling its games would churn the library on every blip.
-        ///   - Host removed from settings entirely → prune its games (host.Id no
-        ///     longer in the active set, and we're not in cache-fallback for a
-        ///     non-existent host).
+        /// Reads the configured-host set itself rather than taking it as a parameter: passing
+        /// the enabled-only list here is precisely the bug this replaced, and there is no
+        /// caller that legitimately wants a narrower set.
+        ///
+        /// <paramref name="guardEmptyYield"/> is on for automatic sync, where a host that
+        /// returns nothing is more likely misconfigured than genuinely empty. The manual
+        /// "Remove orphaned games…" path turns it off — the user is looking at a count and a
+        /// confirmation dialog, and that menu item is the documented way to clear a host that
+        /// really did have all its apps removed.
         /// </summary>
-        private void MarkOrphansUninstalled(SyncService.SyncSummary summary, IReadOnlyList<HostConfig> activeHosts)
+        private List<Game> FindOrphanGames(SyncService.SyncSummary summary, bool guardEmptyYield)
         {
-            // Host IDs that definitely synced live — safe to compare against.
+            var live = summary.Results
+                .Where(r => r.Host != null && r.Status != null && r.Status.IsOk && !r.FromCache)
+                .ToList();
+
             var liveHostIds = new HashSet<string>(
-                summary.Results
-                    .Where(r => r.Status != null && r.Status.IsOk && !r.FromCache)
-                    .Select(r => r.Host.Id.ToString()),
-                StringComparer.Ordinal);
+                live.Select(r => r.Host.Id.ToString()), StringComparer.Ordinal);
 
-            // Host IDs the user still has in settings (any sync state). Anything NOT here was
-            // explicitly removed from the plugin's configuration → its games are orphans too.
+            var emptyYieldHostIds = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var r in live.Where(r => r.Games.Count == 0))
+            {
+                if (guardEmptyYield)
+                {
+                    emptyYieldHostIds.Add(r.Host.Id.ToString());
+                    logger.Warn($"[{r.Host.Label}] synced live but returned no apps — skipping orphan pruning for this host. Use \"Remove orphaned games…\" if the apps really were all removed.");
+                    SurfaceEmptyYieldGuard(r.Host);
+                }
+                else
+                {
+                    logger.Info($"[{r.Host.Label}] synced live and returned no apps; pruning anyway (manual, confirmed).");
+                }
+            }
+
             var configuredHostIds = new HashSet<string>(
-                activeHosts.Select(h => h.Id.ToString()),
-                StringComparer.Ordinal);
+                ConfiguredHosts().Select(h => h.Id.ToString()), StringComparer.Ordinal);
 
-            // Every GameId that sync produced this pass — either live or from cache.
-            // Games in this set are definitely still present on their host.
             var yieldedIds = new HashSet<string>(
-                summary.AllGames.Select(g => g.GameId),
-                StringComparer.Ordinal);
+                summary.AllGames.Select(g => g.GameId), StringComparer.Ordinal);
 
             var ourGames = PlayniteApi.Database.Games
                 .Where(g => g.PluginId == Id && !string.IsNullOrEmpty(g.GameId))
                 .ToList();
 
-            var updates = new List<Game>();          // games to mark uninstalled this pass
-            var confirmedOrphans = new List<Game>(); // all confirmed orphans regardless of IsInstalled
-            foreach (var g in ourGames)
+            var orphanIds = OrphanResolver.ResolveOrphans(
+                ourGames.Select(g => g.GameId),
+                yieldedIds,
+                liveHostIds,
+                configuredHostIds,
+                emptyYieldHostIds);
+
+            return ourGames.Where(g => orphanIds.Contains(g.GameId)).ToList();
+        }
+
+        /// <summary>
+        /// When an app is removed from a Sunshine/Apollo host (or the host itself is
+        /// removed from settings), mark the corresponding Playnite games uninstalled.
+        /// Preserves playtime, overrides, and cover — the user may want to keep the
+        /// history if the app comes back.
+        ///
+        /// See <see cref="OrphanResolver.ResolveOrphans"/> for what does and doesn't
+        /// count as evidence a game is gone.
+        /// </summary>
+        private void MarkOrphansUninstalled(SyncService.SyncSummary summary)
+        {
+            var confirmedOrphans = FindOrphanGames(summary, guardEmptyYield: true);
+
+            var updates = new List<Game>();
+            foreach (var g in confirmedOrphans)
             {
-                var parts = g.GameId.Split(new[] { ':' }, 2);
-                if (parts.Length != 2) continue;
-                var hostId = parts[0];
-
-                bool orphan;
-                if (!configuredHostIds.Contains(hostId))
-                {
-                    // Host removed from settings — definitively orphan.
-                    orphan = true;
-                }
-                else if (liveHostIds.Contains(hostId))
-                {
-                    // Host synced live and game wasn't in the yield → truly removed upstream.
-                    orphan = !yieldedIds.Contains(g.GameId);
-                }
-                else
-                {
-                    // Host exists in settings but didn't sync live (offline, auth-broken, cache).
-                    // Leave alone — don't thrash on transient failures.
-                    orphan = false;
-                }
-
-                if (!orphan) continue;
-
-                confirmedOrphans.Add(g);
-                if (g.IsInstalled)
-                {
-                    g.IsInstalled = false;
-                    updates.Add(g);
-                }
+                if (!g.IsInstalled) continue;
+                g.IsInstalled = false;
+                updates.Add(g);
             }
 
             if (updates.Count > 0)
@@ -299,15 +282,19 @@ namespace SunshineLibrary
             // Games whose host was removed from settings fall back to the global setting.
             if (confirmedOrphans.Count > 0)
             {
-                var hostMap = activeHosts.ToDictionary(h => h.Id.ToString(), StringComparer.Ordinal);
+                var hostMap = new Dictionary<string, HostConfig>(StringComparer.Ordinal);
+                foreach (var h in ConfiguredHosts())
+                {
+                    hostMap[h.Id.ToString()] = h;
+                }
+
                 var globalDelete = settingsVm?.Settings?.AutoRemoveOrphanedGames ?? false;
                 var toDelete = confirmedOrphans
                     .Where(g =>
                     {
-                        var parts = g.GameId.Split(new[] { ':' }, 2);
-                        if (parts.Length != 2) return globalDelete;
-                        var hid = parts[0];
-                        return hostMap.TryGetValue(hid, out var h) && h.AutoRemoveOrphanedGames.HasValue
+                        var hid = OrphanResolver.HostIdOf(g.GameId);
+                        HostConfig h;
+                        return hid != null && hostMap.TryGetValue(hid, out h) && h.AutoRemoveOrphanedGames.HasValue
                             ? h.AutoRemoveOrphanedGames.Value
                             : globalDelete;
                     })
@@ -315,6 +302,63 @@ namespace SunshineLibrary
                 if (toDelete.Count > 0)
                     DeleteOrphanGames(toDelete);
             }
+        }
+
+        /// <summary>
+        /// Import pass for the manual menu paths, which push metadata into the database
+        /// themselves rather than returning it from <see cref="GetGames"/>.
+        ///
+        /// Playnite's <c>ImportGame(GameMetadata, Guid)</c> does NOT de-duplicate — that
+        /// lives only in the <c>ImportGames(LibraryPlugin, …)</c> overload behind the
+        /// GetGames path. Calling it unguarded clones the entire library on every click,
+        /// so we diff against existing GameIds first.
+        ///
+        /// A game already present but marked uninstalled is coming back (it's in this
+        /// pass's yield), so flip it installed instead of importing a second copy.
+        /// </summary>
+        private void ImportNewGames(SyncService.SyncSummary summary)
+        {
+            if (summary == null) return;
+
+            var byId = new Dictionary<string, Game>(StringComparer.Ordinal);
+            foreach (var g in PlayniteApi.Database.Games)
+            {
+                if (g.PluginId != Id || string.IsNullOrEmpty(g.GameId)) continue;
+                if (!byId.ContainsKey(g.GameId)) byId[g.GameId] = g;
+            }
+
+            var known = new HashSet<string>(byId.Keys, StringComparer.Ordinal);
+            var reinstalled = new List<Game>();
+            var imported = 0;
+
+            using (PlayniteApi.Database.BufferedUpdate())
+            {
+                foreach (var meta in summary.AllGames)
+                {
+                    if (string.IsNullOrEmpty(meta.GameId)) continue;
+
+                    if (!known.Add(meta.GameId))
+                    {
+                        Game existing;
+                        if (byId.TryGetValue(meta.GameId, out existing) && !existing.IsInstalled)
+                        {
+                            existing.IsInstalled = true;
+                            reinstalled.Add(existing);
+                        }
+                        continue;
+                    }
+
+                    PlayniteApi.Database.ImportGame(meta, this);
+                    imported++;
+                }
+
+                if (reinstalled.Count > 0)
+                {
+                    PlayniteApi.Database.Games.Update(reinstalled);
+                }
+            }
+
+            logger.Info($"Resync imported {imported} new game(s); marked {reinstalled.Count} installed again.");
         }
 
         private void DeleteOrphanGames(IReadOnlyList<Game> games)
@@ -642,10 +686,9 @@ namespace SunshineLibrary
         /// — this is the "I just want to clean up right now" path. Requires explicit
         /// confirmation because deletion wipes playtime, overrides, and covers.
         ///
-        /// Definition of orphan here matches the sync-time logic: a game is an orphan
-        /// if its host was removed from settings OR if its host synced live in the
-        /// most recent sync and didn't yield the game. Cache-fallback hosts are never
-        /// pruned — we can't tell "removed" from "offline" there.
+        /// Definition of orphan here is exactly the sync-time one — see
+        /// <see cref="OrphanResolver.ResolveOrphans"/>. Disabled, offline and
+        /// cache-fallback hosts are never pruned.
         /// </summary>
         private void RemoveOrphanGamesNow()
         {
@@ -657,36 +700,9 @@ namespace SunshineLibrary
                 ? new SyncService.SyncSummary()
                 : Task.Run(() => syncService.SyncAllAsync(hosts, ct), ct).GetAwaiter().GetResult();
 
-            var liveHostIds = new HashSet<string>(
-                summary.Results
-                    .Where(r => r.Status != null && r.Status.IsOk && !r.FromCache)
-                    .Select(r => r.Host.Id.ToString()),
-                StringComparer.Ordinal);
-            var configuredHostIds = new HashSet<string>(
-                hosts.Select(h => h.Id.ToString()),
-                StringComparer.Ordinal);
-            var yieldedIds = new HashSet<string>(
-                summary.AllGames.Select(g => g.GameId),
-                StringComparer.Ordinal);
-
-            var orphans = new List<Game>();
-            foreach (var g in PlayniteApi.Database.Games)
-            {
-                if (g.PluginId != Id || string.IsNullOrEmpty(g.GameId)) continue;
-                var parts = g.GameId.Split(new[] { ':' }, 2);
-                if (parts.Length != 2) continue;
-                var hostId = parts[0];
-
-                if (!configuredHostIds.Contains(hostId))
-                {
-                    orphans.Add(g); // host removed from settings
-                }
-                else if (liveHostIds.Contains(hostId) && !yieldedIds.Contains(g.GameId))
-                {
-                    orphans.Add(g); // host synced live and game wasn't yielded
-                }
-                // else: host didn't sync live (cache or offline) — don't touch
-            }
+            // Manual, count-confirmed path — no empty-yield guard. This is the escape hatch
+            // for a host whose apps really were all removed.
+            var orphans = FindOrphanGames(summary, guardEmptyYield: false);
 
             if (orphans.Count == 0)
             {
@@ -755,13 +771,8 @@ namespace SunshineLibrary
                 var allHosts = ActiveHosts().ToList();
                 var summary = syncService.SyncAllAsync(allHosts, progress.CancelToken).GetAwaiter().GetResult();
                 ReconcileOrphansByName(summary);
-                MarkOrphansUninstalled(summary, allHosts);
-
-                using (PlayniteApi.Database.BufferedUpdate())
-                {
-                    foreach (var meta in summary.AllGames)
-                        PlayniteApi.Database.ImportGame(meta, this);
-                }
+                MarkOrphansUninstalled(summary);
+                ImportNewGames(summary);
 
                 foreach (var r in summary.Results)
                 {
@@ -846,14 +857,7 @@ namespace SunshineLibrary
             {
                 progress.ProgressMaxValue = hosts.Count;
                 var summary = syncService.SyncAllAsync(hosts, progress.CancelToken).GetAwaiter().GetResult();
-
-                using (PlayniteApi.Database.BufferedUpdate())
-                {
-                    foreach (var meta in summary.AllGames)
-                    {
-                        PlayniteApi.Database.ImportGame(meta, this);
-                    }
-                }
+                ImportNewGames(summary);
 
                 foreach (var r in summary.Results)
                 {
@@ -918,6 +922,22 @@ namespace SunshineLibrary
             var id = $"sunshine-sync-{host.Id}";
             var text = string.Format(ResourceProvider.GetString("LOC_SunshineLibrary_Sync_Success"), host.Label, count);
             PlayniteApi.Notifications.Add(new NotificationMessage(id, text, NotificationType.Info));
+        }
+
+        /// <summary>
+        /// The empty-yield guard suppresses cleanup for a host, which is otherwise invisible
+        /// outside the log — a user relying on AutoRemoveOrphanedGames would just see stale
+        /// entries never go away. The notification id is per-host and stable, so a host that
+        /// trips the guard on every sync replaces its own message instead of stacking.
+        /// </summary>
+        private void SurfaceEmptyYieldGuard(HostConfig host)
+        {
+            var mode = settingsVm.Settings?.NotificationMode ?? NotificationMode.Always;
+            if (mode == NotificationMode.Never) return;
+
+            var text = string.Format(ResourceProvider.GetString("LOC_SunshineLibrary_Sync_EmptyYieldGuard"), host.Label);
+            PlayniteApi.Notifications.Add(new NotificationMessage(
+                $"sunshine-empty-yield-{host.Id}", text, NotificationType.Info));
         }
 
         private void SurfaceError(HostConfig host, HostResult status)

@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} oyun mevcut</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: bağlanıldı ancak hiç uygulama döndürülmedi, bu nedenle bu sunucunun oyunlarına dokunulmadı. Sunucunun uygulama listesini ve hariç tutma filtrelerinizi kontrol edin; gerçekten hepsi kaldırıldıysa «Sahipsiz oyunları kaldır…» seçeneğini kullanın.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: değişiklik yok</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Remove orphaned games -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Sahipsiz oyunları kaldır…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Vibepollo sunucu kitaplığını yenile…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Sahipsiz oyun bulunamadı. Kütüphanenizdeki tüm girdiler, erişilebilir sunuculardaki uygulamalarla eşleşiyor.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Kütüphaneden {0} sahipsiz oyun kaldırılsın mı? Oynanma süresi, oyun başına yayın geçersiz kılmaları ve kapak görselleri kalıcı olarak silinecek. Şu anda çevrimdışı olan sunucular atlanır — bu sunuculara ait oyunlar hiçbir zaman otomatik olarak temizlenmez.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} sahipsiz oyun kaldırıldı.</sys:String>

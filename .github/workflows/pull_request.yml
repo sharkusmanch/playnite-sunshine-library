@@ -37,6 +37,26 @@ jobs:
             errors=$((errors + 1))
           fi
 
+          # The shipped DLL reports its AssemblyVersion in Playnite's logs and crash
+          # reports, so it has to track the release version too.
+          expected_asm="${ext_version}.0"
+          asm_version=$(grep -oP 'AssemblyVersion\("\K[^"]+' Properties/AssemblyInfo.cs)
+          asm_file_version=$(grep -oP 'AssemblyFileVersion\("\K[^"]+' Properties/AssemblyInfo.cs)
+
+          echo "Expected assembly version: $expected_asm"
+          echo "AssemblyVersion:           $asm_version"
+          echo "AssemblyFileVersion:       $asm_file_version"
+
+          if [ "$asm_version" != "$expected_asm" ]; then
+            echo "::error::AssemblyVersion ($asm_version) does not match extension.yaml ($ext_version). Expected $expected_asm"
+            errors=$((errors + 1))
+          fi
+
+          if [ "$asm_file_version" != "$expected_asm" ]; then
+            echo "::error::AssemblyFileVersion ($asm_file_version) does not match extension.yaml ($ext_version). Expected $expected_asm"
+            errors=$((errors + 1))
+          fi
+
           if [ $errors -gt 0 ]; then
             exit 1
           fi
@@ -48,17 +68,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: robinraju/release-downloader@v1.8
-        id: download_playnite
-        with:
-          repository: "JosefNemec/Playnite"
-          latest: true
-          tarBall: false
-          zipBall: false
-          fileName: "Playnite*.zip"
-          out-file-path: ${{ runner.temp }}/playnite
-          extract: true
-
+      # No Playnite download here: only the release job needs Toolbox.exe, and the
+      # asset glob for it drifts between Playnite releases.
       - run: |
           dotnet build SunshineLibrary.csproj -c Release
 

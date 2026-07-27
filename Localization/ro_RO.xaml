@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} jocuri disponibile</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: conectat, dar nu a returnat nicio aplicație, așa că jocurile acestei gazde au rămas neatinse. Verifică lista de aplicații a gazdei și filtrele de excludere, apoi folosește „Elimină jocurile orfane…” dacă chiar au fost eliminate toate.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: nicio modificare</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Elimină jocurile orfane…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Reîmprospătează biblioteca gazdei Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Nu s-au găsit jocuri orfane. Toate intrările din bibliotecă corespund aplicațiilor existente pe gazdele accesibile.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Elimini {0} joc(uri) orfane din bibliotecă? Timpul de joc, suprascrierile de streaming per joc și copertele vor fi șterse definitiv. Gazdele momentan offline sunt omise — jocurile lor nu sunt niciodată eliminate automat.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">S-au eliminat {0} joc(uri) orfane.</sys:String>

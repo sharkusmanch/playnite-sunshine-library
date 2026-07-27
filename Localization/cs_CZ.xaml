@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: k dispozici {1} her</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: připojeno, ale nevrátil žádné aplikace, jeho hry proto zůstaly beze změny. Zkontrolujte seznam aplikací na hostiteli a filtry vyloučení; pokud byly opravdu všechny odebrány, použijte „Odebrat osiřelé hry…“.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: beze změn</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Odebrat osiřelé hry…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Obnovit knihovnu hostitele Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Žádné osiřelé hry nebyly nalezeny. Všechny záznamy ve vaší knihovně odpovídají aplikacím na dostupných hostitelích.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Odebrat {0} osiřelých her z knihovny? Herní čas, přepsání streamování pro jednotlivé hry a obaly budou trvale smazány. Hostitelé, kteří jsou aktuálně offline, jsou přeskočeni — jejich hry nejsou nikdy automaticky odstraňovány.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Odebráno {0} osiřelých her.</sys:String>

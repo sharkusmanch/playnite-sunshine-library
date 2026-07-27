@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} juegos disponibles</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: conectado, pero no devolvió ninguna aplicación, así que sus juegos no se modificaron. Revisa la lista de aplicaciones del host y tus filtros de exclusión, y usa «Eliminar juegos huérfanos…» si realmente se eliminaron todas.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: sin cambios</sys:String>
 
     <!-- Notifications: host errors -->
@@ -199,6 +200,7 @@
 
 
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Eliminar juegos huérfanos…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Actualizar la biblioteca del host Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">No se encontraron juegos huérfanos. Todas las entradas de tu biblioteca coinciden con aplicaciones actualmente en hosts accesibles.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">¿Eliminar {0} juego(s) huérfano(s) de la biblioteca? El tiempo de juego, las anulaciones de streaming por juego y las portadas se borrarán de forma permanente. Los hosts que están actualmente fuera de línea se omiten — sus juegos nunca se eliminan automáticamente.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Se eliminaron {0} juego(s) huérfano(s).</sys:String>

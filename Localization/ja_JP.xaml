@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: 利用可能なゲーム {1} 本</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: 接続できましたが、アプリが返されなかったため、このホストのゲームは変更していません。ホストのアプリ一覧と除外フィルターを確認し、本当にすべて削除された場合は「孤立したゲームを削除…」を使用してください。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: 変更なし</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">孤立したゲームを削除…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Vibepollo ホストのライブラリを更新…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">孤立したゲームは見つかりませんでした。ライブラリのすべてのエントリは、現在到達可能なホスト上のアプリと一致しています。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">孤立したゲームを {0} 本ライブラリから削除しますか？ プレイ時間、ゲームごとのストリーミングオーバーライド、およびカバー画像は完全に削除されます。現在オフラインのホストはスキップされます — それらのゲームは自動的に整理されることはありません。</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">孤立したゲームを {0} 本削除しました。</sys:String>

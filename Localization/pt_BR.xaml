@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} jogos disponíveis</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: conectado, mas não retornou nenhum aplicativo, então os jogos deste host não foram alterados. Verifique a lista de aplicativos do host e seus filtros de exclusão e use «Remover jogos órfãos…» se todos realmente foram removidos.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: sem alterações</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Remover jogos órfãos…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Atualizar biblioteca do host Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Nenhum jogo órfão encontrado. Todas as entradas da sua biblioteca correspondem a apps presentes nos hosts acessíveis.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Remover {0} jogo(s) órfão(s) da biblioteca? O tempo de jogo, as substituições de streaming por jogo e as capas serão excluídos permanentemente. Hosts que estão offline no momento são ignorados — seus jogos nunca são removidos automaticamente.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">Removido(s) {0} jogo(s) órfão(s).</sys:String>

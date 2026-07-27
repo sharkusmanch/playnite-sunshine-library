@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0} : {1} jeux disponibles</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0} : connecté, mais aucune application renvoyée ; ses jeux n'ont pas été modifiés. Vérifiez la liste des applications de l'hôte et vos filtres d'exclusion, puis utilisez « Supprimer les jeux orphelins… » si elles ont réellement toutes été supprimées.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0} : aucun changement</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Main menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Supprimer les jeux orphelins…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Actualiser la bibliothèque de l'hôte Vibepollo…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Aucun jeu orphelin trouvé. Toutes les entrées de votre bibliothèque correspondent à des applications actuellement présentes sur des hôtes accessibles.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">Supprimer {0} jeu(x) orphelin(s) de la bibliothèque ? Le temps de jeu, les remplacements de streaming par jeu et les jaquettes seront définitivement supprimés. Les hôtes actuellement hors ligne sont ignorés — leurs jeux ne sont jamais supprimés automatiquement.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} jeu(x) orphelin(s) supprimé(s).</sys:String>

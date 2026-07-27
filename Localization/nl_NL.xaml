@@ -32,6 +32,7 @@
 
     <!-- Notifications: sync -->
     <sys:String x:Key="LOC_SunshineLibrary_Sync_Success">{0}: {1} games beschikbaar</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Sync_EmptyYieldGuard">{0}: verbonden, maar er zijn geen apps teruggegeven, dus de games van deze host zijn ongewijzigd gelaten. Controleer de app-lijst van de host en je uitsluitingsfilters en gebruik 'Verweesde games verwijderen…' als ze echt allemaal verwijderd zijn.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_Sync_NoChanges">{0}: geen wijzigingen</sys:String>
 
     <!-- Notifications: host errors -->
@@ -200,6 +201,7 @@
 
     <!-- Menu: orphan removal -->
     <sys:String x:Key="LOC_SunshineLibrary_Menu_RemoveOrphanGames">Verweesde games verwijderen…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_RefreshVibepolloLibrary">Vibepollo-hostbibliotheek vernieuwen…</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_None">Geen verweesde games gevonden. Alle bibliotheekitems komen overeen met apps op bereikbare hosts.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Confirm">{0} verweesd(e) game(s) uit de bibliotheek verwijderen? Speeltijd, per-game streaming-overrides en omslagen worden definitief gewist. Hosts die momenteel offline zijn worden overgeslagen — hun games worden nooit automatisch verwijderd.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_RemoveOrphanGames_Done">{0} verweesd(e) game(s) verwijderd.</sys:String>
