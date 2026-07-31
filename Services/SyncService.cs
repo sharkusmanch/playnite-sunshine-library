@@ -172,7 +172,13 @@ namespace SunshineLibrary.Services
             logger.Info($"[{host.Label}] yielded {result.Games.Count} games from cache (live fetch failed).");
         }
 
-        private PlayniteGameMetadata BuildMeta(HostConfig host, RemoteApp app, bool fromCache)
+        /// <summary>
+        /// Compose the Playnite metadata for one remote app.
+        ///
+        /// <c>internal</c> rather than private so tests can assert the shape directly —
+        /// same test seam as <see cref="Hosts.HostClient"/>'s handler-injecting ctor.
+        /// </summary>
+        internal PlayniteGameMetadata BuildMeta(HostConfig host, RemoteApp app, bool fromCache)
         {
             var sourcePrefix = host.ServerType == ServerType.Vibepollo ? "Vibepollo" : "Sunshine";
             var source = new PlayniteMetadata($"{sourcePrefix}: {host.Label}");
@@ -194,6 +200,16 @@ namespace SunshineLibrary.Services
                 GameId = $"{host.Id}:{app.StableId}",
                 Name = app.Name,
                 IsInstalled = true,
+                // A streamed app occupies nothing locally — the bits live on the host.
+                // State both fields explicitly instead of leaving them unset: Playnite's
+                // size scanner only measures InstallDirectory (or Roms), so an empty
+                // directory keeps it from ever attributing a local folder's size to a
+                // remote game, and an explicit 0 reads as "nothing installed here"
+                // rather than "unknown" for anything else inspecting the entry.
+                // 0 groups as InstallSizeGroup.None, exactly as null does, so filters
+                // and grouping behave the same as before.
+                InstallDirectory = string.Empty,
+                InstallSize = 0,
                 Source = source,
                 Platforms = new HashSet<MetadataProperty> { platform },
                 Features = new HashSet<MetadataProperty> { feature },
