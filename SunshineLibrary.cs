@@ -113,6 +113,16 @@ namespace SunshineLibrary
         /// </summary>
         private IEnumerable<HostConfig> ConfiguredHosts() => HostScope.Configured(settingsVm.Settings?.Hosts);
 
+        /// <summary>
+        /// Current user-configured platform / tag shape for imported entries. Read
+        /// fresh on every sync so a settings change takes effect without a restart.
+        /// </summary>
+        private LibraryMetadataOptions MetadataOptions() => new LibraryMetadataOptions
+        {
+            PlatformName = settingsVm.Settings?.LibraryPlatform,
+            Tags = settingsVm.Settings?.AdditionalTags,
+        };
+
         public override IEnumerable<GameMetadata> GetGames(LibraryGetGamesArgs args)
         {
             var hosts = ActiveHosts().ToList();
@@ -120,7 +130,7 @@ namespace SunshineLibrary
 
             var summary = hosts.Count == 0
                 ? new SyncService.SyncSummary()
-                : Task.Run(() => syncService.SyncAllAsync(hosts, ct), ct).GetAwaiter().GetResult();
+                : Task.Run(() => syncService.SyncAllAsync(hosts, MetadataOptions(), ct), ct).GetAwaiter().GetResult();
 
             foreach (var r in summary.Results)
             {
@@ -670,6 +680,13 @@ namespace SunshineLibrary
                 Action = _ => CleanOrphanOverrides(),
             };
 
+            yield return new MainMenuItem
+            {
+                MenuSection = $"@{section}",
+                Description = ResourceProvider.GetString("LOC_SunshineLibrary_Menu_ApplyPlatformTags"),
+                Action = _ => ApplyPlatformAndTagsToExisting(),
+            };
+
             if (ActiveHosts().Any(h => h.ServerType == ServerType.Vibepollo))
             {
                 yield return new MainMenuItem
@@ -698,7 +715,7 @@ namespace SunshineLibrary
             // Run a fresh sync to get authoritative yield state.
             var summary = hosts.Count == 0
                 ? new SyncService.SyncSummary()
-                : Task.Run(() => syncService.SyncAllAsync(hosts, ct), ct).GetAwaiter().GetResult();
+                : Task.Run(() => syncService.SyncAllAsync(hosts, MetadataOptions(), ct), ct).GetAwaiter().GetResult();
 
             // Manual, count-confirmed path — no empty-yield guard. This is the escape hatch
             // for a host whose apps really were all removed.
@@ -769,7 +786,7 @@ namespace SunshineLibrary
                 // Step 2: pull the updated app lists into Playnite
                 progress.CurrentProgressValue++;
                 var allHosts = ActiveHosts().ToList();
-                var summary = syncService.SyncAllAsync(allHosts, progress.CancelToken).GetAwaiter().GetResult();
+                var summary = syncService.SyncAllAsync(allHosts, MetadataOptions(), progress.CancelToken).GetAwaiter().GetResult();
                 ReconcileOrphansByName(summary);
                 MarkOrphansUninstalled(summary);
                 ImportNewGames(summary);
@@ -848,6 +865,130 @@ namespace SunshineLibrary
                 NotificationType.Info));
         }
 
+        /// <summary>
+        /// Pushes the configured platform and tags onto games that are already in the
+        /// library.
+        ///
+        /// Playnite applies platform and tag metadata at first import only — its
+        /// library-update reconciliation touches install state, playtime, last activity,
+        /// completion status and install size, and nothing else. Changing the setting
+        /// therefore reaches existing entries only through a deliberate pass like this
+        /// one, which is why it is a menu action rather than something the sync does.
+        ///
+        /// Tags are added, never removed: the configured list is a floor, not the whole
+        /// set, so tags the user added by hand — and the host-derived category and
+        /// library-source tags — survive. The platform, being single-valued, is replaced.
+        /// </summary>
+        private void ApplyPlatformAndTagsToExisting()
+        {
+            var ourGames = PlayniteApi.Database.Games.Where(g => g != null && g.PluginId == Id).ToList();
+            if (ourGames.Count == 0)
+            {
+                PlayniteApi.Dialogs.ShowMessage(
+                    ResourceProvider.GetString("LOC_SunshineLibrary_ApplyPlatformTags_NoGames"),
+                    ResourceProvider.GetString("LOC_SunshineLibrary_Name"));
+                return;
+            }
+
+            var options = MetadataOptions();
+            if (!options.IsConfigured)
+            {
+                PlayniteApi.Dialogs.ShowMessage(
+                    ResourceProvider.GetString("LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured"),
+                    ResourceProvider.GetString("LOC_SunshineLibrary_Name"));
+                return;
+            }
+
+            // Describe the pass from the settings alone. Resolving first would create the
+            // platform and tag rows in Playnite's database, leaving them behind as orphans
+            // if the user then answers No.
+            var confirm = PlayniteApi.Dialogs.ShowMessage(
+                string.Format(
+                    ResourceProvider.GetString("LOC_SunshineLibrary_ApplyPlatformTags_Confirm"),
+                    ourGames.Count,
+                    string.IsNullOrWhiteSpace(options.PlatformName)
+                        ? ResourceProvider.GetString("LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged")
+                        : options.PlatformName.Trim(),
+                    options.CleanTags().Count()),
+                ResourceProvider.GetString("LOC_SunshineLibrary_Name"),
+                System.Windows.MessageBoxButton.YesNo,
+                System.Windows.MessageBoxImage.Question);
+            if (confirm != System.Windows.MessageBoxResult.Yes) return;
+
+            // Only now do we touch the database.
+            var platform = ResolveConfiguredPlatform(options);
+            var tagIds = ResolveConfiguredTagIds(options);
+
+            var updates = new List<Game>();
+            using (PlayniteApi.Database.BufferedUpdate())
+            {
+                foreach (var g in ourGames)
+                {
+                    var changed = false;
+
+                    if (platform != null &&
+                        (g.PlatformIds == null || g.PlatformIds.Count != 1 || g.PlatformIds[0] != platform.Id))
+                    {
+                        g.PlatformIds = new List<Guid> { platform.Id };
+                        changed = true;
+                    }
+
+                    // Assign a new list rather than mutating in place: TagIds' setter is what
+                    // raises change notification for both TagIds and the derived read-only
+                    // Tags collection, so an in-place Add would persist but leave the tag
+                    // chips and filter counts stale until restart.
+                    var missing = tagIds.Where(id => g.TagIds == null || !g.TagIds.Contains(id)).ToList();
+                    if (missing.Count > 0)
+                    {
+                        var merged = g.TagIds == null ? new List<Guid>() : new List<Guid>(g.TagIds);
+                        merged.AddRange(missing);
+                        g.TagIds = merged;
+                        changed = true;
+                    }
+
+                    if (changed) updates.Add(g);
+                }
+
+                if (updates.Count > 0) PlayniteApi.Database.Games.Update(updates);
+            }
+
+            logger.Info($"Applied platform/tags to {updates.Count} of {ourGames.Count} game(s).");
+            PlayniteApi.Notifications.Add(new NotificationMessage(
+                "sunshine-apply-platform-tags",
+                string.Format(
+                    ResourceProvider.GetString("LOC_SunshineLibrary_ApplyPlatformTags_Done"),
+                    updates.Count, ourGames.Count),
+                NotificationType.Info));
+        }
+
+        /// <summary>
+        /// The configured platform as a database row, creating it if the name is new.
+        /// <c>Add(name)</c> is get-or-add, so it reuses an existing row of that name.
+        ///
+        /// Returns null when no platform is configured, which leaves each game's platform
+        /// untouched. Resolving the built-in specification instead would reset platforms
+        /// on a user who only wanted to apply tags.
+        /// </summary>
+        private Platform ResolveConfiguredPlatform(LibraryMetadataOptions options)
+        {
+            var name = options?.PlatformName;
+            return string.IsNullOrWhiteSpace(name) ? null : PlayniteApi.Database.Platforms.Add(name.Trim());
+        }
+
+        /// <summary>Configured tags as database rows, creating any that don't exist yet.</summary>
+        private List<Guid> ResolveConfiguredTagIds(LibraryMetadataOptions options)
+        {
+            var ids = new List<Guid>();
+            if (options == null) return ids;
+
+            foreach (var name in options.CleanTags())
+            {
+                var tag = PlayniteApi.Database.Tags.Add(name);
+                if (tag != null && !ids.Contains(tag.Id)) ids.Add(tag.Id);
+            }
+            return ids;
+        }
+
         private void RunManualResync()
         {
             var hosts = ActiveHosts().ToList();
@@ -856,7 +997,7 @@ namespace SunshineLibrary
             PlayniteApi.Dialogs.ActivateGlobalProgress(progress =>
             {
                 progress.ProgressMaxValue = hosts.Count;
-                var summary = syncService.SyncAllAsync(hosts, progress.CancelToken).GetAwaiter().GetResult();
+                var summary = syncService.SyncAllAsync(hosts, MetadataOptions(), progress.CancelToken).GetAwaiter().GetResult();
                 ImportNewGames(summary);
 
                 foreach (var r in summary.Results)

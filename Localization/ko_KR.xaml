@@ -286,4 +286,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">꺼짐</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">가져온 게임의 플랫폼</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">기본값 (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">스트리밍 게임을 분류할 Playnite 플랫폼입니다. 라이브러리에 이미 있는 플랫폼을 표시합니다. 새로 가져온 게임에 적용되며, 기존 게임은 주 메뉴 작업을 사용하세요.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">가져온 게임에 추가할 태그</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">한 줄에 태그 하나씩. 호스트에서 파생된 태그에 추가됩니다. 새로 가져온 게임에 적용되며, 기존 게임은 주 메뉴 작업을 사용하세요.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">기존 게임에 플랫폼과 태그 적용…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">게임 {0}개에 적용할까요?&#10;&#10;플랫폼: {1}&#10;추가할 태그: {2}&#10;&#10;기존 태그는 유지되고 플랫폼은 대체됩니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">게임 {1}개 중 {0}개를 업데이트했습니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">아직 이 라이브러리의 게임이 없습니다.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">플랫폼이나 태그가 설정되지 않았습니다. 먼저 일반 탭에서 설정하세요.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">변경 없음</sys:String>
+
 </ResourceDictionary>

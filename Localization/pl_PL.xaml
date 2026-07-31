@@ -280,4 +280,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Wyłączony</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Platforma dla importowanych gier</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Domyślna (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Pod jaką platformą Playnite są przypisywane gry strumieniowane. Pokazuje platformy już obecne w bibliotece. Dotyczy nowo zaimportowanych gier; dla istniejących użyj akcji z menu głównego.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Tagi dodawane do importowanych gier</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">Jeden tag w wierszu, dodawany do tagów pochodzących z hosta. Dotyczy nowo zaimportowanych gier; dla istniejących użyj akcji z menu głównego.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Zastosuj platformę i tagi do istniejących gier…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Zastosować do {0} gier?&#10;&#10;Platforma: {1}&#10;Dodane tagi: {2}&#10;&#10;Istniejące tagi zostaną zachowane; platforma zostanie zastąpiona.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Zaktualizowano {0} z {1} gier.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Brak gier z tej biblioteki.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Nie skonfigurowano platformy ani tagów. Ustaw je najpierw na karcie Ogólne.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">bez zmian</sys:String>
+
 </ResourceDictionary>

@@ -280,4 +280,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Oprit</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Platforma pentru jocurile importate</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Implicit (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Sub ce platformă Playnite sunt încadrate jocurile transmise în flux. Afișează platformele deja prezente în bibliotecă. Se aplică jocurilor nou importate; pentru cele existente folosiți acțiunea din meniul principal.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Etichete adăugate jocurilor importate</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">O etichetă pe linie, adăugată peste cele derivate din gazdă. Se aplică jocurilor nou importate; pentru cele existente folosiți acțiunea din meniul principal.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Aplică platforma și etichetele la jocurile existente…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Se aplică la {0} joc(uri)?&#10;&#10;Platformă: {1}&#10;Etichete adăugate: {2}&#10;&#10;Etichetele existente se păstrează; platforma este înlocuită.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">{0} din {1} joc(uri) actualizate.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Încă nu există jocuri din această bibliotecă.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Nicio platformă sau etichetă configurată. Setați-le mai întâi în fila General.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">neschimbată</sys:String>
+
 </ResourceDictionary>

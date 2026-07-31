@@ -3,6 +3,7 @@ using Playnite.SDK;
 using SunshineLibrary.Models;
 using SunshineLibrary.Services.Clients;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -305,6 +306,13 @@ namespace SunshineLibrary.Settings
 
         private UIElement BuildGeneralTab(SunshineLibrarySettingsViewModel vm)
         {
+            // Scrollable like the Defaults tab — this tab's content now exceeds the
+            // dialog height, and the Danger Zone at the bottom must stay reachable.
+            var scroll = new ScrollViewer
+            {
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
+            };
             var panel = new StackPanel { Margin = new Thickness(8) };
 
             panel.Children.Add(new TextBlock
@@ -332,6 +340,94 @@ namespace SunshineLibrary.Settings
             panel.Children.Add(new TextBlock
             {
                 Text = L("LOC_SunshineLibrary_Notif_Help"),
+                TextWrapping = TextWrapping.Wrap,
+                Foreground = SystemColors.GrayTextBrush,
+                FontSize = 11,
+                Margin = new Thickness(0, 2, 0, 16),
+            });
+
+            // Platform for imported games. Populated from Playnite's own platform list so
+            // the name always matches an existing row; a free-text name would silently
+            // create a near-duplicate platform on the first sync.
+            panel.Children.Add(new TextBlock
+            {
+                Text = L("LOC_SunshineLibrary_Settings_LibraryPlatform"),
+                FontWeight = FontWeights.SemiBold,
+                Margin = new Thickness(0, 0, 0, 4),
+            });
+
+            var platformCombo = new ComboBox { Width = 260, HorizontalAlignment = HorizontalAlignment.Left };
+            platformCombo.Items.Add(new ComboBoxItem { Content = L("LOC_SunshineLibrary_Settings_LibraryPlatform_Default"), Tag = null });
+            var platformNames = vm.Api?.Database?.Platforms?
+                .Where(p => p != null && !string.IsNullOrWhiteSpace(p.Name))
+                .Select(p => p.Name)
+                .OrderBy(n => n, StringComparer.CurrentCultureIgnoreCase)
+                .ToList() ?? new List<string>();
+
+            // A platform configured earlier and since deleted from Playnite would otherwise
+            // be absent from the list, so the combo would fall back to showing "Default"
+            // while the setting still held the old name — the UI would be lying about what
+            // the next sync will do. Carry it as an entry so the selection stays truthful.
+            var configured = vm.Settings.LibraryPlatform;
+            if (!string.IsNullOrWhiteSpace(configured) &&
+                !platformNames.Any(n => string.Equals(n, configured, StringComparison.OrdinalIgnoreCase)))
+            {
+                platformNames.Insert(0, configured);
+            }
+
+            foreach (var name in platformNames)
+            {
+                platformCombo.Items.Add(new ComboBoxItem { Content = name, Tag = name });
+            }
+            platformCombo.SelectedIndex = platformCombo.Items
+                .Cast<ComboBoxItem>()
+                .Select((it, idx) => new { it, idx })
+                .FirstOrDefault(x => string.Equals((string)x.it.Tag, vm.Settings.LibraryPlatform, StringComparison.OrdinalIgnoreCase))?.idx ?? 0;
+            platformCombo.SelectionChanged += (_, __) =>
+            {
+                if (platformCombo.SelectedItem is ComboBoxItem item)
+                    vm.Settings.LibraryPlatform = item.Tag as string;
+            };
+            panel.Children.Add(platformCombo);
+            panel.Children.Add(new TextBlock
+            {
+                Text = L("LOC_SunshineLibrary_Settings_LibraryPlatform_Help"),
+                TextWrapping = TextWrapping.Wrap,
+                Foreground = SystemColors.GrayTextBrush,
+                FontSize = 11,
+                Margin = new Thickness(0, 2, 0, 16),
+            });
+
+            // Extra tags, one per line — same idiom as the host dialog's excluded-app list.
+            panel.Children.Add(new TextBlock
+            {
+                Text = L("LOC_SunshineLibrary_Settings_AdditionalTags"),
+                FontWeight = FontWeights.SemiBold,
+                Margin = new Thickness(0, 0, 0, 4),
+            });
+
+            var tagsBox = new TextBox
+            {
+                AcceptsReturn = true,
+                TextWrapping = TextWrapping.NoWrap,
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                Height = 80,
+                Text = vm.Settings.AdditionalTags != null
+                    ? string.Join("\n", vm.Settings.AdditionalTags)
+                    : string.Empty,
+            };
+            tagsBox.TextChanged += (_, __) =>
+            {
+                vm.Settings.AdditionalTags = tagsBox.Text
+                    .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim())
+                    .Where(s => s.Length > 0)
+                    .ToList();
+            };
+            panel.Children.Add(tagsBox);
+            panel.Children.Add(new TextBlock
+            {
+                Text = L("LOC_SunshineLibrary_Settings_AdditionalTags_Help"),
                 TextWrapping = TextWrapping.Wrap,
                 Foreground = SystemColors.GrayTextBrush,
                 FontSize = 11,
@@ -410,7 +506,8 @@ namespace SunshineLibrary.Settings
                 Margin = new Thickness(0, 4, 0, 0),
             });
 
-            return panel;
+            scroll.Content = panel;
+            return scroll;
         }
 
         // --- helpers ----------------------------------------------------------

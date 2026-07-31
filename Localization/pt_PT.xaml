@@ -284,4 +284,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Desligado</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Plataforma dos jogos importados</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Predefinida (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Sob que plataforma do Playnite os jogos por streaming são arquivados. Lista as plataformas já presentes na sua biblioteca. Aplica-se a jogos recém-importados; para os já existentes, use a ação do menu principal.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Etiquetas adicionadas aos jogos importados</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">Uma etiqueta por linha, somada às etiquetas derivadas do anfitrião. Aplica-se a jogos recém-importados; para os já existentes, use a ação do menu principal.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Aplicar plataforma e etiquetas aos jogos existentes…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Aplicar a {0} jogo(s)?&#10;&#10;Plataforma: {1}&#10;Etiquetas adicionadas: {2}&#10;&#10;As etiquetas existentes são mantidas; a plataforma é substituída.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">{0} de {1} jogo(s) atualizado(s).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Ainda não há jogos desta biblioteca.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Nenhuma plataforma ou etiqueta configurada. Defina-as primeiro no separador Geral.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">inalterada</sys:String>
+
 </ResourceDictionary>

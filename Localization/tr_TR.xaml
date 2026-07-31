@@ -286,4 +286,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Kapalı</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">İçe aktarılan oyunlar için platform</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Varsayılan (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Akış oyunlarının hangi Playnite platformu altında toplanacağı. Kitaplığınızda hâlihazırda bulunan platformları listeler. Yeni içe aktarılan oyunlar için geçerlidir; mevcut oyunlar için ana menüdeki eylemi kullanın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">İçe aktarılan oyunlara eklenen etiketler</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">Her satıra bir etiket; sunucudan türetilen etiketlere ek olarak uygulanır. Yeni içe aktarılan oyunlar için geçerlidir; mevcut oyunlar için ana menüdeki eylemi kullanın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Platform ve etiketleri mevcut oyunlara uygula…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">{0} oyuna uygulansın mı?&#10;&#10;Platform: {1}&#10;Eklenen etiketler: {2}&#10;&#10;Mevcut etiketler korunur; platform değiştirilir.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">{1} oyundan {0} tanesi güncellendi.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Bu kitaplıktan henüz oyun yok.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Platform veya etiket ayarlanmamış. Önce Genel sekmesinden ayarlayın.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">değişmedi</sys:String>
+
 </ResourceDictionary>
