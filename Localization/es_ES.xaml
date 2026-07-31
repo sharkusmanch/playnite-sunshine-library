@@ -263,4 +263,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Desactivado</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Plataforma para los juegos importados</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Predeterminada (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Bajo qué plataforma de Playnite se archivan los juegos en streaming. Muestra las plataformas que ya tienes en la biblioteca. Se aplica a los juegos recién importados; para los ya existentes usa la acción del menú principal.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Etiquetas añadidas a los juegos importados</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">Una etiqueta por línea, además de las derivadas del host. Se aplica a los juegos recién importados; para los ya existentes usa la acción del menú principal.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Aplicar plataforma y etiquetas a los juegos existentes…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">¿Aplicar a {0} juego(s)?&#10;&#10;Plataforma: {1}&#10;Etiquetas añadidas: {2}&#10;&#10;Las etiquetas existentes se conservan; la plataforma se reemplaza.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Actualizados {0} de {1} juego(s).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Aún no hay juegos de esta biblioteca.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">No hay plataforma ni etiquetas configuradas. Configúralas primero en la pestaña General.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">sin cambios</sys:String>
+
 </ResourceDictionary>

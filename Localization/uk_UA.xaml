@@ -282,4 +282,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Вимк.</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Платформа для імпортованих ігор</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Типова (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">До якої платформи Playnite належать потокові ігри. Показано платформи, які вже є у вашій бібліотеці. Застосовується до щойно імпортованих ігор; для наявних скористайтеся дією в головному меню.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Мітки, що додаються до імпортованих ігор</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">По одній мітці в рядку, на додачу до міток, отриманих від хоста. Застосовується до щойно імпортованих ігор; для наявних скористайтеся дією в головному меню.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Застосувати платформу й мітки до наявних ігор…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Застосувати до {0} ігор?&#10;&#10;Платформа: {1}&#10;Додані мітки: {2}&#10;&#10;Наявні мітки зберігаються; платформу буде замінено.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Оновлено {0} з {1} ігор.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Ігор із цієї бібліотеки поки немає.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Платформу й мітки не налаштовано. Спершу задайте їх на вкладці «Загальні».</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">без змін</sys:String>
+
 </ResourceDictionary>

@@ -261,4 +261,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_ApplyField">Apply {0}</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_BulkDialog_NothingSelected">Tick at least one field to apply, or click Cancel.</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Platform for imported games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Default (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Which Playnite platform streamed games are filed under. Lists the platforms already in your library. Applies to newly imported games; use the main-menu action to update games you already have.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Tags added to imported games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">One tag per line, added on top of the tags derived from the host. Applies to newly imported games; use the main-menu action to update games you already have.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Apply platform and tags to existing games…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Apply to {0} game(s)?&#10;&#10;Platform: {1}&#10;Tags added: {2}&#10;&#10;Existing tags are kept; the platform is replaced.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Updated {0} of {1} game(s).</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">No games from this library yet.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">No platform or tags are configured. Set them on the General tab first.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">unchanged</sys:String>
+
 </ResourceDictionary>

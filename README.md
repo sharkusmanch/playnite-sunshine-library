@@ -64,7 +64,16 @@ Download the latest `.pext` from [Releases](https://github.com/sharkusmanch/play
 
 **Streaming Client tab** — Moonlight executable path. **Browse…** for manual, **Auto-detect** to probe PATH / Scoop / Winget / standard installers. **Test streaming client** verifies the configured path.
 
-**General tab** — NotificationMode (`Always` / `On changes only` / `Never` — security events always fire regardless), Auto-remove orphaned games toggle (off by default), Revoke all stored credentials button.
+**General tab** — NotificationMode (`Always` / `On changes only` / `Never` — security events always fire regardless), Platform for imported games, Tags added to imported games, Auto-remove orphaned games toggle (off by default), Revoke all stored credentials button.
+
+## Platform and tags
+
+Imported games land under a platform and carry a set of tags:
+
+- **Platform** — defaults to the built-in `PC (Windows)` specification. Pick any platform already in your Playnite library from the dropdown to file streamed games somewhere else (a custom `Streaming` platform, `Steam Deck`, etc.).
+- **Tags** — one per line. Applied on top of the tags derived from the host: the library source (`Steam`, `GOG`, … on Vibepollo), the host's categories, and the `SunshineLibrary: offline` marker.
+
+Playnite applies platform and tag metadata **at first import only** — its library-update pass touches install state, playtime and install size, and nothing else. Changing either setting therefore affects newly imported games. To update games already in your library, use **Extensions → SunshineLibrary → Apply platform and tags to existing games…**, which asks for confirmation and reports how many entries changed. That pass adds tags without removing any, so tags you set by hand survive; the platform, being single-valued, is replaced.
 
 ## Per-game overrides
 
@@ -124,6 +133,7 @@ Then a third line with the exact Moonlight command line being run.
 - **Host status…** — reachability check across all hosts
 - **Remove orphaned games…** — one-shot delete of confirmed orphans (with confirmation)
 - **Clean up orphaned overrides** — remove per-game overrides whose games no longer exist
+- **Apply platform and tags to existing games…** — push the configured platform / tags onto games already imported (with confirmation)
 
 ## Orphan behavior
 

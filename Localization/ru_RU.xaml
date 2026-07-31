@@ -284,4 +284,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Выкл</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Платформа для импортированных игр</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">По умолчанию (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">К какой платформе Playnite относятся потоковые игры. Показаны платформы, уже имеющиеся в библиотеке. Применяется к вновь импортированным играм; для существующих используйте действие в главном меню.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Метки, добавляемые к импортированным играм</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">По одной метке в строке, в дополнение к меткам, полученным от хоста. Применяется к вновь импортированным играм; для существующих используйте действие в главном меню.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Применить платформу и метки к существующим играм…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Применить к {0} игр(е/ам)?&#10;&#10;Платформа: {1}&#10;Добавляемые метки: {2}&#10;&#10;Существующие метки сохраняются; платформа заменяется.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Обновлено {0} из {1} игр.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Игр из этой библиотеки пока нет.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Платформа и метки не настроены. Сначала задайте их на вкладке «Общие».</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">без изменений</sys:String>
+
 </ResourceDictionary>

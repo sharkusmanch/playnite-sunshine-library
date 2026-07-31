@@ -282,4 +282,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Uit</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Platform voor geïmporteerde games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Standaard (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Onder welk Playnite-platform gestreamde games worden ingedeeld. Toont de platforms die al in je bibliotheek staan. Geldt voor nieuw geïmporteerde games; gebruik voor bestaande games de actie in het hoofdmenu.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Tags toegevoegd aan geïmporteerde games</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">Eén tag per regel, bovenop de tags die van de host komen. Geldt voor nieuw geïmporteerde games; gebruik voor bestaande games de actie in het hoofdmenu.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Platform en tags toepassen op bestaande games…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Toepassen op {0} game(s)?&#10;&#10;Platform: {1}&#10;Toegevoegde tags: {2}&#10;&#10;Bestaande tags blijven behouden; het platform wordt vervangen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">{0} van {1} game(s) bijgewerkt.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Nog geen games uit deze bibliotheek.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Geen platform of tags ingesteld. Stel ze eerst in op het tabblad Algemeen.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">ongewijzigd</sys:String>
+
 </ResourceDictionary>

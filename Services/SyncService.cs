@@ -54,7 +54,8 @@ namespace SunshineLibrary.Services
         /// Fan out across all hosts in parallel under a semaphore. Per-host errors
         /// are captured in the HostSyncResult and do NOT propagate.
         /// </summary>
-        public async Task<SyncSummary> SyncAllAsync(IEnumerable<HostConfig> hosts, CancellationToken ct)
+        public async Task<SyncSummary> SyncAllAsync(
+            IEnumerable<HostConfig> hosts, LibraryMetadataOptions options, CancellationToken ct)
         {
             var summary = new SyncSummary();
             if (hosts == null) return summary;
@@ -69,7 +70,7 @@ namespace SunshineLibrary.Services
                     await throttle.WaitAsync(ct).ConfigureAwait(false);
                     try
                     {
-                        return await SyncOneAsync(h, ct).ConfigureAwait(false);
+                        return await SyncOneAsync(h, options, ct).ConfigureAwait(false);
                     }
                     finally
                     {
@@ -84,7 +85,8 @@ namespace SunshineLibrary.Services
         }
 
         /// <summary>Single-host path. Live-fetches, saves cache on success, yields cache on error.</summary>
-        public async Task<HostSyncResult> SyncOneAsync(HostConfig host, CancellationToken ct)
+        public async Task<HostSyncResult> SyncOneAsync(
+            HostConfig host, LibraryMetadataOptions options, CancellationToken ct)
         {
             var result = new HostSyncResult { Host = host };
             if (host == null || !host.Enabled)
@@ -114,7 +116,7 @@ namespace SunshineLibrary.Services
                 if (!apps.IsOk)
                 {
                     result.Status = apps.AsStatus();
-                    TryYieldFromCache(host, result);
+                    TryYieldFromCache(host, result, options);
                     return result;
                 }
 
@@ -123,7 +125,7 @@ namespace SunshineLibrary.Services
                 var filtered = PseudoAppFilter.Apply(apps.Value, host).ToList();
                 foreach (var app in filtered)
                 {
-                    var meta = BuildMeta(host, app, fromCache: false);
+                    var meta = BuildMeta(host, app, fromCache: false, options: options);
 
                     // Inline cover: best-effort, quiet on failure — Playnite falls through to IGDB.
                     var cover = await client.FetchCoverAsync(app, ct).ConfigureAwait(false);
@@ -148,7 +150,7 @@ namespace SunshineLibrary.Services
             {
                 logger.Warn($"[{host.Label}] sync failed: {SafeLogging.Redact(ex.Message)}");
                 result.Status = HostResult.Unreachable(ex.Message);
-                TryYieldFromCache(host, result);
+                TryYieldFromCache(host, result, options);
                 return result;
             }
             finally
@@ -157,7 +159,7 @@ namespace SunshineLibrary.Services
             }
         }
 
-        private void TryYieldFromCache(HostConfig host, HostSyncResult result)
+        private void TryYieldFromCache(HostConfig host, HostSyncResult result, LibraryMetadataOptions options)
         {
             if (appCache == null) return;
             var cached = appCache.TryLoad(host.Id);
@@ -166,7 +168,7 @@ namespace SunshineLibrary.Services
             var filtered = PseudoAppFilter.Apply(cached, host);
             foreach (var app in filtered)
             {
-                result.Games.Add(BuildMeta(host, app, fromCache: true));
+                result.Games.Add(BuildMeta(host, app, fromCache: true, options: options));
             }
             result.FromCache = true;
             logger.Info($"[{host.Label}] yielded {result.Games.Count} games from cache (live fetch failed).");
@@ -178,11 +180,12 @@ namespace SunshineLibrary.Services
         /// <c>internal</c> rather than private so tests can assert the shape directly —
         /// same test seam as <see cref="Hosts.HostClient"/>'s handler-injecting ctor.
         /// </summary>
-        internal PlayniteGameMetadata BuildMeta(HostConfig host, RemoteApp app, bool fromCache)
+        internal PlayniteGameMetadata BuildMeta(
+            HostConfig host, RemoteApp app, bool fromCache, LibraryMetadataOptions options = null)
         {
             var sourcePrefix = host.ServerType == ServerType.Vibepollo ? "Vibepollo" : "Sunshine";
             var source = new PlayniteMetadata($"{sourcePrefix}: {host.Label}");
-            var platform = new PlayniteSpec("pc_windows");
+            var platform = ResolvePlatform(options);
             var feature = new PlayniteMetadata("Game Streaming");
 
             var tags = new HashSet<MetadataProperty>();
@@ -192,6 +195,9 @@ namespace SunshineLibrary.Services
                 foreach (var cat in app.Categories)
                     if (!string.IsNullOrWhiteSpace(cat))
                         tags.Add(new PlayniteMetadata(cat));
+            if (options != null)
+                foreach (var t in options.CleanTags())
+                    tags.Add(new PlayniteMetadata(t));
             if (fromCache)
                 tags.Add(new PlayniteMetadata(OfflineTagName));
 
@@ -219,6 +225,20 @@ namespace SunshineLibrary.Services
                 meta.Tags = tags;
 
             return meta;
+        }
+
+        /// <summary>
+        /// A configured platform is matched by name — Playnite resolves an existing
+        /// platform with that name or creates one. With nothing configured we keep
+        /// emitting the built-in specification, so upgrading changes nothing for
+        /// users who never touch the setting.
+        /// </summary>
+        private static MetadataProperty ResolvePlatform(LibraryMetadataOptions options)
+        {
+            var name = options?.PlatformName;
+            return string.IsNullOrWhiteSpace(name)
+                ? (MetadataProperty)new PlayniteSpec(LibraryMetadataOptions.DefaultPlatformSpecId)
+                : new PlayniteMetadata(name.Trim());
         }
     }
 }

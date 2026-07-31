@@ -278,4 +278,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Disattivo</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Piattaforma per i giochi importati</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Predefinita (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Sotto quale piattaforma di Playnite vengono archiviati i giochi in streaming. Elenca le piattaforme già presenti nella libreria. Vale per i giochi appena importati; per quelli esistenti usa l'azione nel menu principale.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Tag aggiunti ai giochi importati</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">Un tag per riga, oltre a quelli derivati dall'host. Vale per i giochi appena importati; per quelli esistenti usa l'azione nel menu principale.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Applica piattaforma e tag ai giochi esistenti…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Applicare a {0} gioco/giochi?&#10;&#10;Piattaforma: {1}&#10;Tag aggiunti: {2}&#10;&#10;I tag esistenti vengono mantenuti; la piattaforma viene sostituita.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Aggiornati {0} di {1} giochi.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Nessun gioco da questa libreria per ora.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Nessuna piattaforma o tag configurati. Impostali prima nella scheda Generale.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">invariata</sys:String>
+
 </ResourceDictionary>

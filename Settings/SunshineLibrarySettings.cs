@@ -35,6 +35,19 @@ namespace SunshineLibrary.Settings
         /// <summary>Global stream overrides, applied before host/client-profile/game layers.</summary>
         public StreamOverrides GlobalOverrides { get; set; } = new StreamOverrides();
 
+        /// <summary>
+        /// Playnite platform assigned to imported games, matched by name. Null or empty
+        /// keeps the built-in <c>pc_windows</c> specification, which is what every
+        /// release before this one hardcoded.
+        /// </summary>
+        public string LibraryPlatform { get; set; }
+
+        /// <summary>
+        /// Tags applied to every imported game, on top of the host-derived ones
+        /// (library source, categories, and the offline marker).
+        /// </summary>
+        public List<string> AdditionalTags { get; set; } = new List<string>();
+
         public static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Include,

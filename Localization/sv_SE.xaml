@@ -284,4 +284,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">Av</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">Plattform för importerade spel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">Standard (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">Vilken Playnite-plattform strömmade spel sorteras under. Visar de plattformar som redan finns i biblioteket. Gäller nyimporterade spel; använd åtgärden i huvudmenyn för spel du redan har.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">Taggar som läggs till importerade spel</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">En tagg per rad, utöver de taggar som härleds från värden. Gäller nyimporterade spel; använd åtgärden i huvudmenyn för spel du redan har.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">Tillämpa plattform och taggar på befintliga spel…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">Tillämpa på {0} spel?&#10;&#10;Plattform: {1}&#10;Tillagda taggar: {2}&#10;&#10;Befintliga taggar behålls; plattformen ersätts.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">Uppdaterade {0} av {1} spel.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">Inga spel från det här biblioteket ännu.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">Ingen plattform eller taggar har konfigurerats. Ange dem först på fliken Allmänt.</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">oförändrad</sys:String>
+
 </ResourceDictionary>

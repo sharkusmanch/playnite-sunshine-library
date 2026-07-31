@@ -284,4 +284,17 @@
     <sys:String x:Key="LOC_SunshineLibrary_Bool_Off">關</sys:String>
     <sys:String x:Key="LOC_SunshineLibrary_EffectiveSettings_BitrateAutoCalcApprox">→ {0} Kbps (est., display FPS unknown)</sys:String>
 
+    <!-- Imported-game platform and tags -->
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform">匯入遊戲的平台</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Default">預設 (PC (Windows))</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_LibraryPlatform_Help">串流遊戲歸入哪個 Playnite 平台。列出媒體庫中既有的平台。僅對新匯入的遊戲生效；既有遊戲請使用主選單中的動作。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags">為匯入遊戲加入的標籤</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Settings_AdditionalTags_Help">每行一個標籤，於主機衍生的標籤之外附加。僅對新匯入的遊戲生效；既有遊戲請使用主選單中的動作。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_Menu_ApplyPlatformTags">將平台與標籤套用至既有遊戲…</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Confirm">套用至 {0} 個遊戲？&#10;&#10;平台：{1}&#10;加入的標籤：{2}&#10;&#10;既有標籤會保留；平台將被取代。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_Done">已更新 {1} 個遊戲中的 {0} 個。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NoGames">此媒體庫尚無遊戲。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_NothingConfigured">尚未設定平台或標籤。請先於「一般」索引標籤中設定。</sys:String>
+    <sys:String x:Key="LOC_SunshineLibrary_ApplyPlatformTags_PlatformUnchanged">維持不變</sys:String>
+
 </ResourceDictionary>
