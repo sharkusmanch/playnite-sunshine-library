@@ -1,5 +1,13 @@
 AddonId: SunshineLibrary_496637e1-1607-4016-aa4b-d6f732c21210
 Packages:
+  - Version: 0.0.8
+    RequiredApiVersion: 6.12.0
+    ReleaseDate: 2026-07-31
+    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.8/SunshineLibrary_v0.0.8.pext
+    Changelog:
+      - 'New: choose which Playnite platform imported games are filed under — previously always PC (Windows). Pick any platform already in your library from the General settings tab'
+      - 'New: add your own tags to imported games, one per line on the General settings tab, on top of the tags derived from the host'
+      - 'New menu item "Apply platform and tags to existing games…" — Playnite applies platform and tag metadata at import time only, so this pushes the settings onto games you already have. Adds tags without removing any, so manual and host-derived tags survive'
   - Version: 0.0.7
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-07-31
