@@ -1,5 +1,12 @@
 AddonId: SunshineLibrary_496637e1-1607-4016-aa4b-d6f732c21210
 Packages:
+  - Version: 0.0.7
+    RequiredApiVersion: 6.12.0
+    ReleaseDate: 2026-07-31
+    PackageUrl: https://github.com/sharkusmanch/playnite-sunshine-library/releases/download/v0.0.7/SunshineLibrary_v0.0.7.pext
+    Changelog:
+      - Report no local install footprint for streamed apps — a streamed game occupies nothing locally, so the install directory and install size are now stated explicitly instead of being left for other extensions or metadata sources to populate
+      - 'Note: this applies to newly imported entries only. Playnite skips the install-size field on games it already considers installed, so an existing entry keeps whatever size is already stored against it'
   - Version: 0.0.6
     RequiredApiVersion: 6.12.0
     ReleaseDate: 2026-07-26
