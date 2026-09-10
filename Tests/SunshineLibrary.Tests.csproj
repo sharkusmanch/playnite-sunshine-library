@@ -13,7 +13,7 @@
     <!-- Must match SunshineLibrary.csproj: tests should exercise the same Newtonsoft
          assembly the plugin binds against inside Playnite. See renovate.json. -->
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="PlayniteSDK" Version="6.16.0" />
+    <PackageReference Include="PlayniteSDK" Version="6.17.0" />
   </ItemGroup>
 
   <ItemGroup>
